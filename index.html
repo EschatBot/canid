@@ -1483,6 +1483,134 @@ html, body { overscroll-behavior-y: contain; }
   }
 }
 
+
+/* ===== CANID GUIDED TOUR ===== */
+#tour-overlay {
+  position: fixed; inset: 0; z-index: 9000;
+  pointer-events: none;
+  opacity: 0; transition: opacity 0.3s ease;
+}
+#tour-overlay.active { opacity: 1; pointer-events: auto; }
+
+#tour-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.72);
+  transition: all 0.35s ease;
+}
+
+#tour-spotlight {
+  position: absolute;
+  border-radius: 12px;
+  box-shadow: 0 0 0 9999px rgba(0,0,0,0.72), 0 0 0 3px var(--accent), 0 0 24px 6px rgba(0,255,200,0.25);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+#tour-tooltip {
+  position: absolute;
+  background: var(--bg-elevated, #1a1f2e);
+  border: 1px solid rgba(0,255,200,0.2);
+  border-radius: 14px;
+  padding: 18px 20px 16px;
+  max-width: min(300px, calc(100vw - 32px));
+  box-shadow: var(--shadow-lg, 0 8px 32px rgba(0,0,0,0.5));
+  color: var(--t1, #fff);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 9010;
+}
+
+#tour-tooltip.center-mode {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  max-width: min(340px, calc(100vw - 32px));
+}
+
+#tour-arrow {
+  position: absolute;
+  width: 14px; height: 14px;
+  background: var(--bg-elevated, #1a1f2e);
+  border-left: 1px solid rgba(0,255,200,0.2);
+  border-top: 1px solid rgba(0,255,200,0.2);
+  transition: all 0.35s ease;
+}
+#tour-arrow.arrow-down {
+  bottom: -8px; left: 50%; transform: translateX(-50%) rotate(225deg);
+}
+#tour-arrow.arrow-up {
+  top: -8px; left: 50%; transform: translateX(-50%) rotate(45deg);
+}
+#tour-arrow.arrow-left {
+  left: -8px; top: 50%; transform: translateY(-50%) rotate(-45deg);
+}
+#tour-arrow.arrow-right {
+  right: -8px; top: 50%; transform: translateY(-50%) rotate(135deg);
+}
+#tour-arrow.hidden { display: none; }
+
+.tour-step-counter {
+  font-size: 11px;
+  color: var(--t2, rgba(255,255,255,0.5));
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.tour-message {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--t1, #fff);
+  margin-bottom: 16px;
+}
+
+.tour-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+#tour-btn-next {
+  background: linear-gradient(135deg, #00d4aa, #0099ff);
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  padding: 9px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  flex: 1;
+  min-width: 80px;
+  transition: opacity 0.15s;
+}
+#tour-btn-next:hover { opacity: 0.88; }
+
+#tour-btn-back {
+  background: rgba(255,255,255,0.08);
+  color: var(--t1, #fff);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  padding: 9px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+#tour-btn-back:hover { background: rgba(255,255,255,0.15); }
+
+#tour-btn-skip {
+  font-size: 12px;
+  color: var(--t2, rgba(255,255,255,0.45));
+  background: none; border: none;
+  cursor: pointer;
+  padding: 4px 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  flex-shrink: 0;
+}
+#tour-btn-skip:hover { color: var(--t1, #fff); }
+/* ===== END TOUR ===== */
 </style>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230a0a1a'/%3E%3Cpath d='M32 72L32 62Q30 55 28 48L22 32 30 22Q34 18 38 20L42 26Q44 28 48 28L56 26Q60 25 62 28L64 34Q66 40 68 42L74 44Q76 44.5 76 46L72 50Q68 54 64 56L58 58Q52 60 48 62L40 66Q36 68 34 72Z' stroke='%2310b981' stroke-width='2.5' fill='none' stroke-linejoin='round'/%3E%3Ccircle cx='48' cy='36' r='2.5' fill='%2310b981'/%3E%3Cpath d='M76 40Q82 44 76 52' stroke='%2310b981' stroke-width='2' stroke-linecap='round' opacity='.8'/%3E%3Cpath d='M81 36Q90 44 81 56' stroke='%233b82f6' stroke-width='1.8' stroke-linecap='round' opacity='.4'/%3E%3C/svg%3E">
 </head>
@@ -1514,6 +1642,7 @@ html, body { overscroll-behavior-y: contain; }
         <div class="top-left" id="header-logo"></div>
         <div class="top-right">
           <div id="status-dot" class="dot-inactive"></div>
+          <button id="btn-tour" class="glass-icon-btn" aria-label="Help tour" style="font-size:15px;font-weight:700;color:var(--accent);">?</button>
           <button id="btn-settings" class="glass-icon-btn" aria-label="Settings">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
           </button>
@@ -4855,5 +4984,255 @@ window.UI = UI;
 
 })();
 </script>
+
+<!-- ===== CANID GUIDED TOUR ===== -->
+<div id="tour-overlay" role="dialog" aria-modal="true" aria-label="Guided tour">
+  <div id="tour-backdrop"></div>
+  <div id="tour-spotlight"></div>
+  <div id="tour-tooltip">
+    <div id="tour-arrow" class="hidden"></div>
+    <div class="tour-step-counter" id="tour-counter"></div>
+    <div class="tour-message" id="tour-message"></div>
+    <div class="tour-actions">
+      <button id="tour-btn-back" style="display:none">← Back</button>
+      <button id="tour-btn-next">Next</button>
+      <button id="tour-btn-skip">Skip tour</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  const STEPS = [
+    {
+      type: 'center',
+      msg: 'Welcome to Canid 🐕 Let me show you around.'
+    },
+    {
+      target: 'camera-layer',
+      msg: 'Point your camera at your dog and tap to start.',
+      prefer: 'below'
+    },
+    {
+      target: 'audio-strip',
+      msg: 'Your mic picks up barks, growls, whines, and howls.',
+      prefer: 'above'
+    },
+    {
+      target: 'context-row',
+      msg: 'Tell Canid what\'s happening — context changes interpretation.',
+      prefer: 'above'
+    },
+    {
+      target: 'assessment-card',
+      msg: 'Canid shows its reading here — state, confidence, evidence.',
+      prefer: 'above'
+    },
+    {
+      target: 'history-section',
+      msg: 'Past readings logged here.',
+      prefer: 'above'
+    },
+    {
+      target: 'canid-fb-prompt',
+      msg: 'Tell Canid if it got it right — corrections improve the model.',
+      prefer: 'above',
+      fallback: 'assessment-card'
+    },
+    {
+      target: 'btn-settings',
+      msg: 'Camera selection, sensitivity, training data export.',
+      prefer: 'below'
+    },
+    {
+      type: 'center',
+      msg: 'That\'s it! Tap Start to begin. 🐕',
+      last: true
+    }
+  ];
+
+  const STORAGE_KEY = 'canid-tour-complete';
+  const PAD = 8;
+
+  class CanidTour {
+    constructor() {
+      this.step = 0;
+      this.active = false;
+      this.overlay   = document.getElementById('tour-overlay');
+      this.spotlight = document.getElementById('tour-spotlight');
+      this.tooltip   = document.getElementById('tour-tooltip');
+      this.arrow     = document.getElementById('tour-arrow');
+      this.counter   = document.getElementById('tour-counter');
+      this.message   = document.getElementById('tour-message');
+      this.btnNext   = document.getElementById('tour-btn-next');
+      this.btnBack   = document.getElementById('tour-btn-back');
+      this.btnSkip   = document.getElementById('tour-btn-skip');
+
+      this.btnNext.addEventListener('click', () => this.next());
+      this.btnBack.addEventListener('click', () => this.back());
+      this.btnSkip.addEventListener('click', () => this.end());
+
+      // Restart button
+      const btnTour = document.getElementById('btn-tour');
+      if (btnTour) btnTour.addEventListener('click', () => this.start());
+
+      // Dismiss on analysis start
+      const startPrompt = document.getElementById('start-prompt');
+      if (startPrompt) startPrompt.addEventListener('click', () => this.end(), { once: true });
+      const btnStop = document.getElementById('btn-stop');
+      if (btnStop) {
+        const obs = new MutationObserver(() => {
+          if (!btnStop.classList.contains('hidden') && this.active) this.end();
+        });
+        obs.observe(btnStop, { attributes: true, attributeFilter: ['class'] });
+      }
+
+      // Auto-start if first visit
+      if (!localStorage.getItem(STORAGE_KEY)) {
+        setTimeout(() => this.start(), 600);
+      }
+    }
+
+    start() {
+      this.step = 0;
+      this.active = true;
+      this.overlay.classList.add('active');
+      this.render();
+    }
+
+    end() {
+      this.active = false;
+      this.overlay.classList.remove('active');
+      this.spotlight.style.cssText = '';
+      localStorage.setItem(STORAGE_KEY, '1');
+    }
+
+    next() {
+      if (this.step >= STEPS.length - 1) { this.end(); return; }
+      this.step++;
+      this.render();
+    }
+
+    back() {
+      if (this.step <= 0) return;
+      this.step--;
+      this.render();
+    }
+
+    render() {
+      const s = STEPS[this.step];
+      const total = STEPS.length;
+      const idx = this.step;
+
+      // Counter
+      this.counter.textContent = `${idx + 1} / ${total}`;
+
+      // Message
+      this.message.textContent = s.msg;
+
+      // Back button visibility
+      this.btnBack.style.display = idx > 0 ? '' : 'none';
+
+      // Next button label
+      this.btnNext.textContent = s.last ? 'Done 🐕' : 'Next →';
+
+      if (s.type === 'center') {
+        // Hide spotlight
+        this.spotlight.style.cssText = 'opacity:0;width:0;height:0;';
+        this.tooltip.classList.add('center-mode');
+        this.tooltip.style.cssText = '';
+        this.arrow.className = 'hidden';
+      } else {
+        this.tooltip.classList.remove('center-mode');
+        this.positionOnElement(s);
+      }
+    }
+
+    positionOnElement(s) {
+      const el = document.getElementById(s.target) ||
+                 (s.fallback ? document.getElementById(s.fallback) : null);
+
+      if (!el) {
+        // fallback to center
+        this.spotlight.style.cssText = 'opacity:0;width:0;height:0;';
+        this.tooltip.classList.add('center-mode');
+        this.arrow.className = 'hidden';
+        return;
+      }
+
+      const r = el.getBoundingClientRect();
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+
+      // Spotlight
+      this.spotlight.style.cssText = `
+        left: ${r.left - PAD}px;
+        top: ${r.top - PAD}px;
+        width: ${r.width + PAD * 2}px;
+        height: ${r.height + PAD * 2}px;
+        opacity: 1;
+      `;
+
+      // Tooltip positioning
+      const TT_W = Math.min(300, vw - 32);
+      const TT_H = 140; // estimate
+      const prefer = s.prefer || 'above';
+
+      let tipTop, tipLeft, arrowClass;
+
+      const spaceAbove = r.top - PAD;
+      const spaceBelow = vh - r.bottom - PAD;
+
+      let side = prefer;
+      if (prefer === 'above' && spaceAbove < TT_H + 20) side = 'below';
+      if (prefer === 'below' && spaceBelow < TT_H + 20) side = 'above';
+
+      // Center horizontally on element, clamped to viewport
+      tipLeft = r.left + r.width / 2 - TT_W / 2;
+      tipLeft = Math.max(16, Math.min(tipLeft, vw - TT_W - 16));
+
+      if (side === 'above') {
+        tipTop = r.top - PAD - TT_H - 16;
+        tipTop = Math.max(16, tipTop);
+        arrowClass = 'arrow-down';
+      } else {
+        tipTop = r.bottom + PAD + 16;
+        tipTop = Math.min(tipTop, vh - TT_H - 16);
+        arrowClass = 'arrow-up';
+      }
+
+      this.tooltip.style.cssText = `
+        position: fixed;
+        top: ${tipTop}px;
+        left: ${tipLeft}px;
+        width: ${TT_W}px;
+        transform: none;
+        text-align: left;
+      `;
+
+      // Arrow center
+      const arrowLeft = (r.left + r.width / 2) - tipLeft - 7;
+      const arrowLeftClamped = Math.max(16, Math.min(arrowLeft, TT_W - 30));
+
+      this.arrow.className = arrowClass;
+      if (arrowClass === 'arrow-down') {
+        this.arrow.style.cssText = `bottom:-8px; left:${arrowLeftClamped}px; top:auto; right:auto; transform:rotate(225deg);`;
+      } else {
+        this.arrow.style.cssText = `top:-8px; left:${arrowLeftClamped}px; bottom:auto; right:auto; transform:rotate(45deg);`;
+      }
+    }
+  }
+
+  // Init after DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => { window.canidTour = new CanidTour(); });
+  } else {
+    window.canidTour = new CanidTour();
+  }
+})();
+</script>
+<!-- ===== END CANID GUIDED TOUR ===== -->
 </body>
 </html>
