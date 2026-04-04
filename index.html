@@ -556,10 +556,17 @@
 <!-- ── NAV ── -->
 <nav id="nav">
   <a href="#" class="nav-logo">
-    <svg width="24" height="24" viewBox="0 0 32 36" fill="none">
-      <path d="M10,32 L10,24 C10,22 9,20 8,18 L7,15 C6,12 7,9 9,7 L11,5 C13,3 16,3 18,3 L19,2 C19,1 20,1 20,2 L21,4 C22,4 24,6 26,7 L28,8 C30,10 30,13 28,15 L26,17 C25,18 25,20 25,22 L27,26 L27,32 L24,32 L24,26 L22,22 C21,20 20,18 20,16 L19,18 C18,20 16,22 14,23 L13,24 L13,32 Z" fill="url(#navg)" opacity="0.95"/>
-      <circle cx="26" cy="10" r="1.2" fill="#0b1120"/>
-      <circle cx="26" cy="10" r="0.7" fill="white" opacity="0.9"/>
+    <svg width="24" height="22" viewBox="0 0 34 28" fill="none">
+      <!-- Mini Tintin dog -->
+      <ellipse cx="22" cy="11" rx="6" ry="5.5" stroke="url(#navg)" stroke-width="2" fill="none"/>
+      <path d="M7,14 C9,10 14,8 18,9 L22,11 C25,14 26,17 24,20 C22,22 16,23 12,22 C9,21 7,18 7,14 Z" stroke="url(#navg)" stroke-width="2" fill="none"/>
+      <circle cx="24" cy="10" r="1.5" fill="#14d4be"/>
+      <circle cx="27" cy="12" r="1" fill="#14d4be"/>
+      <path d="M7,14 C5,11 4,7 6,5" stroke="url(#navg)" stroke-width="2" stroke-linecap="round" fill="none"/>
+      <line x1="3" y1="4" x2="1" y2="1" stroke="#14d4be" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+      <line x1="5" y1="3" x2="4" y2="0" stroke="#14d4be" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+      <line x1="30" y1="9" x2="33" y2="8" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+      <line x1="30" y1="13" x2="33" y2="14" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
       <defs><linearGradient id="navg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#14d4be"/><stop offset="100%" stop-color="#7c3aed"/></linearGradient></defs>
     </svg>
     Canid
@@ -604,116 +611,111 @@
         <div class="dog-glow"></div>
         <div class="dog-glow-2"></div>
 
-        <!-- Canid Logo — Jerry West / NBA-style bold silhouette -->
-        <svg class="dog-svg" viewBox="0 0 320 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Canid Logo — Tintin/Snowy style line-drawn dog with emphasis lines -->
+        <svg class="dog-svg" viewBox="0 0 340 300" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <linearGradient id="g1" x1="0" y1="0" x2="0.6" y2="1">
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
               <stop offset="0%" stop-color="#14d4be"/>
               <stop offset="100%" stop-color="#7c3aed"/>
-            </linearGradient>
-            <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#3b82f6"/>
-              <stop offset="100%" stop-color="#14d4be"/>
             </linearGradient>
             <linearGradient id="g3" x1="0" y1="0" x2="1" y2="0">
               <stop offset="0%" stop-color="#a78bfa"/>
               <stop offset="100%" stop-color="#14d4be"/>
             </linearGradient>
-            <radialGradient id="glow1" cx="50%" cy="45%" r="45%">
-              <stop offset="0%" stop-color="#14d4be" stop-opacity="0.4"/>
-              <stop offset="70%" stop-color="#7c3aed" stop-opacity="0.1"/>
+            <radialGradient id="glow1" cx="50%" cy="50%" r="45%">
+              <stop offset="0%" stop-color="#14d4be" stop-opacity="0.25"/>
               <stop offset="100%" stop-color="#14d4be" stop-opacity="0"/>
             </radialGradient>
-            <filter id="gf" x="-40%" y="-40%" width="180%" height="180%">
-              <feGaussianBlur stdDeviation="4"/>
-            </filter>
           </defs>
 
-          <!-- Ambient glow -->
-          <ellipse cx="160" cy="170" rx="130" ry="140" fill="url(#glow1)" opacity="0.6"/>
+          <!-- Subtle ambient glow -->
+          <ellipse cx="160" cy="160" rx="120" ry="110" fill="url(#glow1)" opacity="0.6"/>
 
-          <!-- THE SILHOUETTE — bold, clean, one continuous shape
-               Dog in noble alert stance, head up, ears pricked, tail high
-               Think: the definitive dog shape, like Jerry West IS basketball -->
-          <path d="
-            M 105,310
-            L 105,230
-            C 105,218 100,208 95,198
-            L 88,178
-            C 82,162 82,148 90,135
-            L 95,126
-            C 98,120 98,112 95,105
-            L 88,90
-            C 82,78 84,65 92,56
-            L 100,48
-            C 108,40 118,36 130,36
-            L 142,36
-            C 148,36 152,32 154,26
-            L 158,12
-            C 159,8 162,8 163,12
-            L 166,24
-            C 168,30 172,34 178,36
-            L 186,38
-            C 194,40 200,46 204,54
-            L 210,68
-            C 214,78 222,84 232,86
-            L 250,90
-            C 260,92 266,100 266,110
-            L 266,118
-            C 266,128 260,136 250,140
-            L 235,146
-            C 225,150 220,158 218,168
-            L 216,180
-            C 214,194 218,206 226,216
-            L 235,228
-            L 235,310
+          <!-- === DOG BODY — clean Tintin/Hergé comic style === -->
+          <!-- Back + rump -->
+          <path d="M 70,145 C 85,120 120,110 155,112 C 180,113 200,118 215,128"
+                stroke="url(#g1)" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <!-- Chest + belly -->
+          <path d="M 215,128 C 225,138 230,152 228,168 C 226,180 218,190 208,195
+                   C 195,200 160,202 140,200 C 120,198 100,192 88,182
+                   C 78,174 72,162 70,145"
+                stroke="url(#g1)" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <!-- Fill body lightly -->
+          <path d="M 70,145 C 85,120 120,110 155,112 C 180,113 200,118 215,128
+                   C 225,138 230,152 228,168 C 226,180 218,190 208,195
+                   C 195,200 160,202 140,200 C 120,198 100,192 88,182
+                   C 78,174 72,162 70,145 Z"
+                fill="url(#g1)" opacity="0.12"/>
 
-            L 215,310
-            L 215,240
-            C 215,234 212,228 207,224
-            L 195,214
-            C 185,208 178,198 176,186
-            L 174,175
+          <!-- Head — round, perky, facing right -->
+          <ellipse cx="238" cy="115" rx="30" ry="28"
+                   stroke="url(#g1)" stroke-width="3.5" fill="none"/>
+          <ellipse cx="238" cy="115" rx="30" ry="28"
+                   fill="url(#g1)" opacity="0.1"/>
 
-            L 168,186
-            C 164,198 155,208 144,214
-            L 135,218
-            C 128,222 125,228 125,236
-            L 125,310
-            Z
-          " fill="url(#g1)" opacity="0.95"/>
+          <!-- Snout -->
+          <path d="M 260,120 C 268,118 276,120 280,126 C 282,130 278,135 272,134 C 266,133 260,128 260,120 Z"
+                stroke="url(#g1)" stroke-width="3" stroke-linecap="round" fill="none"/>
 
-          <!-- Inner leg cutout for the silhouette look -->
-          <path d="
-            M 125,310
-            L 125,236
-            C 125,228 128,222 135,218
-            L 144,214
-            C 150,210 155,204 160,196
-            C 165,204 170,210 176,214
-            L 176,186
-            L 174,175
-            L 168,186
-            C 164,198 155,208 144,214
-          " fill="url(#g1)" opacity="0.3"/>
+          <!-- Nose — solid dot -->
+          <circle cx="278" cy="124" r="4" fill="#14d4be"/>
 
-          <!-- Eye — single bright point, like the NBA logo's negative space tells the story -->
-          <circle cx="218" cy="98" r="5" fill="#0b1120"/>
-          <circle cx="218" cy="98" r="3" fill="#ffffff" opacity="0.95"/>
-          <circle cx="219.5" cy="96.5" r="1" fill="#ffffff" opacity="0.5"/>
+          <!-- Eye — big, expressive, Tintin style -->
+          <circle cx="248" cy="108" r="5.5" fill="#0b1120" stroke="url(#g1)" stroke-width="2"/>
+          <circle cx="250" cy="106" r="2.2" fill="#ffffff" opacity="0.95"/>
 
-          <!-- Nose highlight -->
-          <ellipse cx="262" cy="108" rx="5" ry="3.5" fill="#0b1120" opacity="0.6"/>
+          <!-- Ear — floppy, characterful -->
+          <path d="M 222,98 C 215,82 208,72 215,65 C 222,60 230,65 232,75 C 234,82 230,92 226,98"
+                stroke="url(#g1)" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M 222,98 C 215,82 208,72 215,65 C 222,60 230,65 232,75 C 234,82 230,92 226,98"
+                fill="url(#g1)" opacity="0.08"/>
 
-          <!-- Signal arcs — the "translator" element, emanating from the snout -->
-          <path d="M270,105 C278,95 278,118 270,110" stroke="url(#g3)" stroke-width="2" fill="none" opacity="0.7">
-            <animate attributeName="opacity" values="0.7;0.15;0.7" dur="2.2s" repeatCount="indefinite"/>
+          <!-- Front legs -->
+          <path d="M 195,195 L 192,240 C 192,245 195,248 200,248"
+                stroke="url(#g1)" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <path d="M 175,198 L 173,240 C 173,245 176,248 181,248"
+                stroke="url(#g1)" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+
+          <!-- Back legs -->
+          <path d="M 100,185 L 96,240 C 96,245 99,248 104,248"
+                stroke="url(#g1)" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <path d="M 118,190 L 115,240 C 115,245 118,248 123,248"
+                stroke="url(#g1)" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+
+          <!-- Tail — perky, wagging upward -->
+          <path d="M 70,145 C 58,135 48,118 52,100 C 55,88 62,82 68,80"
+                stroke="url(#g1)" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+
+          <!-- === EMPHASIS LINES — the comic book touch === -->
+
+          <!-- Tail emphasis lines (wagging energy!) -->
+          <line x1="42" y1="78" x2="32" y2="70" stroke="#14d4be" stroke-width="2" stroke-linecap="round" opacity="0.7">
+            <animate attributeName="opacity" values="0.7;0.2;0.7" dur="0.8s" repeatCount="indefinite"/>
+          </line>
+          <line x1="48" y1="72" x2="40" y2="62" stroke="#14d4be" stroke-width="2" stroke-linecap="round" opacity="0.6">
+            <animate attributeName="opacity" values="0.6;0.15;0.6" dur="0.8s" repeatCount="indefinite" begin="0.15s"/>
+          </line>
+          <line x1="56" y1="70" x2="52" y2="58" stroke="#14d4be" stroke-width="2" stroke-linecap="round" opacity="0.5">
+            <animate attributeName="opacity" values="0.5;0.1;0.5" dur="0.8s" repeatCount="indefinite" begin="0.3s"/>
+          </line>
+
+          <!-- Face emphasis lines (alert/attention energy) -->
+          <line x1="290" y1="110" x2="302" y2="106" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" opacity="0.7">
+            <animate attributeName="opacity" values="0.7;0.2;0.7" dur="1.5s" repeatCount="indefinite"/>
+          </line>
+          <line x1="288" y1="118" x2="300" y2="120" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" opacity="0.6">
+            <animate attributeName="opacity" values="0.6;0.15;0.6" dur="1.5s" repeatCount="indefinite" begin="0.25s"/>
+          </line>
+          <line x1="286" y1="126" x2="296" y2="132" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" opacity="0.5">
+            <animate attributeName="opacity" values="0.5;0.1;0.5" dur="1.5s" repeatCount="indefinite" begin="0.5s"/>
+          </line>
+
+          <!-- Little motion arcs near the tail -->
+          <path d="M 38,90 C 34,86 34,80 38,76" stroke="#14d4be" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.4">
+            <animate attributeName="opacity" values="0.4;0.1;0.4" dur="1s" repeatCount="indefinite"/>
           </path>
-          <path d="M278,95 C292,80 292,132 278,118" stroke="url(#g3)" stroke-width="1.6" fill="none" opacity="0.5">
-            <animate attributeName="opacity" values="0.5;0.08;0.5" dur="2.2s" repeatCount="indefinite" begin="0.35s"/>
-          </path>
-          <path d="M286,86 C306,66 306,146 286,126" stroke="url(#g3)" stroke-width="1.2" fill="none" opacity="0.3">
-            <animate attributeName="opacity" values="0.3;0.03;0.3" dur="2.2s" repeatCount="indefinite" begin="0.7s"/>
+          <path d="M 30,94 C 24,88 24,78 30,72" stroke="#14d4be" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.3">
+            <animate attributeName="opacity" values="0.3;0.05;0.3" dur="1s" repeatCount="indefinite" begin="0.2s"/>
           </path>
         </svg>
 
