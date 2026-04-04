@@ -556,10 +556,10 @@
 <!-- ── NAV ── -->
 <nav id="nav">
   <a href="#" class="nav-logo">
-    <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
-      <path d="M8,28 C6,28 5,26 6,24 L8,18 C9,15 11,13 13,12 L13,9 C12,6 13,4 16,3 C19,2 22,4 22,7 L22,9 C23,10 24,11 26,12 L27,13 C29,15 29,18 28,20 L26,24 C27,27 26,28 24,28 L22,28 C21,28 20,26 20,24 L19,22 C18,21 15,21 14,22 L13,24 C12,26 11,28 10,28 Z" fill="url(#navg)" opacity="0.9"/>
-      <path d="M17,4 L14,1 C14,0 15,0 16,1 L20,4" fill="url(#navg)" opacity="0.8"/>
-      <circle cx="21" cy="8" r="1.5" fill="white" opacity="0.9"/>
+    <svg width="24" height="24" viewBox="0 0 32 36" fill="none">
+      <path d="M10,32 L10,24 C10,22 9,20 8,18 L7,15 C6,12 7,9 9,7 L11,5 C13,3 16,3 18,3 L19,2 C19,1 20,1 20,2 L21,4 C22,4 24,6 26,7 L28,8 C30,10 30,13 28,15 L26,17 C25,18 25,20 25,22 L27,26 L27,32 L24,32 L24,26 L22,22 C21,20 20,18 20,16 L19,18 C18,20 16,22 14,23 L13,24 L13,32 Z" fill="url(#navg)" opacity="0.95"/>
+      <circle cx="26" cy="10" r="1.2" fill="#0b1120"/>
+      <circle cx="26" cy="10" r="0.7" fill="white" opacity="0.9"/>
       <defs><linearGradient id="navg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#14d4be"/><stop offset="100%" stop-color="#7c3aed"/></linearGradient></defs>
     </svg>
     Canid
@@ -604,87 +604,117 @@
         <div class="dog-glow"></div>
         <div class="dog-glow-2"></div>
 
-        <!-- Dog profile SVG — elegant side silhouette with signal waves -->
-        <svg class="dog-svg" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Canid Logo — Jerry West / NBA-style bold silhouette -->
+        <svg class="dog-svg" viewBox="0 0 320 360" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#14d4be" stop-opacity="1"/>
-              <stop offset="100%" stop-color="#7c3aed" stop-opacity="0.9"/>
+            <linearGradient id="g1" x1="0" y1="0" x2="0.6" y2="1">
+              <stop offset="0%" stop-color="#14d4be"/>
+              <stop offset="100%" stop-color="#7c3aed"/>
             </linearGradient>
-            <linearGradient id="g2" x1="0.2" y1="0" x2="0.8" y2="1">
-              <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.85"/>
-              <stop offset="100%" stop-color="#14d4be" stop-opacity="1"/>
+            <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#3b82f6"/>
+              <stop offset="100%" stop-color="#14d4be"/>
             </linearGradient>
             <linearGradient id="g3" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.9"/>
-              <stop offset="100%" stop-color="#14d4be" stop-opacity="1"/>
+              <stop offset="0%" stop-color="#a78bfa"/>
+              <stop offset="100%" stop-color="#14d4be"/>
             </linearGradient>
-            <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#14d4be" stop-opacity="0.5"/>
+            <radialGradient id="glow1" cx="50%" cy="45%" r="45%">
+              <stop offset="0%" stop-color="#14d4be" stop-opacity="0.4"/>
+              <stop offset="70%" stop-color="#7c3aed" stop-opacity="0.1"/>
               <stop offset="100%" stop-color="#14d4be" stop-opacity="0"/>
             </radialGradient>
-            <filter id="gf" x="-30%" y="-30%" width="160%" height="160%">
-              <feGaussianBlur stdDeviation="3" result="b"/>
-              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            <filter id="gf" x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="4"/>
             </filter>
-            <filter id="sf" x="-15%" y="-15%" width="130%" height="130%">
-              <feGaussianBlur stdDeviation="1.5" result="b"/>
-              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-            <clipPath id="body-clip">
-              <path d="M95,258 C80,258 72,250 75,235 L82,195 C84,182 90,172 100,165 L105,148 C107,138 112,128 120,122 L118,105 C115,92 118,78 128,68 C138,58 152,54 166,58 C176,61 184,68 188,78 L192,90 C196,100 200,106 208,110 L218,115 C228,120 235,130 235,142 L234,162 C233,175 228,185 220,192 L215,210 C213,220 216,230 222,240 L228,248 C232,254 228,258 220,258 L205,258 C198,258 194,252 192,245 L188,228 C185,218 178,212 170,210 L155,208 C145,208 136,212 130,220 L125,232 C120,245 115,252 108,258 Z"/>
-            </clipPath>
           </defs>
 
-          <!-- Ambient glow behind dog -->
-          <circle cx="160" cy="165" r="100" fill="url(#glow1)" opacity="0.5"/>
+          <!-- Ambient glow -->
+          <ellipse cx="160" cy="170" rx="130" ry="140" fill="url(#glow1)" opacity="0.6"/>
 
-          <!-- Dog body — elegant side profile silhouette -->
-          <path d="M95,258 C80,258 72,250 75,235 L82,195 C84,182 90,172 100,165 L105,148 C107,138 112,128 120,122 L118,105 C115,92 118,78 128,68 C138,58 152,54 166,58 C176,61 184,68 188,78 L192,90 C196,100 200,106 208,110 L218,115 C228,120 235,130 235,142 L234,162 C233,175 228,185 220,192 L215,210 C213,220 216,230 222,240 L228,248 C232,254 228,258 220,258 L205,258 C198,258 194,252 192,245 L188,228 C185,218 178,212 170,210 L155,208 C145,208 136,212 130,220 L125,232 C120,245 115,252 108,258 Z"
-                fill="url(#g1)" opacity="0.92" filter="url(#sf)"/>
+          <!-- THE SILHOUETTE — bold, clean, one continuous shape
+               Dog in noble alert stance, head up, ears pricked, tail high
+               Think: the definitive dog shape, like Jerry West IS basketball -->
+          <path d="
+            M 105,310
+            L 105,230
+            C 105,218 100,208 95,198
+            L 88,178
+            C 82,162 82,148 90,135
+            L 95,126
+            C 98,120 98,112 95,105
+            L 88,90
+            C 82,78 84,65 92,56
+            L 100,48
+            C 108,40 118,36 130,36
+            L 142,36
+            C 148,36 152,32 154,26
+            L 158,12
+            C 159,8 162,8 163,12
+            L 166,24
+            C 168,30 172,34 178,36
+            L 186,38
+            C 194,40 200,46 204,54
+            L 210,68
+            C 214,78 222,84 232,86
+            L 250,90
+            C 260,92 266,100 266,110
+            L 266,118
+            C 266,128 260,136 250,140
+            L 235,146
+            C 225,150 220,158 218,168
+            L 216,180
+            C 214,194 218,206 226,216
+            L 235,228
+            L 235,310
 
-          <!-- Ear — alert, upright -->
-          <path d="M148,68 L138,28 C136,22 140,18 145,22 L170,55 C174,60 172,66 168,68 Z"
-                fill="url(#g2)" opacity="0.88" filter="url(#sf)"/>
+            L 215,310
+            L 215,240
+            C 215,234 212,228 207,224
+            L 195,214
+            C 185,208 178,198 176,186
+            L 174,175
 
-          <!-- Muzzle / snout -->
-          <path d="M208,110 L248,100 C256,98 260,104 256,110 L238,128 C232,134 226,132 224,126 L218,115 Z"
-                fill="url(#g3)" opacity="0.85" filter="url(#sf)"/>
+            L 168,186
+            C 164,198 155,208 144,214
+            L 135,218
+            C 128,222 125,228 125,236
+            L 125,310
+            Z
+          " fill="url(#g1)" opacity="0.95"/>
 
-          <!-- Tail — curved upward elegantly -->
-          <path d="M75,235 Q55,218 48,195 Q42,175 50,155 Q56,142 65,138"
-                stroke="url(#g2)" stroke-width="10" stroke-linecap="round" fill="none" opacity="0.8" filter="url(#sf)"/>
+          <!-- Inner leg cutout for the silhouette look -->
+          <path d="
+            M 125,310
+            L 125,236
+            C 125,228 128,222 135,218
+            L 144,214
+            C 150,210 155,204 160,196
+            C 165,204 170,210 176,214
+            L 176,186
+            L 174,175
+            L 168,186
+            C 164,198 155,208 144,214
+          " fill="url(#g1)" opacity="0.3"/>
 
-          <!-- Eye -->
-          <circle cx="185" cy="82" r="8" fill="url(#g2)" opacity="0.95" filter="url(#gf)"/>
-          <circle cx="185" cy="82" r="3.5" fill="#ffffff" opacity="0.92"/>
-          <circle cx="187" cy="80" r="1.5" fill="#ffffff" opacity="0.5"/>
+          <!-- Eye — single bright point, like the NBA logo's negative space tells the story -->
+          <circle cx="218" cy="98" r="5" fill="#0b1120"/>
+          <circle cx="218" cy="98" r="3" fill="#ffffff" opacity="0.95"/>
+          <circle cx="219.5" cy="96.5" r="1" fill="#ffffff" opacity="0.5"/>
 
-          <!-- Nose -->
-          <ellipse cx="254" cy="106" rx="7" ry="5" fill="#0f172a" opacity="0.85"/>
-          <ellipse cx="254" cy="105" rx="5" ry="3.5" fill="url(#g1)" opacity="0.6"/>
+          <!-- Nose highlight -->
+          <ellipse cx="262" cy="108" rx="5" ry="3.5" fill="#0b1120" opacity="0.6"/>
 
-          <!-- Signal waves emanating from nose/mouth — the "translator" visual -->
-          <path d="M268,106 Q278,98 278,106 Q278,114 268,106" stroke="url(#g3)" stroke-width="1.5" fill="none" opacity="0.6">
-            <animate attributeName="opacity" values="0.6;0.2;0.6" dur="2s" repeatCount="indefinite"/>
+          <!-- Signal arcs — the "translator" element, emanating from the snout -->
+          <path d="M270,105 C278,95 278,118 270,110" stroke="url(#g3)" stroke-width="2" fill="none" opacity="0.7">
+            <animate attributeName="opacity" values="0.7;0.15;0.7" dur="2.2s" repeatCount="indefinite"/>
           </path>
-          <path d="M275,96 Q290,84 290,106 Q290,128 275,116" stroke="url(#g3)" stroke-width="1.2" fill="none" opacity="0.45">
-            <animate attributeName="opacity" values="0.45;0.1;0.45" dur="2s" repeatCount="indefinite" begin="0.3s"/>
+          <path d="M278,95 C292,80 292,132 278,118" stroke="url(#g3)" stroke-width="1.6" fill="none" opacity="0.5">
+            <animate attributeName="opacity" values="0.5;0.08;0.5" dur="2.2s" repeatCount="indefinite" begin="0.35s"/>
           </path>
-          <path d="M282,88 Q302,72 302,106 Q302,140 282,124" stroke="url(#g3)" stroke-width="1" fill="none" opacity="0.3">
-            <animate attributeName="opacity" values="0.3;0.05;0.3" dur="2s" repeatCount="indefinite" begin="0.6s"/>
+          <path d="M286,86 C306,66 306,146 286,126" stroke="url(#g3)" stroke-width="1.2" fill="none" opacity="0.3">
+            <animate attributeName="opacity" values="0.3;0.03;0.3" dur="2.2s" repeatCount="indefinite" begin="0.7s"/>
           </path>
-
-          <!-- Subtle geometric accent rings -->
-          <circle cx="160" cy="160" r="140" stroke="rgba(20,212,190,0.06)" stroke-width="0.7" fill="none"/>
-          <circle cx="160" cy="160" r="120" stroke="rgba(124,58,237,0.05)" stroke-width="0.5" fill="none" stroke-dasharray="3 8"/>
-
-          <!-- Small constellation dots -->
-          <circle cx="60" cy="60" r="1.5" fill="#14d4be" opacity="0.3"/>
-          <circle cx="280" cy="50" r="1" fill="#a78bfa" opacity="0.25"/>
-          <circle cx="290" cy="200" r="1.2" fill="#3b82f6" opacity="0.2"/>
-          <circle cx="40" cy="260" r="1" fill="#14d4be" opacity="0.2"/>
-          <circle cx="160" cy="15" r="1.3" fill="#a78bfa" opacity="0.3"/>
         </svg>
 
         <!-- Phone mockup (desktop only) -->
