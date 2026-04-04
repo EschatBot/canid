@@ -3,287 +3,1107 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Canid 🐕 — Dog Behavioral Translator</title>
+  <title>Canid — Dog Behavioral Translator</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
+    /* ── RESET ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #0b1120;
-      --surface: #111827;
-      --surface2: #1a2438;
-      --border: #1e2d45;
-      --teal: #14b8a6;
-      --teal-dim: #0f9488;
-      --text: #e2e8f0;
-      --muted: #94a3b8;
-      --accent: #38bdf8;
+      --navy:        #050c1a;
+      --navy-2:      #091428;
+      --navy-3:      #0f1f3c;
+      --teal:        #12d8c4;
+      --teal-dim:    #0dbdac;
+      --teal-glow:   rgba(18,216,196,0.18);
+      --purple:      #7c3aed;
+      --purple-light:#a78bfa;
+      --blue:        #3b82f6;
+      --amber:       #f59e0b;
+      --text:        #e2e8f0;
+      --muted:       #64748b;
+      --muted-2:     #94a3b8;
+      --glass:       rgba(255,255,255,0.04);
+      --glass-b:     rgba(255,255,255,0.08);
+      --glass-teal:  rgba(18,216,196,0.18);
     }
+
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--navy);
       color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 0 1rem;
+      overflow-x: hidden;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
     }
 
-    header {
-      text-align: center;
-      padding: 3.5rem 1rem 2rem;
-      max-width: 680px;
-      width: 100%;
+    /* ── AMBIENT ORBS ── */
+    .bg-canvas {
+      position: fixed; inset: 0;
+      z-index: 0; pointer-events: none; overflow: hidden;
+    }
+    .orb {
+      position: absolute; border-radius: 50%;
+      filter: blur(90px); animation: drift 22s ease-in-out infinite;
+    }
+    .orb-1 {
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(18,216,196,0.22) 0%, transparent 65%);
+      top: -250px; right: -200px;
+    }
+    .orb-2 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(124,58,237,0.2) 0%, transparent 65%);
+      bottom: 15%; left: -200px;
+      animation-delay: -8s; animation-duration: 28s;
+    }
+    .orb-3 {
+      width: 450px; height: 450px;
+      background: radial-gradient(circle, rgba(59,130,246,0.18) 0%, transparent 65%);
+      top: 40%; right: 5%;
+      animation-delay: -15s; animation-duration: 32s;
+    }
+    .orb-4 {
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(245,158,11,0.12) 0%, transparent 65%);
+      bottom: 5%; right: 28%;
+      animation-delay: -5s; animation-duration: 20s;
+    }
+    @keyframes drift {
+      0%,100% { transform: translate(0,0) scale(1); }
+      25%  { transform: translate(28px,-38px) scale(1.04); }
+      50%  { transform: translate(-18px,26px) scale(0.96); }
+      75%  { transform: translate(36px,18px) scale(1.02); }
     }
 
-    header h1 {
-      font-size: clamp(2.4rem, 8vw, 3.5rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
+    /* ── PARTICLES ── */
+    .particles { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+    .particle {
+      position: absolute; border-radius: 50%; background: var(--teal); opacity: 0;
+      animation: float-up linear infinite;
+    }
+    @keyframes float-up {
+      0%   { transform: translateY(100vh) scale(0); opacity: 0; }
+      8%   { opacity: 0.5; }
+      92%  { opacity: 0.3; }
+      100% { transform: translateY(-8vh) scale(1); opacity: 0; }
     }
 
-    header p.subtitle {
-      margin-top: 0.75rem;
-      font-size: 1.15rem;
-      color: var(--muted);
-      font-weight: 400;
+    /* ── LAYOUT ── */
+    .container {
+      max-width: 1100px; margin: 0 auto;
+      padding: 0 1.5rem; position: relative; z-index: 1;
     }
+    section { position: relative; z-index: 1; }
 
-    .explain-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 1.75rem 1.75rem;
-      max-width: 680px;
-      width: 100%;
-      margin: 1.75rem 0 0;
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+      background: rgba(5,12,26,0.7);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: background 0.3s;
     }
-
-    .explain-card h2 {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--teal);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 0.9rem;
+    .nav-logo {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-weight: 800; font-size: 1.1rem; color: var(--teal);
+      letter-spacing: -0.03em; text-decoration: none;
     }
+    .nav-cta {
+      background: var(--teal); color: var(--navy);
+      font-family: inherit; font-size: 0.85rem; font-weight: 700;
+      border: none; border-radius: 8px; padding: 0.5rem 1.25rem;
+      cursor: pointer; text-decoration: none;
+      transition: transform 0.2s cubic-bezier(.34,1.56,.64,1), box-shadow 0.2s;
+    }
+    .nav-cta:hover { transform: scale(1.04); box-shadow: 0 0 24px rgba(18,216,196,0.4); }
 
-    .explain-card p {
-      font-size: 0.95rem;
-      color: var(--muted);
-      line-height: 1.7;
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0; transform: translateY(36px);
+      transition: opacity 0.85s cubic-bezier(.16,1,.3,1), transform 0.85s cubic-bezier(.16,1,.3,1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.12s; }
+    .reveal-delay-2 { transition-delay: 0.22s; }
+    .reveal-delay-3 { transition-delay: 0.32s; }
+    .reveal-delay-4 { transition-delay: 0.44s; }
+
+    /* ── SECTION LABELS ── */
+    .section-label {
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 0.65rem;
+    }
+    .section-title {
+      font-size: clamp(1.9rem, 3.8vw, 3rem); font-weight: 800;
+      letter-spacing: -0.035em; color: #fff; line-height: 1.08;
       margin-bottom: 1rem;
     }
 
-    .explain-card p:last-child { margin-bottom: 0; }
-
-    .states {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.45rem;
-      margin: 0.75rem 0 1rem;
-    }
-
-    .state-badge {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 0.25rem 0.75rem;
-      font-size: 0.82rem;
-      color: var(--text);
-    }
-
-    .privacy-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.9rem;
-    }
-
-    .privacy-pill {
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-      background: rgba(20, 184, 166, 0.08);
-      border: 1px solid rgba(20, 184, 166, 0.25);
-      border-radius: 999px;
-      padding: 0.25rem 0.75rem;
-      font-size: 0.8rem;
-      color: var(--teal);
-    }
-
-    .cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.85rem;
-      justify-content: center;
-      margin: 1.75rem 0;
-      max-width: 680px;
-      width: 100%;
-    }
-
+    /* ── BUTTONS ── */
     .btn-primary {
-      background: var(--teal);
-      color: #0b1120;
-      font-family: inherit;
-      font-size: 1rem;
-      font-weight: 700;
-      border: none;
-      border-radius: 12px;
-      padding: 0.85rem 2rem;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      transition: background 0.15s;
-      flex: 1 1 160px;
-      text-align: center;
+      background: linear-gradient(135deg, var(--teal) 0%, #0dbdac 100%);
+      color: var(--navy); font-family: inherit; font-size: 1rem; font-weight: 700;
+      border: none; border-radius: 12px; padding: 0.9rem 2rem;
+      cursor: pointer; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      box-shadow: 0 0 28px rgba(18,216,196,0.28);
+      transition: transform 0.22s cubic-bezier(.34,1.56,.64,1), box-shadow 0.22s;
     }
-
-    .btn-primary:hover { background: var(--teal-dim); }
-
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 8px 48px rgba(18,216,196,0.5);
+    }
     .btn-secondary {
-      background: transparent;
-      color: var(--teal);
-      font-family: inherit;
-      font-size: 1rem;
-      font-weight: 600;
-      border: 1px solid var(--teal);
-      border-radius: 12px;
-      padding: 0.85rem 2rem;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      transition: background 0.15s, color 0.15s;
-      flex: 1 1 160px;
-      text-align: center;
+      background: rgba(255,255,255,0.04); color: var(--text);
+      font-family: inherit; font-size: 1rem; font-weight: 500;
+      border: 1px solid rgba(255,255,255,0.14); border-radius: 12px;
+      padding: 0.9rem 2rem; cursor: pointer; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      backdrop-filter: blur(10px);
+      transition: transform 0.22s cubic-bezier(.34,1.56,.64,1), border-color 0.2s, background 0.2s;
     }
-
     .btn-secondary:hover {
-      background: rgba(20, 184, 166, 0.1);
+      transform: translateY(-3px) scale(1.03);
+      border-color: rgba(255,255,255,0.28); background: rgba(255,255,255,0.07);
     }
 
-    .features {
+    /* ════════════════════════════
+       HERO
+    ════════════════════════════ */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center; padding-top: 80px;
+    }
+    .hero-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3rem; align-items: center;
+      padding: 5rem 0 4rem;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(18,216,196,0.08);
+      border: 1px solid rgba(18,216,196,0.22);
+      border-radius: 999px; padding: 0.3rem 0.9rem;
+      font-size: 0.76rem; color: var(--teal); font-weight: 500;
+      letter-spacing: 0.05em; margin-bottom: 1.4rem;
+    }
+    .badge-dot {
+      width: 6px; height: 6px; background: var(--teal);
+      border-radius: 50%; animation: blink 2s ease-in-out infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    .hero-headline {
+      font-size: clamp(3rem, 7vw, 5.8rem); font-weight: 800;
+      letter-spacing: -0.045em; line-height: 0.96;
+      color: #fff; margin-bottom: 1.3rem;
+    }
+    .hero-headline .accent { color: var(--teal); }
+
+    .hero-desc {
+      font-size: clamp(0.95rem, 1.8vw, 1.15rem); color: var(--muted-2);
+      font-weight: 300; line-height: 1.75; max-width: 440px;
+      margin-bottom: 2.4rem;
+    }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    /* ── DOG VISUAL ── */
+    .hero-visual {
+      display: flex; justify-content: center; align-items: center;
+      position: relative; min-height: 360px;
+    }
+    .dog-glow {
+      position: absolute; width: 420px; height: 420px;
+      background: radial-gradient(circle, rgba(18,216,196,0.18) 0%, rgba(124,58,237,0.08) 50%, transparent 72%);
+      border-radius: 50%;
+      animation: pulse-glow 3.5s ease-in-out infinite;
+    }
+    .dog-glow-2 {
+      position: absolute; width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: pulse-glow 3.5s ease-in-out infinite reverse;
+      animation-delay: -1.5s;
+    }
+    @keyframes pulse-glow {
+      0%,100% { transform: scale(1); opacity: 0.7; }
+      50%      { transform: scale(1.12); opacity: 1; }
+    }
+    .dog-svg {
+      width: 300px; height: 300px; position: relative; z-index: 2;
+      filter: drop-shadow(0 0 40px rgba(18,216,196,0.35)) drop-shadow(0 0 80px rgba(124,58,237,0.2));
+      animation: dog-float 4.2s ease-in-out infinite;
+    }
+    @keyframes dog-float {
+      0%,100% { transform: translateY(0) rotate(0deg); }
+      50%      { transform: translateY(-14px) rotate(1deg); }
+    }
+
+    /* ── PHONE MOCKUP (inline with hero on desktop, hidden on small mobile) ── */
+    .phone-wrap {
+      position: absolute; right: -60px; bottom: -20px;
+      opacity: 0.85; z-index: 3;
+      animation: phone-float 5s ease-in-out infinite;
+      animation-delay: -2s;
+    }
+    @keyframes phone-float {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-8px); }
+    }
+    .phone-frame {
+      width: 140px; height: 280px;
+      background: #07080f; border-radius: 28px;
+      border: 1.5px solid rgba(255,255,255,0.14);
+      position: relative; overflow: hidden;
+      box-shadow: 0 32px 64px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.03),
+                  inset 0 1px 0 rgba(255,255,255,0.06);
+    }
+    .phone-notch {
+      position: absolute; top: 8px; left: 50%; transform: translateX(-50%);
+      width: 56px; height: 18px;
+      background: #07080f; border-radius: 9px;
+      border: 1px solid rgba(255,255,255,0.08); z-index: 10;
+    }
+    .phone-screen {
+      position: absolute; inset: 0; padding: 35px 9px 14px;
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .ph-label {
+      font-size: 5.5px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--teal); font-weight: 600; text-align: center; margin-bottom: 2px;
+    }
+    .ph-state {
+      background: rgba(18,216,196,0.08);
+      border: 1px solid rgba(18,216,196,0.25);
+      border-radius: 10px; padding: 10px 8px; text-align: center;
+    }
+    .ph-state-val {
+      font-size: 13px; font-weight: 800; color: #fff; line-height: 1;
+    }
+    .ph-state-sub {
+      font-size: 5px; color: var(--muted); margin-top: 2px;
+    }
+    .ph-bars { display: flex; flex-direction: column; gap: 4px; }
+    .ph-bar-row { display: flex; align-items: center; gap: 4px; }
+    .ph-bar-l { font-size: 5px; color: var(--muted); width: 36px; flex-shrink: 0; }
+    .ph-bar-t { flex: 1; height: 3px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; }
+    .ph-bar-f { height: 100%; border-radius: 2px; }
+    .ph-cam {
+      width: 44px; height: 44px; border-radius: 50%;
+      border: 1.5px solid rgba(18,216,196,0.35);
+      margin: 0 auto; display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .ph-cam::before {
+      content: ''; position: absolute; inset: 3px; border-radius: 50%;
+      background: rgba(18,216,196,0.08);
+      animation: pulse-ring 2s ease-in-out infinite;
+    }
+    @keyframes pulse-ring {
+      0%,100% { transform: scale(1); opacity: 0.8; }
+      50%      { transform: scale(0.88); opacity: 1; }
+    }
+    .ph-cam-icon { font-size: 14px; position: relative; z-index: 1; }
+    @media (max-width: 900px) { .phone-wrap { display: none; } }
+
+    /* ════════════════════════════
+       WHAT IT DOES
+    ════════════════════════════ */
+    #what { padding: 8rem 0; }
+    .what-inner { max-width: 800px; }
+    .what-text {
+      font-size: clamp(1.15rem, 2.2vw, 1.5rem); font-weight: 300;
+      line-height: 1.8; color: var(--muted-2); margin-top: 1rem;
+    }
+    .what-text strong { color: #fff; font-weight: 600; }
+
+    /* ════════════════════════════
+       HOW IT WORKS
+    ════════════════════════════ */
+    #how { padding: 6rem 0 7rem; }
+    .how-header { max-width: 560px; margin-bottom: 4rem; }
+
+    .how-flow {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr 48px 1fr 48px 1fr 48px 1fr;
+      align-items: center; gap: 0;
+    }
+    .flow-step {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 0.9rem; text-align: center;
+    }
+    .flow-icon {
+      width: 76px; height: 76px; border-radius: 22px;
+      background: var(--glass);
+      border: 1px solid var(--glass-teal);
+      display: flex; align-items: center; justify-content: center;
+      backdrop-filter: blur(20px); position: relative;
+      transition: transform 0.3s cubic-bezier(.34,1.56,.64,1), box-shadow 0.3s;
+    }
+    .flow-icon:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(18,216,196,0.18);
+    }
+    .flow-icon svg { width: 34px; height: 34px; color: var(--teal); }
+    .flow-num {
+      position: absolute; top: -10px; right: -10px;
+      width: 22px; height: 22px;
+      background: var(--teal); color: var(--navy);
+      font-size: 0.62rem; font-weight: 800; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .flow-label { font-size: 0.95rem; font-weight: 700; color: #fff; }
+    .flow-sub { font-size: 0.76rem; color: var(--muted); font-weight: 300; max-width: 110px; line-height: 1.4; }
+
+    .flow-arrow {
+      display: flex; align-items: center; justify-content: center;
+      color: var(--teal); opacity: 0.5;
+    }
+    .flow-arrow svg { width: 36px; height: 36px; }
+    .flow-arrow .dash {
+      stroke-dasharray: 5 4;
+      animation: dash-move 1.5s linear infinite;
+    }
+    @keyframes dash-move { to { stroke-dashoffset: -18; } }
+
+    /* Mobile: vertical flow */
+    @media (max-width: 768px) {
+      .how-flow {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+      }
+      .flow-arrow { transform: rotate(90deg); margin: 0 auto; }
+    }
+
+    /* ════════════════════════════
+       8 STATES
+    ════════════════════════════ */
+    #states { padding: 6rem 0; }
+    .states-header { max-width: 540px; margin-bottom: 3rem; }
+    .states-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: 1rem;
-      max-width: 680px;
-      width: 100%;
-      margin-bottom: 2.5rem;
+    }
+    @media (max-width: 900px) { .states-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 480px) { .states-grid { grid-template-columns: 1fr; } }
+
+    .state-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-b);
+      border-radius: 18px; padding: 1.4rem 1.2rem;
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      position: relative; overflow: hidden;
+      transition: transform 0.3s cubic-bezier(.34,1.56,.64,1), box-shadow 0.3s, border-color 0.3s;
+      cursor: default;
+    }
+    .state-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--ac), transparent);
+    }
+    .state-card::after {
+      content: ''; position: absolute;
+      bottom: -40px; right: -40px; width: 100px; height: 100px;
+      background: radial-gradient(circle, rgba(var(--ac-rgb),0.12) 0%, transparent 70%);
+      border-radius: 50%; pointer-events: none;
+    }
+    .state-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      border-color: var(--ac);
+    }
+    .state-icon {
+      width: 42px; height: 42px; border-radius: 11px;
+      background: rgba(var(--ac-rgb),0.14);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 0.8rem; font-size: 1.1rem;
+    }
+    .state-icon svg { width: 20px; height: 20px; }
+    .state-name { font-size: 0.92rem; font-weight: 700; color: #fff; margin-bottom: 0.25rem; }
+    .state-desc { font-size: 0.76rem; color: var(--muted-2); font-weight: 300; line-height: 1.5; }
+
+    /* per-card accent vars */
+    .sc-playful    { --ac: #f59e0b; --ac-rgb: 245,158,11; }
+    .sc-anxious    { --ac: #a78bfa; --ac-rgb: 167,139,250; }
+    .sc-alert      { --ac: #38bdf8; --ac-rgb: 56,189,248; }
+    .sc-fearful    { --ac: #f87171; --ac-rgb: 248,113,113; }
+    .sc-relaxed    { --ac: #12d8c4; --ac-rgb: 18,216,196; }
+    .sc-attention  { --ac: #fb923c; --ac-rgb: 251,146,60; }
+    .sc-frustrated { --ac: #e11d48; --ac-rgb: 225,29,72; }
+    .sc-excited    { --ac: #a3e635; --ac-rgb: 163,230,53; }
+
+    /* ════════════════════════════
+       PRIVACY
+    ════════════════════════════ */
+    #privacy { padding: 8rem 0; }
+    .privacy-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+    }
+    @media (max-width: 768px) {
+      .privacy-inner { grid-template-columns: 1fr; gap: 3rem; }
     }
 
-    @media (max-width: 540px) {
-      .features { grid-template-columns: 1fr; }
+    .privacy-statement {
+      font-size: clamp(2rem, 4.2vw, 3.6rem); font-weight: 800;
+      color: #fff; line-height: 1.08; letter-spacing: -0.04em;
+      margin-bottom: 1.25rem;
     }
+    .privacy-statement .teal { color: var(--teal); }
+    .privacy-sub { font-size: 0.95rem; color: var(--muted-2); font-weight: 300; line-height: 1.75; }
 
-    .feature-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.25rem 1rem;
-      text-align: center;
+    .privacy-points { display: flex; flex-direction: column; gap: 1.6rem; }
+    .priv-point { display: flex; gap: 1rem; align-items: flex-start; }
+    .priv-icon {
+      width: 42px; height: 42px; flex-shrink: 0; border-radius: 11px;
+      background: rgba(18,216,196,0.08);
+      border: 1px solid rgba(18,216,196,0.2);
+      display: flex; align-items: center; justify-content: center;
     }
+    .priv-icon svg { width: 18px; height: 18px; color: var(--teal); }
+    .priv-text h4 { font-size: 0.92rem; font-weight: 600; color: #fff; margin-bottom: 0.2rem; }
+    .priv-text p  { font-size: 0.8rem; color: var(--muted); font-weight: 300; line-height: 1.6; }
 
-    .feature-card .icon {
-      font-size: 1.75rem;
-      margin-bottom: 0.6rem;
+    /* ════════════════════════════
+       SCIENCE
+    ════════════════════════════ */
+    #science { padding: 6rem 0 8rem; }
+    .science-inner {
+      display: grid; grid-template-columns: 1fr 1.6fr;
+      gap: 5rem; align-items: start;
     }
-
-    .feature-card h3 {
-      font-size: 0.95rem;
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-      color: var(--text);
+    @media (max-width: 768px) {
+      .science-inner { grid-template-columns: 1fr; gap: 3rem; }
     }
-
-    .feature-card p {
-      font-size: 0.82rem;
-      color: var(--muted);
-      line-height: 1.5;
+    .science-lead {
+      font-size: clamp(1.4rem, 2.8vw, 2.1rem); font-weight: 800;
+      color: #fff; line-height: 1.25; letter-spacing: -0.03em; margin-bottom: 1rem;
     }
+    .science-desc { font-size: 0.92rem; color: var(--muted-2); font-weight: 300; line-height: 1.75; }
 
+    .refs-list { display: flex; flex-direction: column; gap: 1.5rem; }
+    .ref-item {
+      border-left: 2px solid rgba(18,216,196,0.25);
+      padding-left: 1.25rem;
+      transition: border-color 0.2s;
+    }
+    .ref-item:hover { border-color: var(--teal); }
+    .ref-authors { font-size: 0.76rem; color: var(--teal); font-weight: 600; letter-spacing: 0.03em; margin-bottom: 0.2rem; }
+    .ref-title { font-size: 0.875rem; color: #fff; font-weight: 500; line-height: 1.4; margin-bottom: 0.2rem; }
+    .ref-journal { font-size: 0.73rem; color: var(--muted); font-style: italic; }
+
+    /* ════════════════════════════
+       FINAL CTA
+    ════════════════════════════ */
+    #cta { padding: 8rem 0; text-align: center; }
+    .cta-inner { max-width: 580px; margin: 0 auto; }
+    .cta-title {
+      font-size: clamp(2.6rem, 5.5vw, 4.2rem); font-weight: 800;
+      letter-spacing: -0.05em; color: #fff; line-height: 0.95; margin-bottom: 1rem;
+    }
+    .cta-desc { font-size: 1.05rem; color: var(--muted-2); font-weight: 300; line-height: 1.65; margin-bottom: 2.5rem; }
+    .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* ════════════════════════════
+       FOOTER
+    ════════════════════════════ */
     footer {
-      margin-top: auto;
-      padding: 1.5rem 1rem 2rem;
-      text-align: center;
-      font-size: 0.82rem;
-      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 2rem 0 2.5rem;
+      position: relative; z-index: 1;
     }
-
-    footer a {
-      color: var(--accent);
-      text-decoration: none;
+    .footer-inner {
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 1rem;
+      flex-wrap: wrap;
     }
-
-    footer a:hover { text-decoration: underline; }
+    .footer-brand {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-weight: 800; color: var(--teal); font-size: 0.9rem;
+      letter-spacing: -0.02em;
+    }
+    .footer-meta { font-size: 0.78rem; color: var(--muted); font-weight: 300; }
+    .footer-link { color: var(--muted-2); text-decoration: none; font-size: 0.82rem; font-weight: 400; transition: color 0.15s; }
+    .footer-link:hover { color: var(--teal); }
+    @media (max-width: 540px) {
+      .footer-inner { flex-direction: column; text-align: center; }
+      .hero-ctas { flex-direction: column; align-items: stretch; }
+      .btn-primary, .btn-secondary { justify-content: center; }
+      .cta-buttons { flex-direction: column; align-items: stretch; }
+    }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Canid 🐕</h1>
-    <p class="subtitle">A Dog Behavioral Translator</p>
-  </header>
+<!-- ── AMBIENT BACKGROUND ── -->
+<div class="bg-canvas">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="orb orb-4"></div>
+</div>
+<div class="particles" id="particles"></div>
 
-  <div class="explain-card">
-    <h2>What it does</h2>
-    <p>
-      Canid uses your phone's camera and microphone to read your dog's behavior in real time.
-      It continuously classifies what your dog is expressing across 8 behavioral states:
-    </p>
-    <div class="states">
-      <span class="state-badge">🎾 Playful</span>
-      <span class="state-badge">😟 Anxious</span>
-      <span class="state-badge">👁️ Alert</span>
-      <span class="state-badge">😨 Fearful</span>
-      <span class="state-badge">😴 Relaxed</span>
-      <span class="state-badge">🐾 Wants Attention</span>
-      <span class="state-badge">😤 Frustrated</span>
-      <span class="state-badge">⚡ Excited</span>
-    </div>
-    <p>
-      Classification is based on peer-reviewed animal behavior research — combining body posture,
-      motion, and vocalization cues to give you an accurate picture of your dog's emotional state.
-    </p>
-    <div class="privacy-row">
-      <span class="privacy-pill">🔒 All on-device</span>
-      <span class="privacy-pill">📵 No data leaves your phone</span>
-      <span class="privacy-pill">🚫 No account required</span>
-      <span class="privacy-pill">👁️ No tracking</span>
+<!-- ── NAV ── -->
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 5.172C10 3.782 8.423 2.679 6.5 3c-2.823.47-4.113 6.006-4 7 .08.703 1.725 1.722 3.656 1 1.261-.472 1.96-1.45 2.344-2.5"/>
+      <path d="M14.267 5.172c0-1.39 1.577-2.493 3.5-2.172 2.823.47 4.113 6.006 4 7-.08.703-1.725 1.722-3.656 1-1.261-.472-1.96-1.45-2.344-2.5"/>
+      <path d="M8 14v.5M16 14v.5"/>
+      <path d="M11.25 16.25h1.5L12 17l-.75-.75z"/>
+      <path d="M4.42 11.247A13.152 13.152 0 0 0 4 14.556C4 18.728 7.582 21 12 21s8-2.272 8-6.444c0-1.061-.162-2.2-.493-3.309m-9.243-6.082A8.801 8.801 0 0 1 12 5c.78 0 1.5.108 2.161.306"/>
+    </svg>
+    Canid
+  </a>
+  <a href="app.html" class="nav-cta">Launch App →</a>
+</nav>
+
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+
+      <div class="hero-text">
+        <div class="hero-badge reveal">
+          <div class="badge-dot"></div>
+          Peer-reviewed · On-device AI · No cloud
+        </div>
+        <h1 class="hero-headline reveal reveal-delay-1">
+          Understand<br>Your <span class="accent">Dog.</span>
+        </h1>
+        <p class="hero-desc reveal reveal-delay-2">
+          Real-time behavioral intelligence that decodes what your dog is feeling — using camera, microphone, and on-device AI. No cloud. No account. Just clarity.
+        </p>
+        <div class="hero-ctas reveal reveal-delay-3">
+          <a href="app.html" class="btn-primary">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+            Launch App
+          </a>
+          <a href="app.html" download="canid.html" class="btn-secondary">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Download
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal reveal-delay-2">
+        <div class="dog-glow"></div>
+        <div class="dog-glow-2"></div>
+
+        <!-- Geometric dog SVG -->
+        <svg class="dog-svg" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#12d8c4" stop-opacity="1"/>
+              <stop offset="100%" stop-color="#7c3aed" stop-opacity="0.85"/>
+            </linearGradient>
+            <linearGradient id="g2" x1="1" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#12d8c4" stop-opacity="0.7"/>
+              <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.9"/>
+            </linearGradient>
+            <linearGradient id="g3" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.8"/>
+              <stop offset="100%" stop-color="#12d8c4" stop-opacity="0.9"/>
+            </linearGradient>
+            <filter id="gf" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="2.5" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <filter id="soft" x="-10%" y="-10%" width="120%" height="120%">
+              <feGaussianBlur stdDeviation="1.2" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+
+          <!-- Body block -->
+          <polygon points="90,170 190,170 205,235 75,235" fill="url(#g1)" opacity="0.88" filter="url(#soft)"/>
+          <!-- Chest highlight -->
+          <polygon points="105,160 175,160 188,172 92,172" fill="url(#g2)" opacity="0.72"/>
+          <!-- Neck -->
+          <polygon points="115,125 165,125 172,162 108,162" fill="url(#g1)" opacity="0.84"/>
+          <!-- Head -->
+          <polygon points="98,72 182,72 192,130 88,130" fill="url(#g2)" opacity="0.9" filter="url(#soft)"/>
+          <!-- Muzzle -->
+          <polygon points="116,122 164,122 172,148 108,148" fill="url(#g3)" opacity="0.78"/>
+          <!-- Left ear -->
+          <polygon points="93,72 112,30 128,77" fill="url(#g1)" opacity="0.82"/>
+          <!-- Right ear -->
+          <polygon points="187,72 168,30 152,77" fill="url(#g2)" opacity="0.82"/>
+          <!-- Front left leg -->
+          <polygon points="98,172 118,172 114,240 94,240" fill="url(#g2)" opacity="0.72"/>
+          <!-- Front right leg -->
+          <polygon points="132,172 150,172 148,240 128,240" fill="url(#g1)" opacity="0.7"/>
+          <!-- Rear leg -->
+          <polygon points="168,172 185,172 183,240 164,240" fill="url(#g2)" opacity="0.65"/>
+          <!-- Tail -->
+          <path d="M 197 210 Q 240 185 250 158 Q 258 136 244 130" stroke="url(#g3)" stroke-width="9" stroke-linecap="round" fill="none" opacity="0.75"/>
+
+          <!-- Eyes -->
+          <circle cx="122" cy="100" r="9" fill="url(#g2)" opacity="0.95" filter="url(#gf)"/>
+          <circle cx="158" cy="100" r="9" fill="url(#g2)" opacity="0.95" filter="url(#gf)"/>
+          <circle cx="122" cy="100" r="4" fill="white" opacity="0.9"/>
+          <circle cx="158" cy="100" r="4" fill="white" opacity="0.9"/>
+          <!-- Eye shine -->
+          <circle cx="124" cy="98" r="1.5" fill="white" opacity="0.6"/>
+          <circle cx="160" cy="98" r="1.5" fill="white" opacity="0.6"/>
+          <!-- Nose -->
+          <ellipse cx="140" cy="135" rx="10" ry="6.5" fill="url(#g1)" opacity="0.9"/>
+
+          <!-- Geometric accent lines (subtle grid) -->
+          <line x1="88" y1="130" x2="192" y2="130" stroke="rgba(18,216,196,0.25)" stroke-width="0.8"/>
+          <line x1="90" y1="170" x2="190" y2="170" stroke="rgba(18,216,196,0.2)" stroke-width="0.8"/>
+          <line x1="98" y1="72" x2="182" y2="72" stroke="rgba(18,216,196,0.2)" stroke-width="0.8"/>
+
+          <!-- Central axis -->
+          <line x1="140" y1="28" x2="140" y2="243" stroke="rgba(18,216,196,0.12)" stroke-width="0.6" stroke-dasharray="4 6"/>
+
+          <!-- Geometric ring accent -->
+          <circle cx="140" cy="140" r="115" stroke="rgba(18,216,196,0.06)" stroke-width="0.8" fill="none"/>
+          <circle cx="140" cy="140" r="95" stroke="rgba(124,58,237,0.06)" stroke-width="0.5" fill="none"/>
+        </svg>
+
+        <!-- Phone mockup (desktop only) -->
+        <div class="phone-wrap">
+          <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <p class="ph-label">Current State</p>
+              <div class="ph-state">
+                <div class="ph-state-val">Playful</div>
+                <div class="ph-state-sub">94% confidence</div>
+              </div>
+              <div class="ph-bars">
+                <div class="ph-bar-row">
+                  <span class="ph-bar-l">Playful</span>
+                  <div class="ph-bar-t"><div class="ph-bar-f" style="width:94%;background:var(--teal)"></div></div>
+                </div>
+                <div class="ph-bar-row">
+                  <span class="ph-bar-l">Alert</span>
+                  <div class="ph-bar-t"><div class="ph-bar-f" style="width:38%;background:#38bdf8"></div></div>
+                </div>
+                <div class="ph-bar-row">
+                  <span class="ph-bar-l">Excited</span>
+                  <div class="ph-bar-t"><div class="ph-bar-f" style="width:55%;background:#a3e635"></div></div>
+                </div>
+                <div class="ph-bar-row">
+                  <span class="ph-bar-l">Anxious</span>
+                  <div class="ph-bar-t"><div class="ph-bar-f" style="width:8%;background:#a78bfa"></div></div>
+                </div>
+              </div>
+              <div class="ph-cam">
+                <div class="ph-cam-icon">📷</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
+</section>
 
-  <div class="cta-row">
-    <a class="btn-primary" href="app.html">Launch App →</a>
-    <a class="btn-secondary" href="app.html" download="canid.html">⬇ Download App</a>
-  </div>
-
-  <div class="features">
-    <div class="feature-card">
-      <div class="icon">📹</div>
-      <h3>Camera</h3>
-      <p>Body posture analysis and motion detection</p>
-    </div>
-    <div class="feature-card">
-      <div class="icon">🎙️</div>
-      <h3>Microphone</h3>
-      <p>Vocalization classification — barks, whines, growls</p>
-    </div>
-    <div class="feature-card">
-      <div class="icon">🧠</div>
-      <h3>Fusion</h3>
-      <p>Combines signals and context for accurate state</p>
+<!-- ══════════════════════════════════════
+     WHAT IT DOES
+══════════════════════════════════════ -->
+<section id="what">
+  <div class="container">
+    <div class="what-inner">
+      <p class="section-label reveal">What it does</p>
+      <p class="what-text reveal reveal-delay-1">
+        Canid uses your phone's camera and microphone to <strong>read your dog's behavior in real time</strong>. It continuously classifies what your dog is expressing — combining posture analysis, motion detection, and vocalization recognition into a unified intelligence layer. <strong>No guessing, no cloud, no account.</strong> Just understanding, instantly, on your device.
+      </p>
     </div>
   </div>
+</section>
 
-  <footer>
-    v0.3 · April 2026 ·
-    <a href="https://github.com/EschatBot/canid" target="_blank" rel="noopener">Open source ↗</a>
-  </footer>
+<!-- ══════════════════════════════════════
+     HOW IT WORKS
+══════════════════════════════════════ -->
+<section id="how">
+  <div class="container">
+    <div class="how-header reveal">
+      <p class="section-label">How it works</p>
+      <h2 class="section-title">Four steps to<br>understanding.</h2>
+    </div>
+    <div class="how-flow">
 
+      <div class="flow-step reveal reveal-delay-1">
+        <div class="flow-icon">
+          <span class="flow-num">1</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/>
+            <circle cx="12" cy="13" r="3"/>
+          </svg>
+        </div>
+        <p class="flow-label">Camera</p>
+        <p class="flow-sub">Body posture &amp; motion analysis</p>
+      </div>
+
+      <div class="flow-arrow reveal reveal-delay-1">
+        <svg viewBox="0 0 36 36" fill="none">
+          <line class="dash" x1="4" y1="18" x2="32" y2="18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          <polyline points="24,11 32,18 24,25" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+
+      <div class="flow-step reveal reveal-delay-2">
+        <div class="flow-icon">
+          <span class="flow-num">2</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+            <line x1="12" y1="19" x2="12" y2="22"/>
+            <line x1="8" y1="22" x2="16" y2="22"/>
+          </svg>
+        </div>
+        <p class="flow-label">Microphone</p>
+        <p class="flow-sub">Bark, whine &amp; growl classification</p>
+      </div>
+
+      <div class="flow-arrow reveal reveal-delay-2">
+        <svg viewBox="0 0 36 36" fill="none">
+          <line class="dash" x1="4" y1="18" x2="32" y2="18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          <polyline points="24,11 32,18 24,25" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+
+      <div class="flow-step reveal reveal-delay-3">
+        <div class="flow-icon">
+          <span class="flow-num">3</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-1.14Z"/>
+            <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-1.14Z"/>
+          </svg>
+        </div>
+        <p class="flow-label">Intelligence</p>
+        <p class="flow-sub">On-device neural fusion model</p>
+      </div>
+
+      <div class="flow-arrow reveal reveal-delay-3">
+        <svg viewBox="0 0 36 36" fill="none">
+          <line class="dash" x1="4" y1="18" x2="32" y2="18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          <polyline points="24,11 32,18 24,25" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+
+      <div class="flow-step reveal reveal-delay-4">
+        <div class="flow-icon">
+          <span class="flow-num">4</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <path d="M3 9h18M9 21V9"/>
+          </svg>
+        </div>
+        <p class="flow-label">Result</p>
+        <p class="flow-sub">Live behavioral state, on screen</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     8 STATES
+══════════════════════════════════════ -->
+<section id="states">
+  <div class="container">
+    <div class="states-header reveal">
+      <p class="section-label">Behavioral states</p>
+      <h2 class="section-title">Eight windows into<br>your dog's world.</h2>
+    </div>
+    <div class="states-grid">
+
+      <div class="state-card sc-playful reveal reveal-delay-1">
+        <div class="state-icon">🎾</div>
+        <p class="state-name">Playful</p>
+        <p class="state-desc">Energetic movement, play bow posture, high-pitched vocalizations</p>
+      </div>
+
+      <div class="state-card sc-anxious reveal reveal-delay-1">
+        <div class="state-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <p class="state-name">Anxious</p>
+        <p class="state-desc">Panting, pacing, lowered tail, excessive self-grooming</p>
+      </div>
+
+      <div class="state-card sc-alert reveal reveal-delay-2">
+        <div class="state-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <p class="state-name">Alert</p>
+        <p class="state-desc">Ears forward, rigid posture, focused attention on a stimulus</p>
+      </div>
+
+      <div class="state-card sc-fearful reveal reveal-delay-2">
+        <div class="state-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 16s-1.5-2-4-2-4 2-4 2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        </div>
+        <p class="state-name">Fearful</p>
+        <p class="state-desc">Tucked tail, cowering, trembling, avoidance behavior</p>
+      </div>
+
+      <div class="state-card sc-relaxed reveal reveal-delay-1">
+        <div class="state-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#12d8c4" stroke-width="2" stroke-linecap="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        </div>
+        <p class="state-name">Relaxed</p>
+        <p class="state-desc">Soft eyes, loose body language, slow breathing, resting posture</p>
+      </div>
+
+      <div class="state-card sc-attention reveal reveal-delay-2">
+        <div class="state-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fb923c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <p class="state-name">Wants Attention</p>
+        <p class="state-desc">Pawing, nudging, soft whining, sustained eye contact with handler</p>
+      </div>
+
+      <div class="state-card sc-frustrated reveal reveal-delay-3">
+        <div class="state-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#e11d48" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="8" y1="15" x2="16" y2="15"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        </div>
+        <p class="state-name">Frustrated</p>
+        <p class="state-desc">Persistent barking, repetitive behavior, stiff tail carriage</p>
+      </div>
+
+      <div class="state-card sc-excited reveal reveal-delay-4">
+        <div class="state-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#a3e635" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <p class="state-name">Excited</p>
+        <p class="state-desc">Spinning, jumping, whole-body wag, high-energy vocalization</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     PRIVACY
+══════════════════════════════════════ -->
+<section id="privacy">
+  <div class="container">
+    <div class="privacy-inner">
+      <div class="reveal">
+        <p class="section-label">Privacy</p>
+        <h2 class="privacy-statement">Everything stays on<br><span class="teal">your phone.</span></h2>
+        <p class="privacy-sub" style="margin-top:1.25rem">
+          This is not a feature. It's a commitment. Your dog's data — their voice, their image, their behavior — belongs to you and only you. Always.
+        </p>
+      </div>
+      <div class="privacy-points reveal reveal-delay-1">
+        <div class="priv-point">
+          <div class="priv-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+          </div>
+          <div class="priv-text">
+            <h4>All inference runs on-device</h4>
+            <p>Neural networks run locally. No video, audio, or behavioral data ever leaves your phone.</p>
+          </div>
+        </div>
+        <div class="priv-point">
+          <div class="priv-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="1" y1="1" x2="23" y2="23"/>
+              <path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"/>
+              <path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"/>
+              <path d="M10.71 5.05A16 16 0 0 1 22.56 9"/>
+              <path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"/>
+              <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+              <line x1="12" y1="20" x2="12.01" y2="20"/>
+            </svg>
+          </div>
+          <div class="priv-text">
+            <h4>No internet connection required</h4>
+            <p>Works completely offline. No Wi-Fi, no cellular, no server calls of any kind.</p>
+          </div>
+        </div>
+        <div class="priv-point">
+          <div class="priv-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+              <line x1="17" y1="3" x2="23" y2="9"/>
+              <line x1="23" y1="3" x2="17" y2="9"/>
+            </svg>
+          </div>
+          <div class="priv-text">
+            <h4>Zero accounts or sign-ups</h4>
+            <p>Open the app, point the camera, see results. No email, no password, no profile created.</p>
+          </div>
+        </div>
+        <div class="priv-point">
+          <div class="priv-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+          </div>
+          <div class="priv-text">
+            <h4>Open source and fully auditable</h4>
+            <p>Every line of code is public on GitHub. Verify the privacy claims yourself.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SCIENCE
+══════════════════════════════════════ -->
+<section id="science">
+  <div class="container">
+    <div class="science-inner">
+      <div class="reveal">
+        <p class="section-label">Science</p>
+        <h2 class="science-lead">Built on research,<br>not marketing.</h2>
+        <p class="science-desc">
+          Every behavioral classification in Canid is grounded in peer-reviewed animal behavior science. Not trend-following. Not gut feeling. Published research from leading ethologists and behavioral scientists.
+        </p>
+      </div>
+      <div class="refs-list reveal reveal-delay-1">
+        <div class="ref-item">
+          <p class="ref-authors">Pongrácz et al.</p>
+          <p class="ref-title">Acoustic parameters of dog barks carry emotional information for humans</p>
+          <p class="ref-journal">Applied Animal Behaviour Science, 2005 · ELTE University, Budapest</p>
+        </div>
+        <div class="ref-item">
+          <p class="ref-authors">Yin &amp; McCowan</p>
+          <p class="ref-title">Barking in domestic dogs: context specificity and individual identification</p>
+          <p class="ref-journal">Animal Behaviour, 2004 · UC Davis School of Veterinary Medicine</p>
+        </div>
+        <div class="ref-item">
+          <p class="ref-authors">Rugaas</p>
+          <p class="ref-title">On Talking Terms With Dogs: Calming Signals</p>
+          <p class="ref-journal">Dogwise Publishing, 2006 · Norwegian School of Dog Training</p>
+        </div>
+        <div class="ref-item">
+          <p class="ref-authors">Bekoff</p>
+          <p class="ref-title">Play signals as punctuation: The structure of social play in canids</p>
+          <p class="ref-journal">Behaviour, 1995 · University of Colorado, Boulder</p>
+        </div>
+        <div class="ref-item">
+          <p class="ref-authors">Huang et al.</p>
+          <p class="ref-title">Fusion of acoustic and visual features for dog emotional state recognition</p>
+          <p class="ref-journal">Pattern Recognition Letters, 2018</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FINAL CTA
+══════════════════════════════════════ -->
+<section id="cta">
+  <div class="container">
+    <div class="cta-inner reveal">
+      <p class="section-label" style="justify-content:center;display:flex">Ready?</p>
+      <h2 class="cta-title">Try it now.</h2>
+      <p class="cta-desc">Free. Open source. No sign-up.<br>Just you and your dog.</p>
+      <div class="cta-buttons">
+        <a href="app.html" class="btn-primary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+          Launch App
+        </a>
+        <a href="app.html" download="canid.html" class="btn-secondary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Download
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 5.172C10 3.782 8.423 2.679 6.5 3c-2.823.47-4.113 6.006-4 7 .08.703 1.725 1.722 3.656 1 1.261-.472 1.96-1.45 2.344-2.5"/>
+          <path d="M14.267 5.172c0-1.39 1.577-2.493 3.5-2.172 2.823.47 4.113 6.006 4 7-.08.703-1.725 1.722-3.656 1-1.261-.472-1.96-1.45-2.344-2.5"/>
+        </svg>
+        Canid
+      </div>
+      <p class="footer-meta">v0.3 · April 2026</p>
+      <a href="https://github.com/EschatBot/canid" class="footer-link" target="_blank" rel="noopener">Open source on GitHub ↗</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── PARTICLES ──
+(function() {
+  const c = document.getElementById('particles');
+  for (let i = 0; i < 22; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const s = Math.random() * 2.5 + 0.8;
+    p.style.cssText = `
+      width:${s}px; height:${s}px;
+      left:${Math.random()*100}%;
+      animation-duration:${Math.random()*18+14}s;
+      animation-delay:${Math.random()*-35}s;
+    `;
+    c.appendChild(p);
+  }
+})();
+
+// ── SCROLL REVEAL ──
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('visible');
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+// Hero elements reveal immediately
+window.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    document.querySelectorAll('#hero .reveal').forEach(el => el.classList.add('visible'));
+  }, 80);
+});
+
+// ── NAV SCROLL OPACITY ──
+const navEl = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  navEl.style.background = window.scrollY > 60
+    ? 'rgba(5,12,26,0.96)'
+    : 'rgba(5,12,26,0.7)';
+}, { passive: true });
+
+// ── SUBTLE PARALLAX ──
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  const vis = document.querySelector('.hero-visual');
+  if (vis) vis.style.transform = `translateY(${y * 0.04}px)`;
+}, { passive: true });
+</script>
 </body>
 </html>
