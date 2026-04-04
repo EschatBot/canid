@@ -1,0 +1,46 @@
+{
+  "classes": [
+    "play_bark",
+    "warning_bark",
+    "alert_bark",
+    "demand_bark",
+    "whine",
+    "growl",
+    "howl",
+    "yip",
+    "silence"
+  ],
+  "index_to_class": {
+    "0": "play_bark",
+    "1": "warning_bark",
+    "2": "alert_bark",
+    "3": "demand_bark",
+    "4": "whine",
+    "5": "growl",
+    "6": "howl",
+    "7": "yip",
+    "8": "silence"
+  },
+  "class_to_index": {
+    "play_bark": 0,
+    "warning_bark": 1,
+    "alert_bark": 2,
+    "demand_bark": 3,
+    "whine": 4,
+    "growl": 5,
+    "howl": 6,
+    "yip": 7,
+    "silence": 8
+  },
+  "audioset_ontology_ids": {
+    "bark": "/m/05tny_",
+    "growl": "/m/07qf0zm",
+    "howl": "/m/07qrkrw",
+    "whimper": "/m/07qn5dc",
+    "dog": "/m/0bt9lr"
+  },
+  "esc50_categories": {
+    "dog": 5
+  },
+  "version": "1.0.0"
+}
