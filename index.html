@@ -737,16 +737,23 @@ footer {
           <!-- Cheek blush (Fleischer charm) -->
           <ellipse cx="207" cy="148" rx="8" ry="5" fill="rgba(200,57,26,0.18)"/>
 
-          <!-- ── EYE — huge Fleischer pie-cut style ── -->
-          <circle cx="185" cy="118" r="22" fill="white" stroke="#1A0F00" stroke-width="3.5"/>
-          <circle cx="185" cy="118" r="13" fill="#1A0F00"/>
-          <!-- Pie cut — white wedge ── -->
-          <path d="M185 118 L185 105 A13 13 0 0 1 196 125 Z" fill="white"/>
-          <!-- Shine dots -->
-          <circle cx="192" cy="110" r="4" fill="white"/>
-          <circle cx="196" cy="116" r="2" fill="white"/>
-          <!-- Eyebrow -->
-          <path d="M170 98 Q185 90 200 96" stroke="#1A0F00" stroke-width="4" stroke-linecap="round" fill="none"/>
+          <!-- ── LEFT EYE — huge Fleischer pie-cut style ── -->
+          <circle cx="175" cy="118" r="22" fill="white" stroke="#1A0F00" stroke-width="3.5"/>
+          <circle cx="175" cy="118" r="13" fill="#1A0F00"/>
+          <path d="M175 118 L175 105 A13 13 0 0 1 186 125 Z" fill="white"/>
+          <circle cx="182" cy="110" r="4" fill="white"/>
+          <circle cx="186" cy="116" r="2" fill="white"/>
+
+          <!-- ── RIGHT EYE — matching pie-cut ── -->
+          <circle cx="215" cy="116" r="18" fill="white" stroke="#1A0F00" stroke-width="3.5"/>
+          <circle cx="215" cy="116" r="11" fill="#1A0F00"/>
+          <path d="M215 116 L215 105 A11 11 0 0 1 224 123 Z" fill="white"/>
+          <circle cx="221" cy="109" r="3.5" fill="white"/>
+          <circle cx="224" cy="114" r="1.8" fill="white"/>
+
+          <!-- Eyebrows -->
+          <path d="M158 96 Q175 87 192 94" stroke="#1A0F00" stroke-width="4" stroke-linecap="round" fill="none"/>
+          <path d="M200 93 Q215 86 232 92" stroke="#1A0F00" stroke-width="3.5" stroke-linecap="round" fill="none"/>
 
           <!-- ── RUBBER HOSE ARM — waving ── -->
           <!-- Left arm -->
@@ -764,12 +771,36 @@ footer {
           <!-- White glove right -->
           <circle cx="246" cy="207" r="14" fill="white" stroke="#1A0F00" stroke-width="3.5"/>
 
-          <!-- ── TAIL — rubber hose, wagging animation ── -->
+          <!-- ── TAIL — rubber hose, happy bendy wag ── -->
           <g>
-            <animateTransform attributeName="transform" type="rotate" values="-8 90 228;8 90 228;-8 90 228" dur="0.65s" repeatCount="indefinite"/>
-            <path d="M90 228 C72 218 56 206 48 192 C40 178 46 162 56 158 C66 154 76 162 78 174" fill="none" stroke="#1A0F00" stroke-width="4.5" stroke-linecap="round"/>
-            <!-- Tail tip tuft -->
-            <circle cx="50" cy="188" r="10" fill="#F5E6C8" stroke="#1A0F00" stroke-width="3.5"/>
+            <!-- Tail curves and bends as it wags — not stiff rotation -->
+            <path fill="none" stroke="#1A0F00" stroke-width="5" stroke-linecap="round">
+              <animate attributeName="d"
+                values="M90,228 C72,215 55,198 50,180 C46,165 54,152 64,155 C72,158 74,170 70,180;
+                        M90,228 C78,210 68,192 72,175 C76,160 88,150 96,156 C102,162 96,176 88,182;
+                        M90,228 C72,215 55,198 50,180 C46,165 54,152 64,155 C72,158 74,170 70,180"
+                dur="0.5s" repeatCount="indefinite"/>
+            </path>
+            <!-- Tail body fill -->
+            <path fill="#FFF8F0" stroke="none">
+              <animate attributeName="d"
+                values="M90,225 C72,212 55,196 50,178 C46,163 54,150 64,153 C72,156 74,168 70,178 L73,182 C76,172 75,160 66,156 C57,152 48,164 52,180 C56,198 74,214 90,231 Z;
+                        M90,225 C78,207 68,190 72,173 C76,158 88,148 96,154 C102,160 96,174 88,180 L91,184 C98,176 104,162 98,155 C90,148 78,158 74,174 C70,192 80,210 90,231 Z;
+                        M90,225 C72,212 55,196 50,178 C46,163 54,150 64,153 C72,156 74,168 70,178 L73,182 C76,172 75,160 66,156 C57,152 48,164 52,180 C56,198 74,214 90,231 Z"
+                dur="0.5s" repeatCount="indefinite"/>
+            </path>
+            <!-- Tail tip tuft — bounces with the wag -->
+            <circle r="11" fill="#F5E6C8" stroke="#1A0F00" stroke-width="3.5">
+              <animate attributeName="cx" values="50;72;50" dur="0.5s" repeatCount="indefinite"/>
+              <animate attributeName="cy" values="178;173;178" dur="0.5s" repeatCount="indefinite"/>
+            </circle>
+            <!-- Motion lines near tail -->
+            <g opacity="0.5">
+              <animate attributeName="opacity" values="0.5;0.15;0.5" dur="0.5s" repeatCount="indefinite"/>
+              <line x1="38" y1="170" x2="28" y2="164" stroke="#E8A020" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="42" y1="160" x2="34" y2="152" stroke="#E8A020" stroke-width="2" stroke-linecap="round"/>
+              <line x1="48" y1="152" x2="42" y2="142" stroke="#E8A020" stroke-width="1.5" stroke-linecap="round"/>
+            </g>
           </g>
 
           <!-- ── SIGNAL LINES FROM NOSE (cartoon action lines) ── -->
