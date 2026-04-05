@@ -517,43 +517,7 @@ nav {
 .priv-text h4 { font-size: 0.9rem; font-weight: 800; color: var(--ink); margin-bottom: 0.2rem; }
 .priv-text p  { font-size: 0.78rem; color: var(--text-muted); font-weight: 400; line-height: 1.6; }
 
-/* ════════════════════════════
-   SCIENCE — warm with ink borders
-════════════════════════════ */
-#science { padding: 6rem 0 8rem; }
-.science-inner {
-  display: grid; grid-template-columns: 1fr 1.6fr;
-  gap: 5rem; align-items: start;
-}
-@media (max-width: 768px) {
-  .science-inner { grid-template-columns: 1fr; gap: 3rem; }
-}
-.science-lead {
-  font-family: 'Fredoka One', sans-serif;
-  font-size: clamp(1.4rem, 2.8vw, 2rem);
-  font-weight: 400; color: var(--ink); line-height: 1.25;
-  letter-spacing: 0.01em; margin-bottom: 0.9rem;
-}
-.science-desc { font-size: 0.9rem; color: var(--text-soft); font-weight: 400; line-height: 1.75; }
 
-.refs-list { display: flex; flex-direction: column; gap: 1.2rem; }
-.ref-item {
-  border-left: 4px solid var(--mustard);
-  padding-left: 1.1rem;
-  padding: 0.8rem 0.8rem 0.8rem 1.2rem;
-  background: var(--surface-warm);
-  border-radius: 0 10px 10px 0;
-  border-top: var(--ink-border-2);
-  border-right: var(--ink-border-2);
-  border-bottom: var(--ink-border-2);
-  border-left: 4px solid var(--mustard);
-  box-shadow: 3px 3px 0 var(--ink);
-  transition: transform 0.15s var(--ease-spring), box-shadow 0.15s;
-}
-.ref-item:hover { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 var(--ink); }
-.ref-authors { font-size: 0.72rem; color: var(--brick); font-weight: 800; letter-spacing: 0.04em; margin-bottom: 0.2rem; }
-.ref-title { font-size: 0.84rem; color: var(--ink); font-weight: 600; line-height: 1.4; margin-bottom: 0.2rem; }
-.ref-journal { font-size: 0.7rem; color: var(--text-muted); font-style: italic; }
 
 /* ════════════════════════════
    FINAL CTA
@@ -574,7 +538,7 @@ nav {
 #what    { background: linear-gradient(180deg, var(--cream) 0%, var(--cream-2) 100%); }
 #states  { background: var(--cream-2); }
 #privacy { background: var(--cream); }
-#science { background: linear-gradient(180deg, var(--cream-2) 0%, var(--cream) 100%); }
+
 #cta     {
   background: var(--parchment);
   border-top: var(--ink-border);
@@ -1082,8 +1046,7 @@ footer {
 </section>
 
 <!-- ══════════════════════════════════════
-     (science section removed)
-══════════════════════════════════════ -->
+
 
 <!-- ══════════════════════════════════════
      FINAL CTA
