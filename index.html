@@ -48,36 +48,36 @@
     }
     .orb {
       position: absolute; border-radius: 50%;
-      filter: blur(90px); animation: drift 22s ease-in-out infinite;
+      filter: blur(120px); animation: drift 24s ease-in-out infinite;
     }
     .orb-1 {
-      width: 700px; height: 700px;
-      background: radial-gradient(circle, rgba(18,216,196,0.22) 0%, transparent 65%);
-      top: -250px; right: -200px;
+      width: 680px; height: 680px;
+      background: radial-gradient(circle, rgba(18,216,196,0.14) 0%, transparent 65%);
+      top: -220px; right: -180px;
     }
     .orb-2 {
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(124,58,237,0.2) 0%, transparent 65%);
-      bottom: 15%; left: -200px;
-      animation-delay: -8s; animation-duration: 28s;
+      width: 560px; height: 560px;
+      background: radial-gradient(circle, rgba(124,58,237,0.13) 0%, transparent 65%);
+      bottom: 12%; left: -180px;
+      animation-delay: -9s; animation-duration: 30s;
     }
     .orb-3 {
-      width: 450px; height: 450px;
-      background: radial-gradient(circle, rgba(59,130,246,0.18) 0%, transparent 65%);
-      top: 40%; right: 5%;
-      animation-delay: -15s; animation-duration: 32s;
+      width: 420px; height: 420px;
+      background: radial-gradient(circle, rgba(59,130,246,0.11) 0%, transparent 65%);
+      top: 42%; right: 4%;
+      animation-delay: -16s; animation-duration: 34s;
     }
     .orb-4 {
-      width: 320px; height: 320px;
-      background: radial-gradient(circle, rgba(245,158,11,0.12) 0%, transparent 65%);
-      bottom: 5%; right: 28%;
-      animation-delay: -5s; animation-duration: 20s;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(245,158,11,0.08) 0%, transparent 65%);
+      bottom: 6%; right: 30%;
+      animation-delay: -5s; animation-duration: 22s;
     }
     @keyframes drift {
       0%,100% { transform: translate(0,0) scale(1); }
-      25%  { transform: translate(28px,-38px) scale(1.04); }
-      50%  { transform: translate(-18px,26px) scale(0.96); }
-      75%  { transform: translate(36px,18px) scale(1.02); }
+      25%  { transform: translate(22px,-30px) scale(1.03); }
+      50%  { transform: translate(-14px,20px) scale(0.97); }
+      75%  { transform: translate(28px,14px) scale(1.02); }
     }
 
     /* ── PARTICLES ── */
@@ -116,13 +116,15 @@
       letter-spacing: -0.03em; text-decoration: none;
     }
     .nav-cta {
-      background: var(--teal); color: var(--navy);
-      font-family: inherit; font-size: 0.85rem; font-weight: 700;
-      border: none; border-radius: 8px; padding: 0.5rem 1.25rem;
+      background: linear-gradient(135deg, #14d4be 0%, #06b6d4 100%);
+      color: var(--navy);
+      font-family: inherit; font-size: 0.84rem; font-weight: 700;
+      border: none; border-radius: 8px; padding: 0.48rem 1.2rem;
       cursor: pointer; text-decoration: none;
-      transition: transform 0.2s cubic-bezier(.34,1.56,.64,1), box-shadow 0.2s;
+      transition: opacity 0.2s, transform 0.2s cubic-bezier(.34,1.56,.64,1), box-shadow 0.2s;
+      letter-spacing: -0.01em;
     }
-    .nav-cta:hover { transform: scale(1.04); box-shadow: 0 0 24px rgba(18,216,196,0.4); }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(6,182,212,0.35); opacity: 0.92; }
 
     /* ── SCROLL REVEAL ── */
     .reveal {
@@ -137,42 +139,45 @@
 
     /* ── SECTION LABELS ── */
     .section-label {
-      font-size: 0.72rem; font-weight: 600;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--teal); margin-bottom: 0.65rem;
+      font-size: 0.68rem; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 0.75rem;
+      opacity: 0.9;
     }
     .section-title {
-      font-size: clamp(1.9rem, 3.8vw, 3rem); font-weight: 800;
-      letter-spacing: -0.035em; color: #fff; line-height: 1.08;
+      font-size: clamp(1.8rem, 3.6vw, 2.8rem); font-weight: 800;
+      letter-spacing: -0.04em; color: #fff; line-height: 1.06;
       margin-bottom: 1rem;
     }
 
     /* ── BUTTONS ── */
     .btn-primary {
-      background: linear-gradient(135deg, var(--teal) 0%, #0dbdac 100%);
+      background: linear-gradient(135deg, #14d4be 0%, #06b6d4 60%, #0891b2 100%);
       color: var(--navy); font-family: inherit; font-size: 1rem; font-weight: 700;
-      border: none; border-radius: 12px; padding: 0.9rem 2rem;
+      border: none; border-radius: 10px; padding: 0.85rem 1.9rem;
       cursor: pointer; text-decoration: none;
       display: inline-flex; align-items: center; gap: 0.5rem;
-      box-shadow: 0 0 28px rgba(18,216,196,0.28);
+      box-shadow: 0 0 0 1px rgba(20,212,190,0.3), 0 4px 24px rgba(6,182,212,0.25);
       transition: transform 0.22s cubic-bezier(.34,1.56,.64,1), box-shadow 0.22s;
+      letter-spacing: -0.01em;
     }
     .btn-primary:hover {
-      transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 8px 48px rgba(18,216,196,0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 0 0 1px rgba(20,212,190,0.5), 0 8px 40px rgba(6,182,212,0.4);
     }
     .btn-secondary {
-      background: rgba(255,255,255,0.04); color: var(--text);
+      background: rgba(255,255,255,0.03); color: var(--text);
       font-family: inherit; font-size: 1rem; font-weight: 500;
-      border: 1px solid rgba(255,255,255,0.14); border-radius: 12px;
-      padding: 0.9rem 2rem; cursor: pointer; text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 10px;
+      padding: 0.85rem 1.9rem; cursor: pointer; text-decoration: none;
       display: inline-flex; align-items: center; gap: 0.5rem;
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
       transition: transform 0.22s cubic-bezier(.34,1.56,.64,1), border-color 0.2s, background 0.2s;
+      letter-spacing: -0.01em;
     }
     .btn-secondary:hover {
-      transform: translateY(-3px) scale(1.03);
-      border-color: rgba(255,255,255,0.28); background: rgba(255,255,255,0.07);
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,0.22); background: rgba(255,255,255,0.06);
     }
 
     /* ════════════════════════════
@@ -187,13 +192,21 @@
       gap: 3rem; align-items: center;
       padding: 5rem 0 4rem;
     }
+    @media (max-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr; padding: 3rem 0 2rem; gap: 2rem; }
+      .hero-visual { min-height: 240px; }
+      .dog-svg { width: 200px; height: 200px; }
+      .dog-glow { width: 280px; height: 280px; }
+      .dog-glow-2 { width: 200px; height: 200px; }
+    }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 0.5rem;
-      background: rgba(18,216,196,0.08);
-      border: 1px solid rgba(18,216,196,0.22);
-      border-radius: 999px; padding: 0.3rem 0.9rem;
-      font-size: 0.76rem; color: var(--teal); font-weight: 500;
-      letter-spacing: 0.05em; margin-bottom: 1.4rem;
+      background: rgba(6,182,212,0.06);
+      border: 1px solid rgba(6,182,212,0.18);
+      border-radius: 999px; padding: 0.28rem 0.85rem;
+      font-size: 0.73rem; color: var(--teal); font-weight: 500;
+      letter-spacing: 0.04em; margin-bottom: 1.5rem;
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
     }
     .badge-dot {
       width: 6px; height: 6px; background: var(--teal);
@@ -202,11 +215,16 @@
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
     .hero-headline {
-      font-size: clamp(3rem, 7vw, 5.8rem); font-weight: 800;
-      letter-spacing: -0.045em; line-height: 0.96;
-      color: #fff; margin-bottom: 1.3rem;
+      font-size: clamp(2.8rem, 6.5vw, 5.6rem); font-weight: 800;
+      letter-spacing: -0.05em; line-height: 0.94;
+      color: #fff; margin-bottom: 1.4rem;
     }
-    .hero-headline .accent { color: var(--teal); }
+    .hero-headline .accent {
+      background: linear-gradient(135deg, #14d4be 0%, #06b6d4 60%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
     .hero-desc {
       font-size: clamp(0.95rem, 1.8vw, 1.15rem); color: var(--muted-2);
@@ -374,8 +392,16 @@
     }
     @keyframes dash-move { to { stroke-dashoffset: -18; } }
 
+    /* Tablet: 2x2 grid, arrows hidden */
+    @media (max-width: 900px) and (min-width: 541px) {
+      .how-flow {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+      .flow-arrow { display: none; }
+    }
     /* Mobile: vertical flow */
-    @media (max-width: 768px) {
+    @media (max-width: 540px) {
       .how-flow {
         grid-template-columns: 1fr;
         gap: 0.5rem;
@@ -397,29 +423,25 @@
     @media (max-width: 480px) { .states-grid { grid-template-columns: 1fr; } }
 
     .state-card {
-      background: var(--glass);
-      border: 1px solid var(--glass-b);
-      border-radius: 18px; padding: 1.4rem 1.2rem;
-      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px; padding: 1.5rem 1.3rem;
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
       position: relative; overflow: hidden;
-      transition: transform 0.3s cubic-bezier(.34,1.56,.64,1), box-shadow 0.3s, border-color 0.3s;
+      transition: transform 0.28s cubic-bezier(.34,1.56,.64,1), box-shadow 0.28s, border-color 0.28s, background 0.28s;
       cursor: default;
     }
     .state-card::before {
       content: ''; position: absolute;
-      top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, transparent, var(--ac), transparent);
-    }
-    .state-card::after {
-      content: ''; position: absolute;
-      bottom: -40px; right: -40px; width: 100px; height: 100px;
-      background: radial-gradient(circle, rgba(var(--ac-rgb),0.12) 0%, transparent 70%);
-      border-radius: 50%; pointer-events: none;
+      top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent 0%, var(--ac) 50%, transparent 100%);
+      opacity: 0.6;
     }
     .state-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.3), 0 0 0 1px var(--ac);
       border-color: var(--ac);
+      background: rgba(255,255,255,0.05);
     }
     .state-icon {
       width: 42px; height: 42px; border-radius: 11px;
@@ -454,8 +476,8 @@
     }
 
     .privacy-statement {
-      font-size: clamp(2rem, 4.2vw, 3.6rem); font-weight: 800;
-      color: #fff; line-height: 1.08; letter-spacing: -0.04em;
+      font-size: clamp(1.8rem, 3.8vw, 3.2rem); font-weight: 800;
+      color: #fff; line-height: 1.1; letter-spacing: -0.04em;
       margin-bottom: 1.25rem;
     }
     .privacy-statement .teal { color: var(--teal); }
@@ -507,8 +529,8 @@
     #cta { padding: 8rem 0; text-align: center; }
     .cta-inner { max-width: 580px; margin: 0 auto; }
     .cta-title {
-      font-size: clamp(2.6rem, 5.5vw, 4.2rem); font-weight: 800;
-      letter-spacing: -0.05em; color: #fff; line-height: 0.95; margin-bottom: 1rem;
+      font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 800;
+      letter-spacing: -0.04em; color: #fff; line-height: 1.0; margin-bottom: 1rem;
     }
     .cta-desc { font-size: 1.05rem; color: var(--muted-2); font-weight: 300; line-height: 1.65; margin-bottom: 2.5rem; }
     .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
@@ -556,18 +578,24 @@
 <!-- ── NAV ── -->
 <nav id="nav">
   <a href="#" class="nav-logo">
-    <svg width="24" height="22" viewBox="0 0 34 28" fill="none">
-      <!-- Mini Tintin dog -->
-      <ellipse cx="22" cy="11" rx="6" ry="5.5" stroke="url(#navg)" stroke-width="2" fill="none"/>
-      <path d="M7,14 C9,10 14,8 18,9 L22,11 C25,14 26,17 24,20 C22,22 16,23 12,22 C9,21 7,18 7,14 Z" stroke="url(#navg)" stroke-width="2" fill="none"/>
-      <circle cx="24" cy="10" r="1.5" fill="#14d4be"/>
-      <circle cx="27" cy="12" r="1" fill="#14d4be"/>
-      <path d="M7,14 C5,11 4,7 6,5" stroke="url(#navg)" stroke-width="2" stroke-linecap="round" fill="none"/>
-      <line x1="3" y1="4" x2="1" y2="1" stroke="#14d4be" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
-      <line x1="5" y1="3" x2="4" y2="0" stroke="#14d4be" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
-      <line x1="30" y1="9" x2="33" y2="8" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
-      <line x1="30" y1="13" x2="33" y2="14" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+    <svg width="22" height="20" viewBox="0 0 44 40" fill="none">
       <defs><linearGradient id="navg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#14d4be"/><stop offset="100%" stop-color="#7c3aed"/></linearGradient></defs>
+      <!-- Body -->
+      <path d="M14,30 L12,38 Q12,40 14,40 L18,40 Q20,40 20,38 L19.5,31 L24.5,31 L24,38 Q24,40 26,40 L30,40 Q32,40 32,38 L31,30 C 36,28 40,23 40,17 C 40,11 36,7 30,6 L28,2 C 24,-2 18,-2 15,3 C 12,6 12,11 14,15 C 10,18 8,23 8,28 C 8,29 10,31 14,30 Z" stroke="url(#navg)" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+      <!-- Head -->
+      <ellipse cx="30" cy="9" rx="9" ry="8" stroke="url(#navg)" stroke-width="1.6" fill="none"/>
+      <!-- Eye -->
+      <circle cx="33" cy="7" r="2" fill="#14d4be" opacity="0.9"/>
+      <circle cx="33.7" cy="6.4" r="0.8" fill="rgba(255,255,255,0.9)"/>
+      <!-- Snout -->
+      <circle cx="38.5" cy="11" r="1.5" fill="#14d4be" opacity="0.85"/>
+      <!-- Ear -->
+      <path d="M22,5 C19,0 20,-4 24,-5 C28,-6 30,-2 29,3" stroke="url(#navg)" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+      <!-- Tail -->
+      <path d="M8,24 C4,20 2,14 5,9 C7,5 11,4 13,6" stroke="url(#navg)" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+      <!-- Tail lines -->
+      <line x1="2" y1="8" x2="-1" y2="5" stroke="#14d4be" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+      <line x1="3" y1="5" x2="1" y2="1" stroke="#14d4be" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
     </svg>
     Canid
   </a>
@@ -611,112 +639,112 @@
         <div class="dog-glow"></div>
         <div class="dog-glow-2"></div>
 
-        <!-- Canid Logo — Tintin/Snowy style line-drawn dog with emphasis lines -->
-        <svg class="dog-svg" viewBox="0 0 340 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Canid Logo — clean geometric dog, minimal & iconic -->
+        <svg class="dog-svg" viewBox="0 0 320 280" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+            <linearGradient id="gBody" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stop-color="#14d4be"/>
+              <stop offset="55%" stop-color="#06b6d4"/>
               <stop offset="100%" stop-color="#7c3aed"/>
             </linearGradient>
-            <linearGradient id="g3" x1="0" y1="0" x2="1" y2="0">
+            <linearGradient id="gEye" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stop-color="#a78bfa"/>
               <stop offset="100%" stop-color="#14d4be"/>
             </linearGradient>
-            <radialGradient id="glow1" cx="50%" cy="50%" r="45%">
-              <stop offset="0%" stop-color="#14d4be" stop-opacity="0.25"/>
+            <radialGradient id="gGlow" cx="50%" cy="55%" r="45%">
+              <stop offset="0%" stop-color="#14d4be" stop-opacity="0.18"/>
+              <stop offset="60%" stop-color="#7c3aed" stop-opacity="0.08"/>
               <stop offset="100%" stop-color="#14d4be" stop-opacity="0"/>
             </radialGradient>
+            <filter id="softglow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
           </defs>
 
-          <!-- Subtle ambient glow -->
-          <ellipse cx="160" cy="160" rx="120" ry="110" fill="url(#glow1)" opacity="0.6"/>
+          <!-- Ambient glow -->
+          <ellipse cx="160" cy="148" rx="130" ry="115" fill="url(#gGlow)"/>
 
-          <!-- === DOG BODY — clean Tintin/Hergé comic style === -->
-          <!-- Back + rump -->
-          <path d="M 70,145 C 85,120 120,110 155,112 C 180,113 200,118 215,128"
-                stroke="url(#g1)" stroke-width="3.5" stroke-linecap="round" fill="none"/>
-          <!-- Chest + belly -->
-          <path d="M 215,128 C 225,138 230,152 228,168 C 226,180 218,190 208,195
-                   C 195,200 160,202 140,200 C 120,198 100,192 88,182
-                   C 78,174 72,162 70,145"
-                stroke="url(#g1)" stroke-width="3.5" stroke-linecap="round" fill="none"/>
-          <!-- Fill body lightly -->
-          <path d="M 70,145 C 85,120 120,110 155,112 C 180,113 200,118 215,128
-                   C 225,138 230,152 228,168 C 226,180 218,190 208,195
-                   C 195,200 160,202 140,200 C 120,198 100,192 88,182
-                   C 78,174 72,162 70,145 Z"
-                fill="url(#g1)" opacity="0.12"/>
+          <!-- === BODY — smooth, confident silhouette === -->
+          <path d="
+            M 96,210
+            L 88,248 Q 88,256 96,256 L 106,256 Q 114,256 114,248 L 112,216
+            L 148,218
+            L 146,248 Q 146,256 154,256 L 164,256 Q 172,256 172,248 L 170,210
+            C 200,205 222,190 230,170
+            C 238,150 234,128 222,114
+            C 210,100 194,95 178,98
+            L 172,88
+            C 160,70 140,68 128,76
+            C 118,82 112,94 114,108
+            C 100,118 88,134 86,152
+            C 83,172 88,195 96,210 Z
+          " fill="url(#gBody)" opacity="0.12" filter="url(#softglow)"/>
 
-          <!-- Head — round, perky, facing right -->
-          <ellipse cx="238" cy="115" rx="30" ry="28"
-                   stroke="url(#g1)" stroke-width="3.5" fill="none"/>
-          <ellipse cx="238" cy="115" rx="30" ry="28"
-                   fill="url(#g1)" opacity="0.1"/>
+          <path d="
+            M 96,210
+            L 88,248 Q 88,256 96,256 L 106,256 Q 114,256 114,248 L 112,216
+            L 148,218
+            L 146,248 Q 146,256 154,256 L 164,256 Q 172,256 172,248 L 170,210
+            C 200,205 222,190 230,170
+            C 238,150 234,128 222,114
+            C 210,100 194,95 178,98
+            L 172,88
+            C 160,70 140,68 128,76
+            C 118,82 112,94 114,108
+            C 100,118 88,134 86,152
+            C 83,172 88,195 96,210 Z
+          " stroke="url(#gBody)" stroke-width="2.5" stroke-linejoin="round" fill="none"/>
+
+          <!-- === HEAD === -->
+          <ellipse cx="178" cy="88" rx="34" ry="30" fill="url(#gBody)" opacity="0.1"/>
+          <ellipse cx="178" cy="88" rx="34" ry="30" stroke="url(#gBody)" stroke-width="2.5" fill="none"/>
 
           <!-- Snout -->
-          <path d="M 260,120 C 268,118 276,120 280,126 C 282,130 278,135 272,134 C 266,133 260,128 260,120 Z"
-                stroke="url(#g1)" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M 202,96 C 212,96 220,100 222,108 C 224,116 218,122 208,120 C 202,118 198,110 202,96 Z"
+                stroke="url(#gBody)" stroke-width="2" fill="url(#gBody)" opacity="0.08"/>
+          <!-- Nose tip -->
+          <circle cx="218" cy="107" r="4.5" fill="#14d4be" opacity="0.9"/>
+          <circle cx="219" cy="106" r="1.8" fill="rgba(255,255,255,0.6)"/>
 
-          <!-- Nose — solid dot -->
-          <circle cx="278" cy="124" r="4" fill="#14d4be"/>
+          <!-- Eye — large, expressive -->
+          <circle cx="188" cy="80" r="7" fill="#060f20" stroke="url(#gEye)" stroke-width="2"/>
+          <circle cx="190" cy="78" r="3" fill="rgba(255,255,255,0.92)"/>
+          <circle cx="191" cy="77.5" r="1.2" fill="#fff"/>
 
-          <!-- Eye — big, expressive, Tintin style -->
-          <circle cx="248" cy="108" r="5.5" fill="#0b1120" stroke="url(#g1)" stroke-width="2"/>
-          <circle cx="250" cy="106" r="2.2" fill="#ffffff" opacity="0.95"/>
+          <!-- Ear — geometric flap -->
+          <path d="M 158,70 C 148,52 145,36 154,28 C 162,21 174,26 178,40 C 180,50 176,64 170,72"
+                stroke="url(#gBody)" stroke-width="2.5" stroke-linecap="round" fill="url(#gBody)" opacity="0.1"/>
+          <path d="M 158,70 C 148,52 145,36 154,28 C 162,21 174,26 178,40 C 180,50 176,64 170,72"
+                stroke="url(#gBody)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
 
-          <!-- Ear — floppy, characterful -->
-          <path d="M 222,98 C 215,82 208,72 215,65 C 222,60 230,65 232,75 C 234,82 230,92 226,98"
-                stroke="url(#g1)" stroke-width="3" stroke-linecap="round" fill="none"/>
-          <path d="M 222,98 C 215,82 208,72 215,65 C 222,60 230,65 232,75 C 234,82 230,92 226,98"
-                fill="url(#g1)" opacity="0.08"/>
+          <!-- Tail — confident upward curve -->
+          <path d="M 86,160 C 70,148 56,128 58,106 C 60,88 70,78 80,74"
+                stroke="url(#gBody)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <path d="M 80,74 C 76,62 82,52 90,50 C 96,49 100,54 96,62"
+                stroke="url(#gBody)" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.7"/>
 
-          <!-- Front legs -->
-          <path d="M 195,195 L 192,240 C 192,245 195,248 200,248"
-                stroke="url(#g1)" stroke-width="3.5" stroke-linecap="round" fill="none"/>
-          <path d="M 175,198 L 173,240 C 173,245 176,248 181,248"
-                stroke="url(#g1)" stroke-width="3.5" stroke-linecap="round" fill="none"/>
-
-          <!-- Back legs -->
-          <path d="M 100,185 L 96,240 C 96,245 99,248 104,248"
-                stroke="url(#g1)" stroke-width="3.5" stroke-linecap="round" fill="none"/>
-          <path d="M 118,190 L 115,240 C 115,245 118,248 123,248"
-                stroke="url(#g1)" stroke-width="3.5" stroke-linecap="round" fill="none"/>
-
-          <!-- Tail — perky, wagging upward -->
-          <path d="M 70,145 C 58,135 48,118 52,100 C 55,88 62,82 68,80"
-                stroke="url(#g1)" stroke-width="3.5" stroke-linecap="round" fill="none"/>
-
-          <!-- === EMPHASIS LINES — the comic book touch === -->
-
-          <!-- Tail emphasis lines (wagging energy!) -->
-          <line x1="42" y1="78" x2="32" y2="70" stroke="#14d4be" stroke-width="2" stroke-linecap="round" opacity="0.7">
-            <animate attributeName="opacity" values="0.7;0.2;0.7" dur="0.8s" repeatCount="indefinite"/>
+          <!-- === WAGGING ENERGY LINES === -->
+          <line x1="56" y1="74" x2="44" y2="64" stroke="#14d4be" stroke-width="2" stroke-linecap="round" opacity="0.6">
+            <animate attributeName="opacity" values="0.6;0.1;0.6" dur="0.9s" repeatCount="indefinite"/>
           </line>
-          <line x1="48" y1="72" x2="40" y2="62" stroke="#14d4be" stroke-width="2" stroke-linecap="round" opacity="0.6">
-            <animate attributeName="opacity" values="0.6;0.15;0.6" dur="0.8s" repeatCount="indefinite" begin="0.15s"/>
+          <line x1="62" y1="67" x2="52" y2="54" stroke="#14d4be" stroke-width="1.8" stroke-linecap="round" opacity="0.45">
+            <animate attributeName="opacity" values="0.45;0.08;0.45" dur="0.9s" repeatCount="indefinite" begin="0.15s"/>
           </line>
-          <line x1="56" y1="70" x2="52" y2="58" stroke="#14d4be" stroke-width="2" stroke-linecap="round" opacity="0.5">
-            <animate attributeName="opacity" values="0.5;0.1;0.5" dur="0.8s" repeatCount="indefinite" begin="0.3s"/>
+          <line x1="70" y1="62" x2="63" y2="48" stroke="#14d4be" stroke-width="1.5" stroke-linecap="round" opacity="0.3">
+            <animate attributeName="opacity" values="0.3;0.05;0.3" dur="0.9s" repeatCount="indefinite" begin="0.3s"/>
           </line>
 
-          <!-- Face emphasis lines (alert/attention energy) -->
-          <line x1="290" y1="110" x2="302" y2="106" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" opacity="0.7">
-            <animate attributeName="opacity" values="0.7;0.2;0.7" dur="1.5s" repeatCount="indefinite"/>
+          <!-- Alert lines near face -->
+          <line x1="232" y1="90" x2="246" y2="86" stroke="#a78bfa" stroke-width="1.8" stroke-linecap="round" opacity="0.55">
+            <animate attributeName="opacity" values="0.55;0.1;0.55" dur="1.8s" repeatCount="indefinite"/>
           </line>
-          <line x1="288" y1="118" x2="300" y2="120" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" opacity="0.6">
-            <animate attributeName="opacity" values="0.6;0.15;0.6" dur="1.5s" repeatCount="indefinite" begin="0.25s"/>
+          <line x1="230" y1="100" x2="244" y2="101" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round" opacity="0.4">
+            <animate attributeName="opacity" values="0.4;0.08;0.4" dur="1.8s" repeatCount="indefinite" begin="0.3s"/>
           </line>
-          <line x1="286" y1="126" x2="296" y2="132" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" opacity="0.5">
-            <animate attributeName="opacity" values="0.5;0.1;0.5" dur="1.5s" repeatCount="indefinite" begin="0.5s"/>
+          <line x1="228" y1="110" x2="240" y2="115" stroke="#a78bfa" stroke-width="1.3" stroke-linecap="round" opacity="0.3">
+            <animate attributeName="opacity" values="0.3;0.05;0.3" dur="1.8s" repeatCount="indefinite" begin="0.6s"/>
           </line>
-
-          <!-- Little motion arcs near the tail -->
-          <path d="M 38,90 C 34,86 34,80 38,76" stroke="#14d4be" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.4">
-            <animate attributeName="opacity" values="0.4;0.1;0.4" dur="1s" repeatCount="indefinite"/>
-          </path>
-          <path d="M 30,94 C 24,88 24,78 30,72" stroke="#14d4be" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.3">
-            <animate attributeName="opacity" values="0.3;0.05;0.3" dur="1s" repeatCount="indefinite" begin="0.2s"/>
-          </path>
         </svg>
 
         <!-- Phone mockup (desktop only) -->

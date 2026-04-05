@@ -387,6 +387,12 @@ body::after {
   cursor: pointer;
   border-radius: var(--r-xl);
   transition: opacity 0.5s, visibility 0.5s;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  outline: none;
+}
+#start-prompt:focus-visible {
+  box-shadow: 0 0 0 3px rgba(6,182,212,0.5);
 }
 #start-prompt.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 
@@ -459,7 +465,7 @@ body::after {
 #bottom-panel {
   position: relative;
   z-index: 10;
-  padding: 14px 12px calc(var(--sab) + 20px);
+  padding: 16px 14px calc(var(--sab) + 24px);
 }
 
 /* ===== Audio strip — 3D bar ===== */
@@ -1011,6 +1017,16 @@ body::after {
 .hidden { display: none !important; }
 html, body { overscroll-behavior-y: contain; }
 
+/* glass-card — alias for depth-card used in HTML */
+.glass-card {
+  background: var(--grad-card);
+  border-radius: var(--r-lg);
+  border-top: var(--highlight-border-t);
+  border-left: var(--highlight-border-l);
+  box-shadow: var(--shadow-md), var(--bevel-full);
+  position: relative;
+}
+
 @media (min-width: 540px) {
   #camera-layer { border-radius: var(--r-xl); }
 }
@@ -1029,24 +1045,24 @@ html, body { overscroll-behavior-y: contain; }
  */
 
 /* -------------------------------------------------------------------------
-   Design Tokens
+   Design Tokens — Dark mode only (app is always dark)
    ------------------------------------------------------------------------- */
 :root {
-  --canid-fb-accent:          #4a90e2;
-  --canid-fb-accent-hover:    #357abd;
-  --canid-fb-success:         #27ae60;
-  --canid-fb-danger:          #e74c3c;
-  --canid-fb-bg:              #ffffff;
-  --canid-fb-bg-overlay:      rgba(0, 0, 0, 0.5);
-  --canid-fb-surface:         #f8f9fa;
-  --canid-fb-border:          #e0e0e0;
-  --canid-fb-text:            #333333;
-  --canid-fb-text-muted:      #666666;
-  --canid-fb-radius:          12px;
-  --canid-fb-radius-sm:       8px;
-  --canid-fb-shadow:          0 4px 24px rgba(0, 0, 0, 0.12);
-  --canid-fb-shadow-sm:       0 2px 8px rgba(0, 0, 0, 0.08);
-  --canid-fb-font:            -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --canid-fb-accent:          #06b6d4;
+  --canid-fb-accent-hover:    #0891b2;
+  --canid-fb-success:         #10b981;
+  --canid-fb-danger:          #f43f5e;
+  --canid-fb-bg:              rgba(15,23,42,0.96);
+  --canid-fb-bg-overlay:      rgba(0, 0, 0, 0.65);
+  --canid-fb-surface:         rgba(30,41,59,0.8);
+  --canid-fb-border:          rgba(255,255,255,0.08);
+  --canid-fb-text:            #f1f5f9;
+  --canid-fb-text-muted:      rgba(248,250,252,0.45);
+  --canid-fb-radius:          14px;
+  --canid-fb-radius-sm:       10px;
+  --canid-fb-shadow:          0 4px 24px rgba(0, 0, 0, 0.4);
+  --canid-fb-shadow-sm:       0 2px 8px rgba(0, 0, 0, 0.3);
+  --canid-fb-font:            'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --canid-fb-transition:      0.2s ease;
   --canid-fb-z:               1000;
 }
@@ -1080,8 +1096,10 @@ html, body { overscroll-behavior-y: contain; }
   gap: 12px;
   padding: 12px 16px;
   background: var(--canid-fb-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-top: 1px solid var(--canid-fb-border);
-  box-shadow: 0 -2px 16px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 -4px 24px rgba(0,0,0,0.35);
 
   transform: translateY(100%);
   opacity: 0;
@@ -1191,8 +1209,10 @@ html, body { overscroll-behavior-y: contain; }
   left: 0;
   right: 0;
   background: var(--canid-fb-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-top: 1px solid var(--canid-fb-border);
-  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.4);
   padding: 16px;
   animation: slideUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -1452,19 +1472,7 @@ html, body { overscroll-behavior-y: contain; }
   background: var(--canid-fb-border);
 }
 
-/* -------------------------------------------------------------------------
-   Dark Mode
-   ------------------------------------------------------------------------- */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --canid-fb-bg:          #1c1c1e;
-    --canid-fb-surface:     #2c2c2e;
-    --canid-fb-border:      #3a3a3c;
-    --canid-fb-text:        #f2f2f7;
-    --canid-fb-text-muted:  #8e8e93;
-    --canid-fb-bg-overlay:  rgba(0, 0, 0, 0.7);
-  }
-}
+/* Dark mode override — not needed, app is always dark */
 
 /* -------------------------------------------------------------------------
    Reduced Motion
@@ -1501,7 +1509,7 @@ html, body { overscroll-behavior-y: contain; }
 #tour-spotlight {
   position: absolute;
   border-radius: 12px;
-  box-shadow: 0 0 0 9999px rgba(0,0,0,0.72), 0 0 0 3px var(--accent), 0 0 24px 6px rgba(0,255,200,0.25);
+  box-shadow: 0 0 0 9999px rgba(0,0,0,0.72), 0 0 0 3px rgba(6,182,212,0.7), 0 0 24px 6px rgba(6,182,212,0.2);
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
 }
@@ -1509,7 +1517,7 @@ html, body { overscroll-behavior-y: contain; }
 #tour-tooltip {
   position: absolute;
   background: var(--bg-elevated, #1a1f2e);
-  border: 1px solid rgba(0,255,200,0.2);
+  border: 1px solid rgba(6,182,212,0.25);
   border-radius: 14px;
   padding: 18px 20px 16px;
   max-width: min(300px, calc(100vw - 32px));
@@ -1531,8 +1539,8 @@ html, body { overscroll-behavior-y: contain; }
   position: absolute;
   width: 14px; height: 14px;
   background: var(--bg-elevated, #1a1f2e);
-  border-left: 1px solid rgba(0,255,200,0.2);
-  border-top: 1px solid rgba(0,255,200,0.2);
+  border-left: 1px solid rgba(6,182,212,0.2);
+  border-top: 1px solid rgba(6,182,212,0.2);
   transition: all 0.35s ease;
 }
 #tour-arrow.arrow-down {
@@ -1642,7 +1650,7 @@ html, body { overscroll-behavior-y: contain; }
         <div class="top-left" id="header-logo"></div>
         <div class="top-right">
           <div id="status-dot" class="dot-inactive"></div>
-          <button id="btn-tour" class="glass-icon-btn" aria-label="Help tour" style="font-size:15px;font-weight:700;color:var(--accent);">?</button>
+          <button id="btn-tour" class="glass-icon-btn" aria-label="Help tour" style="font-size:15px;font-weight:700;color:var(--teal);">?</button>
           <button id="btn-settings" class="glass-icon-btn" aria-label="Settings">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
           </button>
@@ -1659,7 +1667,7 @@ html, body { overscroll-behavior-y: contain; }
       </button>
 
       <!-- Start prompt -->
-      <div id="start-prompt" role="button" aria-label="Start camera analysis">
+      <div id="start-prompt" role="button" tabindex="0" aria-label="Start camera analysis">
         <div class="start-content">
           <div class="start-ring start-ring-pulse">
             <svg viewBox="0 0 120 120">
@@ -2333,7 +2341,8 @@ const DB_NAME    = 'canid-feedback';
 const DB_VERSION = 1;
 const STORE_NAME = 'samples';
 
-const CLASS_LABELS = [
+// Note: CLASS_LABELS already defined in CanidCNNClassifier block above
+const FB_CLASS_LABELS = [
   'play_bark',
   'warning_bark',
   'alert_bark',
@@ -2463,7 +2472,7 @@ class CanidFeedback {
       <div class="canid-feedback-correction" id="canid-fb-correction" hidden>
         <p class="canid-fb-correction-prompt">What was it really?</p>
         <div class="canid-fb-class-grid" id="canid-fb-class-grid">
-          ${CLASS_LABELS.map(lbl => `
+          ${FB_CLASS_LABELS.map(lbl => `
             <button class="canid-fb-class-btn" data-label="${lbl}"
                     aria-label="It was ${CLASS_DISPLAY_NAMES[lbl]}">
               ${CLASS_DISPLAY_NAMES[lbl]}
@@ -2550,7 +2559,7 @@ class CanidFeedback {
           <table class="canid-fb-stats-table">
             <thead><tr><th>Class</th><th>Samples</th><th>Bar</th></tr></thead>
             <tbody>
-              ${CLASS_LABELS.map(lbl => {
+              ${FB_CLASS_LABELS.map(lbl => {
                 const n = counts[lbl] || 0;
                 const pct = total > 0 ? Math.round((n / total) * 100) : 0;
                 return `<tr>
@@ -2612,7 +2621,7 @@ class CanidFeedback {
       exported_at: new Date().toISOString(),
       n_samples:  samples.length,
       n_features: 30,
-      class_labels: CLASS_LABELS,
+      class_labels: FB_CLASS_LABELS,
       samples: samples.map(s => ({
         label:      s.label,
         features:   s.features,
@@ -2769,7 +2778,7 @@ class CanidFeedback {
   async _getCountsByLabel() {
     const samples = await this._getAllSamples();
     const counts = {};
-    CLASS_LABELS.forEach(lbl => { counts[lbl] = 0; });
+    FB_CLASS_LABELS.forEach(lbl => { counts[lbl] = 0; });
     samples.forEach(s => {
       if (counts[s.label] !== undefined) counts[s.label]++;
     });
@@ -2800,8 +2809,112 @@ if (typeof window !== 'undefined') {
 </script>
 
   <!-- App -->
-  <script src="js/logo.js"></script>
-  <script src="js/splash.js"></script>
+  <script>/* Canid Logo — inline implementation (replaces js/logo.js) */
+(function() {
+  'use strict';
+
+  const DOG_PATH_STROKE = 1.5;
+
+  function dogSVG(size, strokeColor, dotColor1, dotColor2, gradId) {
+    const h = Math.round(size * 22 / 24);
+    const grad = gradId
+      ? `<defs><linearGradient id="${gradId}" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#14d4be"/><stop offset="100%" stop-color="#7c3aed"/></linearGradient></defs>`
+      : '';
+    return `<svg width="${size}" height="${h}" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+      ${grad}
+      <ellipse cx="16" cy="7" rx="4.5" ry="4" stroke="${strokeColor}" stroke-width="${DOG_PATH_STROKE}" fill="none"/>
+      <path d="M5,10 C7,7 11,6 14,7 L16,8 C18,10 19,13 17,15 C15,17 10,17 8,16 C6,15 5,12 5,10 Z" stroke="${strokeColor}" stroke-width="${DOG_PATH_STROKE}" fill="none"/>
+      <circle cx="17.5" cy="6.5" r="1" fill="${dotColor1}"/>
+      <path d="M5,10 C3.5,7.5 3,5 4.5,3.5" stroke="${strokeColor}" stroke-width="${DOG_PATH_STROKE}" stroke-linecap="round" fill="none"/>
+      <line x1="2.5" y1="3" x2="1" y2="1" stroke="${dotColor1}" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
+      <line x1="3.5" y1="2" x2="2.8" y2="0" stroke="${dotColor1}" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+      <line x1="21.5" y1="6" x2="23" y2="5.5" stroke="${dotColor2}" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+      <line x1="21.5" y1="9" x2="23" y2="9.5" stroke="${dotColor2}" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+    </svg>`;
+  }
+
+  window.CanidLogo = {
+    headerMark({ height = 26, variant = 'gradient' } = {}) {
+      const uid = 'lg' + Math.random().toString(36).substr(2, 6);
+      const gradId = variant === 'gradient' ? uid : null;
+      const stroke = variant === 'gradient' ? `url(#${uid})` : (variant === 'white' ? 'rgba(255,255,255,0.9)' : '#14d4be');
+      const textColor = variant === 'white' ? '#fff' : '#14d4be';
+      return `<div style="display:flex;align-items:center;gap:6px;font-family:Inter,-apple-system,sans-serif;font-weight:800;font-size:1.05rem;color:${textColor};letter-spacing:-0.03em;">${dogSVG(height, stroke, '#14d4be', '#a78bfa', gradId)}<span>Canid</span></div>`;
+    },
+    full({ height = 32, variant = 'white' } = {}) {
+      return this.headerMark({ height, variant });
+    }
+  };
+})();
+</script>
+  <script>/* Canid Splash Screen — inline implementation (replaces js/splash.js) */
+(function() {
+  'use strict';
+
+  window.CanidSplash = {
+    show() {
+      // Inject keyframe animation
+      const style = document.createElement('style');
+      style.id = 'canid-splash-style';
+      style.textContent = `
+        @keyframes canidSplashPulse { 0%,100%{transform:scale(1);opacity:0.9} 50%{transform:scale(1.1);opacity:1} }
+        @keyframes canidSplashFadeIn { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+        #canid-splash { animation: canidSplashFadeIn 0.4s ease forwards; }
+        #canid-splash .splash-dog { animation: canidSplashPulse 1.6s ease-in-out infinite; transform-origin: center; }
+        #canid-splash .splash-badge { animation: canidSplashFadeIn 0.5s 0.3s ease both; }
+      `;
+      document.head.appendChild(style);
+
+      const el = document.createElement('div');
+      el.id = 'canid-splash';
+      el.setAttribute('role', 'status');
+      el.setAttribute('aria-label', 'Loading Canid');
+      el.style.cssText = [
+        'position:fixed;inset:0;z-index:99999',
+        'background:#0b1120',
+        'display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0',
+        'transition:opacity 0.55s ease'
+      ].join(';');
+
+      el.innerHTML = `
+        <div class="splash-dog" style="margin-bottom:20px;">
+          <svg width="80" height="74" viewBox="0 0 24 22" fill="none">
+            <defs>
+              <linearGradient id="splashG" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#14d4be"/>
+                <stop offset="100%" stop-color="#7c3aed"/>
+              </linearGradient>
+            </defs>
+            <ellipse cx="16" cy="7" rx="4.5" ry="4" stroke="url(#splashG)" stroke-width="1.5" fill="none"/>
+            <path d="M5,10 C7,7 11,6 14,7 L16,8 C18,10 19,13 17,15 C15,17 10,17 8,16 C6,15 5,12 5,10 Z" stroke="url(#splashG)" stroke-width="1.5" fill="none"/>
+            <circle cx="17.5" cy="6.5" r="1.2" fill="#14d4be"/>
+            <path d="M5,10 C3.5,7.5 3,5 4.5,3.5" stroke="url(#splashG)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+            <line x1="2.5" y1="3" x2="1" y2="1" stroke="#14d4be" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
+            <line x1="3.5" y1="2" x2="2.8" y2="0" stroke="#14d4be" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+            <line x1="21.5" y1="6" x2="23" y2="5.5" stroke="#a78bfa" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+            <line x1="21.5" y1="9" x2="23" y2="9.5" stroke="#a78bfa" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+          </svg>
+        </div>
+        <div style="font-family:Inter,-apple-system,sans-serif;font-weight:800;font-size:2rem;color:#fff;letter-spacing:-0.04em;line-height:1;">Canid</div>
+        <div class="splash-badge" style="font-family:Inter,-apple-system,sans-serif;font-size:0.65rem;color:rgba(255,255,255,0.35);letter-spacing:0.18em;text-transform:uppercase;margin-top:6px;">Behavioral Translator</div>
+      `;
+
+      document.body.appendChild(el);
+
+      return new Promise(resolve => {
+        setTimeout(() => {
+          el.style.opacity = '0';
+          setTimeout(() => {
+            el.remove();
+            style.remove();
+            resolve();
+          }, 580);
+        }, 2000);
+      });
+    }
+  };
+})();
+</script>
   <script>/**
  * AudioAnalyzer — Real-time vocalization classification using Web Audio API
  * 
@@ -2860,6 +2973,10 @@ class AudioAnalyzer {
       
       this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
       this.sampleRate = this.audioContext.sampleRate;
+      // Resume AudioContext if suspended (iOS Safari requires user gesture)
+      if (this.audioContext.state === 'suspended') {
+        await this.audioContext.resume();
+      }
       
       const source = this.audioContext.createMediaStreamSource(this.stream);
       this.analyser = this.audioContext.createAnalyser();
@@ -3382,6 +3499,11 @@ class BodyAnalyzer {
 
   stop() {
     this.isRunning = false;
+    // Clear motion state to avoid stale data on restart
+    this.previousFrame = null;
+    this.motionHistory = [];
+    this.lastDetection = null;
+    this.detectionHistory = [];
   }
 
   /**
@@ -4228,22 +4350,7 @@ class BehaviorFusion {
 
 window.BehaviorFusion = BehaviorFusion;
 </script>
-  <script>/* roundRect polyfill for older browsers */
-if (!CanvasRenderingContext2D.prototype.roundRect) {
-  CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
-    if (typeof r === 'number') r = [r, r, r, r];
-    this.beginPath();
-    this.moveTo(x + r[0], y);
-    this.arcTo(x + w, y, x + w, y + h, r[1]);
-    this.arcTo(x + w, y + h, x, y + h, r[2]);
-    this.arcTo(x, y + h, x, y, r[3]);
-    this.arcTo(x, y, x + w, y, r[0]);
-    this.closePath();
-    return this;
-  };
-}
-
-/**
+  <script>/**
  * UI Manager — Layered 3D / Paper-Cut rendering
  * 3D audio bars, depth-aware overlays, confidence ring, history
  */
@@ -4407,8 +4514,10 @@ class UI {
       return;
     }
 
-    let label = classification.type.toUpperCase();
-    if (classification.subtype) label += ` · ${classification.subtype}`;
+    // Use CNN raw type for display if available (more descriptive)
+    const displayRaw = classification.cnnRawType || classification.type;
+    let label = displayRaw.replace(/_/g, ' ').toUpperCase();
+    if (!classification.cnnRawType && classification.subtype) label += ` · ${classification.subtype}`;
 
     const colorMap = {
       bark: 'var(--amber)', growl: 'var(--rose)', whine: 'var(--rose)',
@@ -4475,10 +4584,10 @@ class UI {
 
     this.assessmentCard.classList.remove('assessment-hidden');
 
-    // State class
-    this.assessmentCard.className = 'depth-card';
-    // Re-apply custom styling from CSS (the card uses depth-card base, plus state)
-    this.assessmentCard.id = 'assessment-card';
+    // Remove all state-* classes, keep base glass-card class
+    const stateClasses = ['state-playful','state-anxious','state-alert','state-fearful',
+                          'state-relaxed','state-attention','state-frustrated','state-excited'];
+    stateClasses.forEach(c => this.assessmentCard.classList.remove(c));
     if (assessment.cssClass) this.assessmentCard.classList.add(assessment.cssClass);
 
     this.stateIcon.textContent = assessment.icon || '❓';
@@ -4630,7 +4739,7 @@ window.UI = UI;
   function buildCNNFeatures(audioResult) {
     const features = new Float32Array(30);
     const mfccs = audioResult.mfccs || [];
-    const sr = 44100;
+    const sr = audioAnalyzer.sampleRate || 44100;
     for (let i = 0; i < 13; i++) { features[i] = mfccs[i] || 0; }
     for (let i = 0; i < 13; i++) { features[13 + i] = 0.1; } // std approx
     features[26] = (audioResult.pitch || 0) / 4000;
@@ -4701,8 +4810,11 @@ window.UI = UI;
   }
 
   function bindEvents() {
-    // Start analysis on tap
+    // Start analysis on tap or keyboard
     document.getElementById('start-prompt').addEventListener('click', startAnalysis);
+    document.getElementById('start-prompt').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); startAnalysis(); }
+    });
 
     // Stop analysis
     document.getElementById('btn-stop').addEventListener('click', stopAnalysis);
@@ -4778,6 +4890,16 @@ window.UI = UI;
       const stream = await navigator.mediaDevices.getUserMedia(constraints);
       ui.cameraFeed.srcObject = stream;
       await new Promise(resolve => { ui.cameraFeed.onloadedmetadata = resolve; });
+      // Handle camera disconnecting mid-session
+      stream.getVideoTracks().forEach(track => {
+        track.addEventListener('ended', () => {
+          if (isRunning) {
+            console.warn('[Canid] Camera track ended unexpectedly');
+            ui.showStartPrompt('Camera disconnected — tap to retry');
+            stopAnalysis();
+          }
+        });
+      });
       return true;
     } catch (err) {
       console.error('Camera error:', err);
@@ -4852,13 +4974,27 @@ window.UI = UI;
         const cnnFeatures = buildCNNFeatures(audioResult);
         const cnnResult = cnnClassifier.classify(cnnFeatures);
         if (cnnResult.source === 'cnn' && cnnResult.type !== 'silence') {
+          // Normalize CNN type (play_bark→bark with subtype play, warning_bark→bark/warning, etc.)
+          const CNN_TYPE_MAP = {
+            play_bark:    { type: 'bark', subtype: 'play' },
+            warning_bark: { type: 'bark', subtype: 'warning' },
+            alert_bark:   { type: 'bark', subtype: 'alert' },
+            demand_bark:  { type: 'bark', subtype: 'demand' },
+            whine:        { type: 'whine', subtype: null },
+            growl:        { type: 'growl', subtype: null },
+            howl:         { type: 'howl', subtype: null },
+            yip:          { type: 'yip', subtype: null },
+            silence:      { type: 'silence', subtype: null },
+          };
+          const mapped = CNN_TYPE_MAP[cnnResult.type] || { type: cnnResult.type, subtype: cnnResult.subtype };
           // Override rule-based with CNN result
           audioResult.classification = {
-            type: cnnResult.type,
-            subtype: cnnResult.subtype,
+            type: mapped.type,
+            subtype: mapped.subtype || cnnResult.subtype,
             confidence: cnnResult.confidence,
             features: audioResult.classification ? audioResult.classification.features : {},
-            cnnScores: cnnResult.allScores
+            cnnScores: cnnResult.allScores,
+            cnnRawType: cnnResult.type
           };
           lastCNNResult = cnnResult;
           lastCNNFeatures = cnnFeatures;
@@ -4937,6 +5073,21 @@ window.UI = UI;
       ui.cameraFeed.srcObject.getTracks().forEach(t => t.stop());
       ui.cameraFeed.srcObject = null;
     }
+    // Clear overlay canvas
+    if (ui.overlayCanvas) {
+      const ctx = ui.overlayCanvas.getContext('2d');
+      ctx.clearRect(0, 0, ui.overlayCanvas.width, ui.overlayCanvas.height);
+    }
+    // Reset assessment state
+    lastCNNResult = null;
+    lastCNNFeatures = null;
+    lastHistoryState = null;
+    lastAssessmentTime = 0;
+    ui.updateAssessment(null);
+    ui.updateDetectionBadges(null, null);
+    ui.drawAudioVisualization(null, 0, false);
+    ui.vocalizationType.textContent = '—';
+    ui.vocalizationType.style.color = 'var(--t3)';
     ui.setActive(false);
     ui.showStartPrompt('Tap to start');
     ui.showScanning(false);
