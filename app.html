@@ -220,8 +220,8 @@ body::after {
    CAMERA LAYER
    ================================================================ */
 #camera-layer {
-  position: relative; width: calc(100% - 24px); margin: 10px auto 0;
-  aspect-ratio: 4/3; min-height: 220px; max-height: 50dvh;
+  position: relative; width: calc(100% - 24px); margin: 8px auto 0;
+  aspect-ratio: 4/3; min-height: 200px; max-height: 46dvh;
   background: #1A0F00; overflow: hidden;
   border-radius: var(--r-xl);
   border: var(--ink-border);
@@ -388,12 +388,12 @@ body::after {
    ================================================================ */
 #bottom-panel {
   position: relative; z-index: 10;
-  padding: 12px 12px 0;
+  padding: 8px 12px 0;
 }
 
 /* Audio strip — warm parchment style */
 #audio-strip {
-  position: relative; height: 54px; border-radius: var(--r-md);
+  position: relative; height: 44px; border-radius: var(--r-md);
   overflow: hidden;
   background: var(--cream-2);
   border: var(--ink-border-2);
@@ -419,7 +419,7 @@ body::after {
 }
 
 /* Mode panels */
-.mode-panel { padding-bottom: calc(var(--sab) + 24px); }
+.mode-panel { padding-bottom: calc(var(--sab) + 16px); }
 
 /* ================================================================
    CONTEXT SELECTOR — chunky Cuphead buttons
@@ -476,13 +476,13 @@ body::after {
   transition: background 0.5s;
 }
 
-.assessment-body { display: flex; align-items: center; padding: 16px 16px 12px; gap: 12px; position: relative; z-index: 1; }
+.assessment-body { display: flex; align-items: center; padding: 10px 14px 8px; gap: 10px; position: relative; z-index: 1; }
 .assessment-left { flex: 1; display: flex; align-items: center; gap: 12px; min-width: 0; }
 
 #state-icon-wrap {
-  width: 52px; height: 52px; border-radius: var(--r-md);
+  width: 44px; height: 44px; border-radius: var(--r-md);
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.6rem; flex-shrink: 0;
+  font-size: 1.35rem; flex-shrink: 0;
   background: var(--cream-2);
   border: var(--ink-border-2);
   box-shadow: 2px 2px 0 var(--ink);
@@ -491,7 +491,7 @@ body::after {
 
 #state-text { min-width: 0; }
 #state-label {
-  font-size: 1.25rem; font-weight: 800; line-height: 1.2; margin-bottom: 3px;
+  font-size: 1.05rem; font-weight: 800; line-height: 1.2; margin-bottom: 2px;
   font-family: 'Fredoka One', 'Inter', sans-serif;
   color: var(--ink);
   letter-spacing: 0.01em;
@@ -501,7 +501,7 @@ body::after {
 .assessment-right { flex-shrink: 0; }
 
 #confidence-ring-wrap {
-  position: relative; width: 72px; height: 72px; border-radius: 50%;
+  position: relative; width: 60px; height: 60px; border-radius: 50%;
   background: var(--cream-2);
   border: var(--ink-border-2);
   padding: 6px;
@@ -518,7 +518,7 @@ body::after {
 /* Valence × Arousal */
 #valence-arousal {
   display: flex; align-items: center; gap: 8px;
-  padding: 0 16px 10px; position: relative; z-index: 1;
+  padding: 0 14px 8px; position: relative; z-index: 1;
 }
 .va-label { font-size: 0.5rem; font-weight: 800; letter-spacing: 0.16em; color: var(--text-muted); text-transform: uppercase; }
 .va-grid {
@@ -536,7 +536,7 @@ body::after {
 .va-desc { font-size: 0.6rem; color: var(--text-soft); font-style: italic; }
 
 #evidence-list {
-  display: flex; flex-wrap: wrap; gap: 5px; padding: 0 16px 14px; position: relative; z-index: 1;
+  display: flex; flex-wrap: wrap; gap: 4px; padding: 0 14px 8px; position: relative; z-index: 1;
 }
 
 .evidence-tag {
@@ -554,8 +554,8 @@ body::after {
 .evidence-tag.context{ border-left: 3px solid var(--mustard); }
 
 .disclaimer {
-  font-size: 0.58rem; color: var(--text-muted); text-align: center;
-  padding: 0 16px 14px; font-style: italic; position: relative; z-index: 1;
+  font-size: 0.55rem; color: var(--text-muted); text-align: center;
+  padding: 0 14px 8px; font-style: italic; position: relative; z-index: 1;
 }
 
 /* State-specific accent theming */
@@ -930,6 +930,165 @@ body::after {
 .sheet-footer p { font-size: 0.62rem; color: var(--text-muted); margin-top: 8px; }
 
 /* ================================================================
+   SESSION SUMMARY
+   ================================================================ */
+#session-summary {
+  margin-top: 4px; margin-bottom: 4px;
+  background: var(--surface);
+  border: var(--ink-border-2);
+  border-radius: var(--r-lg);
+  box-shadow: 3px 3px 0 var(--ink), var(--shadow-sm);
+  overflow: hidden; position: relative;
+}
+#session-summary::before {
+  content: '';
+  position: absolute; inset: 0; border-radius: inherit;
+  background: var(--halftone); background-size: 6px 6px;
+  pointer-events: none; z-index: 0; opacity: 0.5;
+}
+.summary-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 14px 6px; position: relative; z-index: 1;
+}
+.summary-title { font-size: 0.52rem; font-weight: 800; letter-spacing: 0.22em; color: var(--text-muted); text-transform: uppercase; }
+.summary-time { font-size: 0.6rem; color: var(--text-muted); font-weight: 600; }
+.summary-bars { padding: 0 14px 10px; display: flex; flex-direction: column; gap: 5px; position: relative; z-index: 1; }
+.summary-row { display: flex; align-items: center; gap: 7px; }
+.summary-row-label { font-size: 0.62rem; font-weight: 700; color: var(--text); width: 56px; flex-shrink: 0; }
+.summary-bar-track { flex: 1; height: 8px; background: var(--cream-2); border-radius: 4px; border: 1px solid rgba(26,15,0,0.12); overflow: hidden; }
+.summary-bar-fill { height: 100%; border-radius: 4px; transition: width 0.6s var(--ease-out); min-width: 2px; }
+.summary-row-pct { font-size: 0.6rem; font-weight: 800; color: var(--text-muted); width: 28px; text-align: right; flex-shrink: 0; }
+
+/* ================================================================
+   RESULTS SCREEN OVERLAY
+   ================================================================ */
+#results-overlay {
+  position: fixed; inset: 0; z-index: 500;
+  background: rgba(26,15,0,0.88);
+  display: flex; align-items: center; justify-content: center;
+  padding: 16px;
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.4s, visibility 0.4s;
+}
+#results-overlay.visible { opacity: 1; visibility: visible; }
+#results-overlay.visible .results-card { transform: translateY(0) scale(1); opacity: 1; }
+
+.results-card {
+  background: var(--cream);
+  border: var(--ink-border);
+  border-radius: var(--r-xl);
+  box-shadow: 6px 6px 0 var(--ink), var(--shadow-xl);
+  width: 100%; max-width: 440px; max-height: 90dvh;
+  overflow-y: auto;
+  position: relative;
+  transform: translateY(30px) scale(0.96); opacity: 0;
+  transition: transform 0.5s var(--ease-spring), opacity 0.4s;
+}
+.results-card::before {
+  content: '';
+  position: absolute; inset: 0; border-radius: inherit;
+  background: var(--halftone); background-size: 6px 6px;
+  pointer-events: none; z-index: 0; opacity: 0.6;
+}
+.results-card > * { position: relative; z-index: 1; }
+
+.results-accent { height: 8px; background: var(--grad-teal); border-radius: var(--r-xl) var(--r-xl) 0 0; }
+.results-hero {
+  text-align: center; padding: 20px 20px 14px;
+}
+.results-icon-wrap {
+  width: 80px; height: 80px; border-radius: var(--r-lg);
+  border: var(--ink-border); box-shadow: 4px 4px 0 var(--ink);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.5rem; margin: 0 auto 12px;
+  background: var(--cream-2);
+}
+.results-verdict {
+  font-family: 'Fredoka One', sans-serif;
+  font-size: 1.9rem; color: var(--ink); line-height: 1.1; margin-bottom: 4px;
+}
+.results-confidence-big {
+  font-family: 'Fredoka One', sans-serif;
+  font-size: 3rem; color: var(--teal-warm); line-height: 1;
+  text-shadow: 3px 3px 0 var(--ink);
+}
+.results-confidence-label { font-size: 0.62rem; font-weight: 800; color: var(--text-muted); letter-spacing: 0.2em; text-transform: uppercase; }
+.results-need {
+  font-size: 0.88rem; color: var(--text-soft); line-height: 1.5;
+  padding: 10px 20px 0; font-style: italic;
+}
+.results-section { padding: 10px 20px; }
+.results-section-label { font-size: 0.52rem; font-weight: 800; letter-spacing: 0.22em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 7px; }
+.results-evidence-list { display: flex; flex-wrap: wrap; gap: 5px; }
+.results-summary-bars { display: flex; flex-direction: column; gap: 5px; }
+.results-actions {
+  display: flex; gap: 8px; padding: 12px 20px 20px;
+  flex-direction: column;
+}
+.results-btn-primary {
+  width: 100%; padding: 14px; border-radius: var(--r-md);
+  border: var(--ink-border);
+  background: var(--grad-teal); color: #fff;
+  font-family: 'Fredoka One', sans-serif; font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 var(--ink), var(--btn-bevel);
+  transition: all 0.12s;
+  -webkit-tap-highlight-color: transparent;
+}
+.results-btn-primary:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--ink); }
+.results-btn-secondary {
+  width: 100%; padding: 11px; border-radius: var(--r-md);
+  border: var(--ink-border-2);
+  background: var(--cream-2); color: var(--text);
+  font-family: inherit; font-size: 0.9rem; font-weight: 700;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 var(--ink), var(--btn-bevel);
+  transition: all 0.12s;
+  -webkit-tap-highlight-color: transparent;
+}
+.results-btn-secondary:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+
+/* Coach results */
+.results-grade-badge {
+  display: inline-block; padding: 6px 18px; border-radius: 100px;
+  font-family: 'Fredoka One', sans-serif; font-size: 1.3rem;
+  border: var(--ink-border);
+  box-shadow: 3px 3px 0 var(--ink);
+  margin-bottom: 8px;
+}
+.results-stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.results-stat-item {
+  background: var(--cream-2); border: var(--ink-border-2); border-radius: var(--r-sm);
+  box-shadow: 2px 2px 0 var(--ink); padding: 10px 12px; text-align: center;
+}
+.results-stat-num { font-family: 'Fredoka One', sans-serif; font-size: 1.6rem; color: var(--ink); line-height: 1; }
+.results-stat-label { font-size: 0.58rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 2px; }
+
+/* Stress results */
+.results-tier-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 16px; border-radius: var(--r-sm);
+  border: var(--ink-border); box-shadow: 3px 3px 0 var(--ink);
+  font-family: 'Fredoka One', sans-serif; font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+.results-stress-alert {
+  padding: 10px 14px; border-radius: var(--r-sm);
+  border: var(--ink-border-2); border-left-width: 4px;
+  box-shadow: 2px 2px 0 var(--ink);
+  font-size: 0.8rem; font-weight: 600; line-height: 1.4;
+  margin-bottom: 8px;
+}
+.results-stress-alert.high { background: #FFE8E0; color: var(--brick-dark); border-color: var(--brick); border-left-color: var(--brick); }
+.results-stress-alert.medium { background: #FFF5D0; color: var(--mustard-dark); border-color: var(--mustard); border-left-color: var(--mustard); }
+.results-stress-alert.ok { background: #E8F8E8; color: #3D7A3D; border-color: var(--lime); border-left-color: var(--lime); }
+
+/* ================================================================
+   MUTE BUTTON
+   ================================================================ */
+#btn-mute { font-size: 14px; }
+
+/* ================================================================
    UTILITIES
    ================================================================ */
 .hidden { display: none !important; }
@@ -944,7 +1103,8 @@ html, body { overscroll-behavior-y: contain; }
 }
 
 @media (min-width: 540px) { #camera-layer { border-radius: var(--r-xl); } }
-@media (max-height: 680px) { #camera-layer { max-height: 42dvh; min-height: 180px; } }
+@media (max-height: 680px) { #camera-layer { max-height: 38dvh; min-height: 160px; } }
+@media (max-height: 580px) { #camera-layer { max-height: 34dvh; min-height: 140px; } }
 
 /* ================================================================
    FEEDBACK MODULE — warm reskin
@@ -1184,6 +1344,7 @@ html, body { overscroll-behavior-y: contain; }
         <div class="top-left" id="header-logo"></div>
         <div class="top-right">
           <div id="status-dot" class="dot-inactive"></div>
+          <button id="btn-mute" class="glass-icon-btn" aria-label="Toggle sound">🔊</button>
           <button id="btn-tour" class="glass-icon-btn" aria-label="Help tour" style="font-size:15px;font-weight:700;color:var(--teal);">?</button>
           <button id="btn-settings" class="glass-icon-btn" aria-label="Settings">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
@@ -1276,6 +1437,15 @@ html, body { overscroll-behavior-y: contain; }
           </div>
           <div id="evidence-list"></div>
           <div class="disclaimer">Observable behavioral assessment — not thought reading.</div>
+        </div>
+
+        <!-- Session Summary -->
+        <div id="session-summary" style="display:none">
+          <div class="summary-header">
+            <span class="summary-title">SESSION SUMMARY</span>
+            <span class="summary-time" id="summary-time">0:00</span>
+          </div>
+          <div class="summary-bars" id="summary-bars"></div>
         </div>
 
         <!-- History -->
@@ -1382,6 +1552,13 @@ html, body { overscroll-behavior-y: contain; }
 
     </div><!-- end #bottom-panel -->
 
+    <!-- ===== Results Overlay ===== -->
+    <div id="results-overlay" role="dialog" aria-modal="true" aria-label="Analysis results">
+      <div class="results-card" id="results-card">
+        <!-- Content injected by JS -->
+      </div>
+    </div>
+
     <!-- ===== Settings sheet ===== -->
     <div id="settings-sheet" class="sheet hidden">
       <div class="sheet-backdrop"></div>
@@ -1416,6 +1593,13 @@ html, body { overscroll-behavior-y: contain; }
           <div class="setting-row toggle-row">
             <label>Detection Overlay</label>
             <label class="toggle"><input type="checkbox" id="overlay-enabled" checked aria-label="Toggle detection overlay"><span class="toggle-track"><span class="toggle-thumb"></span></span></label>
+          </div>
+          <div class="setting-row">
+            <label>Auto-stop Threshold (%)</label>
+            <div class="range-wrap">
+              <input type="range" id="autostop-slider" min="60" max="100" value="80" aria-label="Auto-stop threshold">
+              <span id="autostop-value">80</span>
+            </div>
           </div>
           <div class="setting-section-label">🎓 Command Coach</div>
           <div class="setting-row">
@@ -2632,6 +2816,41 @@ class BodyAnalyzer {
     return { level, value: Math.round(avg * 1000) / 1000, pattern };
   }
 
+  drawOverlayMultiDog(showOverlay = true) {
+    // Multi-dog version: labels each dog by index
+    if (!this.ctx || !this.lastDetection) return;
+    this.canvas.width = this.video.videoWidth;
+    this.canvas.height = this.video.videoHeight;
+    const ctx = this.ctx;
+    ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    if (!showOverlay || !this.lastDetection.detected) return;
+    this.lastDetection.dogs.forEach((dog, dogIdx) => {
+      const [x, y, w, h] = dog.bbox;
+      const accent = 'rgba(59, 130, 246, ';
+      const cornerLen = Math.min(24, w * 0.12, h * 0.12);
+      const pad = 4;
+      ctx.fillStyle = accent + '0.06)';
+      ctx.beginPath(); ctx.roundRect(x-pad, y-pad, w+pad*2, h+pad*2, 8); ctx.fill();
+      ctx.strokeStyle = accent + '0.7)'; ctx.lineWidth = 2.5;
+      ctx.shadowColor = accent + '0.4)'; ctx.shadowBlur = 8; ctx.lineCap = 'round';
+      const corners = [
+        [[x, y+cornerLen],[x,y],[x+cornerLen,y]],
+        [[x+w-cornerLen, y],[x+w,y],[x+w,y+cornerLen]],
+        [[x, y+h-cornerLen],[x,y+h],[x+cornerLen,y+h]],
+        [[x+w-cornerLen, y+h],[x+w,y+h],[x+w,y+h-cornerLen]]
+      ];
+      corners.forEach(pts => { ctx.beginPath(); ctx.moveTo(pts[0][0],pts[0][1]); ctx.lineTo(pts[1][0],pts[1][1]); ctx.lineTo(pts[2][0],pts[2][1]); ctx.stroke(); });
+      ctx.shadowBlur = 0; ctx.lineCap = 'butt';
+      // Dog label
+      const dogLabel = `Dog ${dogIdx + 1}`;
+      ctx.font = '700 12px Inter, sans-serif';
+      const lw = ctx.measureText(dogLabel).width;
+      ctx.fillStyle = accent + '0.9)';
+      ctx.beginPath(); ctx.roundRect(x, y - 28, lw + 16, 22, 5); ctx.fill();
+      ctx.fillStyle = '#fff'; ctx.fillText(dogLabel, x + 8, y - 11);
+    });
+  }
+
   drawOverlay(showOverlay = true) {
     if (!this.ctx || !this.lastDetection) return;
     this.canvas.width = this.video.videoWidth;
@@ -2697,7 +2916,11 @@ class BehaviorFusion {
     this.stateHistory = [];
     this.maxHistory = 100;
     this.stateBuffer = [];
-    this.bufferSize = 8;
+    this.bufferSize = 16;
+    this.lastDisplayedState = null;
+    this.smoothedConfidence = 0;
+    this.stateTimeCounts = { playful: 0, anxious: 0, alert: 0, fearful: 0, relaxed: 0, attention: 0, frustrated: 0, excited: 0 };
+    this.sessionStartTime = Date.now();
 
     // v0.4: States enriched with valence×arousal
     this.states = {
@@ -2753,13 +2976,31 @@ class BehaviorFusion {
 
     this.stateBuffer.push(topState);
     if (this.stateBuffer.length > this.bufferSize) this.stateBuffer.shift();
-    const smoothedState = this.getModeState();
+    const modeState = this.getModeState();
+
+    // Hysteresis: only switch displayed state if new state is clearly dominant
+    const stateCounts = {};
+    this.stateBuffer.forEach(s => { stateCounts[s] = (stateCounts[s] || 0) + 1; });
+    const modeCount = stateCounts[modeState] || 0;
+    const currentCount = this.lastDisplayedState ? (stateCounts[this.lastDisplayedState] || 0) : 0;
+    const modeScore = scores[modeState] || 0;
+    const currentScore = this.lastDisplayedState ? (scores[this.lastDisplayedState] || 0) : 0;
+    const thresholdMet = modeCount >= 5 || (modeScore - currentScore) > 0.2;
+    const smoothedState = (this.lastDisplayedState && !thresholdMet) ? this.lastDisplayedState : modeState;
+    if (thresholdMet || !this.lastDisplayedState) this.lastDisplayedState = modeState;
 
     const hasSignal = evidence.length > 0;
     if (!hasSignal) return { state: null, confidence: 0, evidence: [], scores, hasSignal: false };
 
-    const confidence = Math.round(rawConfidence * 100);
+    // Smooth the confidence display
+    this.smoothedConfidence = this.smoothedConfidence * 0.7 + rawConfidence * 0.3;
+    const confidence = Math.round(this.smoothedConfidence * 100);
     const stateInfo = this.states[smoothedState] || this.states.relaxed;
+
+    // Track session time counts
+    if (this.stateTimeCounts[smoothedState] !== undefined) {
+      this.stateTimeCounts[smoothedState]++;
+    }
 
     // v0.4: Ambiguous state at low confidence (Pongrácz 2006 — < 0.65 confidence)
     let displayLabel = stateInfo.label;
@@ -3721,6 +3962,81 @@ class UI {
 window.UI = UI;
 </script>
   <script>
+/* ══════════════════════════════════════════════════════
+   CANID SOUND ENGINE — Web Audio API, no files needed
+══════════════════════════════════════════════════════ */
+window.CanidSFX = (function() {
+  let ctx = null;
+  let muted = false;
+
+  function getCtx() {
+    if (!ctx) {
+      try { ctx = new (window.AudioContext || window.webkitAudioContext)(); } catch(e) {}
+    }
+    if (ctx && ctx.state === 'suspended') ctx.resume();
+    return ctx;
+  }
+
+  function playTone(freq, type, gainVal, duration, startDelay = 0, fadeOut = true) {
+    if (muted) return;
+    const c = getCtx(); if (!c) return;
+    const now = c.currentTime + startDelay;
+    const osc = c.createOscillator();
+    const gain = c.createGain();
+    osc.connect(gain); gain.connect(c.destination);
+    osc.type = type;
+    osc.frequency.setValueAtTime(freq, now);
+    gain.gain.setValueAtTime(gainVal, now);
+    if (fadeOut) gain.gain.exponentialRampToValueAtTime(0.001, now + duration);
+    osc.start(now); osc.stop(now + duration + 0.01);
+  }
+
+  return {
+    setMuted(val) { muted = val; },
+    isMuted() { return muted; },
+
+    // Short click/pop for button presses
+    click() {
+      playTone(800, 'sine', 0.18, 0.05);
+      playTone(600, 'sine', 0.08, 0.04, 0.02);
+    },
+
+    // Soft click for mode switch
+    softClick() {
+      playTone(500, 'sine', 0.12, 0.06);
+    },
+
+    // Pleasant ascending two-tone chime for state detected
+    chime() {
+      playTone(523, 'sine', 0.25, 0.18);          // C5
+      playTone(784, 'sine', 0.22, 0.22, 0.12);    // G5
+    },
+
+    // Triumphant 4-note fanfare for results screen
+    fanfare() {
+      playTone(523, 'square', 0.15, 0.10);         // C5
+      playTone(659, 'square', 0.13, 0.10, 0.11);   // E5
+      playTone(784, 'square', 0.13, 0.10, 0.22);   // G5
+      playTone(1047,'square', 0.12, 0.30, 0.33);   // C6
+      // Warm tail
+      playTone(784, 'sine',  0.10, 0.20, 0.60);    // G5 sustain
+    },
+
+    // Satisfying ding for auto-stop
+    ding() {
+      playTone(1046, 'sine', 0.30, 0.45);
+      playTone(1318, 'sine', 0.15, 0.35, 0.08);
+    },
+
+    // Low buzz for errors
+    buzz() {
+      playTone(120, 'sawtooth', 0.18, 0.15);
+      playTone(90,  'sawtooth', 0.10, 0.10, 0.08);
+    }
+  };
+})();
+</script>
+  <script>
 /**
  * Canid v0.4 — Main Application Controller
  */
@@ -3744,7 +4060,7 @@ window.UI = UI;
   let currentMode = 'behavior'; // 'behavior' | 'coach' | 'stress'
   let currentContext = 'none';
   let animFrameId = null;
-  let lastAssessmentTime = 0, assessmentInterval = 500;
+  let lastAssessmentTime = 0, assessmentInterval = 2000;
   let lastHistoryState = null, lastHistoryTime = 0, historyMinInterval = 5000;
   let lastPulseTime = 0;
   let lastTimelineDraw = 0;
@@ -3753,8 +4069,9 @@ window.UI = UI;
   let settings = {
     audioEnabled: true, videoEnabled: true,
     showOverlay: true, sensitivity: 5, cameraId: null,
-    dogAge: 'adult'
+    dogAge: 'adult', autoStopThreshold: 80
   };
+  let autoStopTriggered = false;
 
   // ===== Build CNN feature vector =====
   function buildCNNFeatures(audioResult) {
@@ -3835,21 +4152,37 @@ window.UI = UI;
   }
 
   function bindEvents() {
+    // Mute button
+    document.getElementById('btn-mute').addEventListener('click', () => {
+      const muted = !CanidSFX.isMuted();
+      CanidSFX.setMuted(muted);
+      document.getElementById('btn-mute').textContent = muted ? '🔇' : '🔊';
+      if (!muted) CanidSFX.click();
+    });
+
     // Mode tabs
     document.querySelectorAll('.mode-tab').forEach(tab => {
-      tab.addEventListener('click', () => switchMode(tab.dataset.mode));
+      tab.addEventListener('click', () => { CanidSFX.softClick(); switchMode(tab.dataset.mode); });
     });
 
     // Start/stop
-    document.getElementById('start-prompt').addEventListener('click', startAnalysis);
+    document.getElementById('start-prompt').addEventListener('click', () => { CanidSFX.click(); startAnalysis(); });
     document.getElementById('start-prompt').addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); startAnalysis(); }
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); CanidSFX.click(); startAnalysis(); }
     });
-    document.getElementById('btn-stop').addEventListener('click', stopAnalysis);
+    document.getElementById('btn-stop').addEventListener('click', () => {
+      CanidSFX.click();
+      const mode = currentMode;
+      stopAnalysis();
+      if (mode === 'behavior') showBehaviorResults(fusion.currentState || { state: 'relaxed', label: 'Session Ended', icon: '🐕', need: 'No strong signal detected', confidence: 0, evidence: [], hasSignal: false });
+      else if (mode === 'coach') showCoachResults();
+      else if (mode === 'stress') showStressResults();
+    });
 
     // Context buttons
     document.querySelectorAll('.ctx-btn').forEach(btn => {
       btn.addEventListener('click', () => {
+        CanidSFX.softClick();
         document.querySelectorAll('.ctx-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         currentContext = btn.dataset.context;
@@ -3924,6 +4257,10 @@ window.UI = UI;
       settings.sensitivity = parseInt(e.target.value);
       document.getElementById('sensitivity-value').textContent = settings.sensitivity;
       updateSensitivity();
+    });
+    document.getElementById('autostop-slider').addEventListener('input', (e) => {
+      settings.autoStopThreshold = parseInt(e.target.value);
+      document.getElementById('autostop-value').textContent = settings.autoStopThreshold;
     });
     document.getElementById('audio-enabled').addEventListener('change', (e) => { settings.audioEnabled = e.target.checked; });
     document.getElementById('video-enabled').addEventListener('change', (e) => { settings.videoEnabled = e.target.checked; });
@@ -4009,6 +4346,14 @@ window.UI = UI;
     }
 
     isRunning = true;
+    autoStopTriggered = false;
+    // Reset session tracking
+    fusion.stateTimeCounts = { playful: 0, anxious: 0, alert: 0, fearful: 0, relaxed: 0, attention: 0, frustrated: 0, excited: 0 };
+    fusion.sessionStartTime = Date.now();
+    fusion.lastDisplayedState = null;
+    fusion.smoothedConfidence = 0;
+    fusion.stateBuffer = [];
+    document.getElementById('session-summary').style.display = 'none';
     ui.setActive(true);
     document.getElementById('btn-stop').classList.remove('hidden');
     analysisLoop();
@@ -4084,9 +4429,16 @@ window.UI = UI;
       // Full assessment (throttled)
       if (now - lastAssessmentTime > assessmentInterval) {
         lastAssessmentTime = now;
+
+        // Multi-dog: assess primary dog (first/largest)
         const assessment = fusion.assess(audioResult, bodyResult, currentContext);
         ui.updateAssessment(assessment);
         ui.updateDetectionBadges(bodyResult, audioResult);
+
+        // Update multi-dog labels on overlay
+        if (bodyResult && bodyResult.detected && bodyResult.dogs.length > 0) {
+          bodyAnalyzer.drawOverlayMultiDog(settings.showOverlay);
+        }
 
         if (assessment && assessment.hasSignal && lastCNNResult && lastCNNFeatures) {
           canidFeedback.show(lastCNNResult, lastCNNFeatures);
@@ -4095,12 +4447,27 @@ window.UI = UI;
         else ui.showScanning(false);
 
         if (assessment && assessment.hasSignal) {
+          // Update session summary
+          updateSessionSummary();
+
           if (assessment.state !== lastHistoryState || now - lastHistoryTime > 15000) {
             if (now - lastHistoryTime > historyMinInterval) {
               ui.addHistoryEntry(assessment);
               lastHistoryState = assessment.state;
               lastHistoryTime = now;
+              CanidSFX.chime();
             }
+          }
+
+          // Auto-stop at threshold confidence
+          if (!autoStopTriggered && assessment.confidence >= settings.autoStopThreshold) {
+            autoStopTriggered = true;
+            CanidSFX.ding();
+            setTimeout(() => {
+              const snapshot = captureVideoFrame();
+              stopAnalysis();
+              showBehaviorResults(assessment, snapshot);
+            }, 300);
           }
         }
       }
@@ -4138,6 +4505,7 @@ window.UI = UI;
 
   function stopAnalysis() {
     isRunning = false;
+    autoStopTriggered = false;
     if (animFrameId) { cancelAnimationFrame(animFrameId); animFrameId = null; }
     audioAnalyzer.stop();
     bodyAnalyzer.stop();
@@ -4157,6 +4525,302 @@ window.UI = UI;
     ui.hideMicUnavailable();
   }
 
+  function captureVideoFrame() {
+    try {
+      const video = ui.cameraFeed;
+      if (!video.videoWidth) return null;
+      const canvas = document.createElement('canvas');
+      canvas.width = video.videoWidth; canvas.height = video.videoHeight;
+      canvas.getContext('2d').drawImage(video, 0, 0);
+      return canvas.toDataURL('image/jpeg', 0.7);
+    } catch(e) { return null; }
+  }
+
+  function updateSessionSummary() {
+    const summaryEl = document.getElementById('session-summary');
+    const barsEl = document.getElementById('summary-bars');
+    const timeEl = document.getElementById('summary-time');
+    if (!summaryEl || !barsEl) return;
+
+    const counts = fusion.stateTimeCounts;
+    const total = Object.values(counts).reduce((a, b) => a + b, 0);
+    if (total === 0) return;
+
+    summaryEl.style.display = '';
+
+    // Session time
+    const elapsed = Math.floor((Date.now() - fusion.sessionStartTime) / 1000);
+    const mins = Math.floor(elapsed / 60);
+    const secs = elapsed % 60;
+    if (timeEl) timeEl.textContent = `${mins}:${secs.toString().padStart(2,'0')}`;
+
+    const stateColors = {
+      playful: '#5CB85C', excited: '#5CB85C', relaxed: '#4A9ED4',
+      attention: '#E0556A', anxious: '#E8A020', alert: '#E8A020',
+      fearful: '#C8391A', frustrated: '#C8391A'
+    };
+    const stateLabels = {
+      playful: '🎾 Playful', excited: '⚡ Excited', relaxed: '😌 Relaxed',
+      attention: '👀 Attention', anxious: '😰 Anxious', alert: '🔔 Alert',
+      fearful: '⚠️ Fearful', frustrated: '😤 Frustrated'
+    };
+
+    // Only show states with >0 count
+    const activeStates = Object.entries(counts).filter(([, c]) => c > 0)
+      .sort((a, b) => b[1] - a[1]);
+
+    barsEl.innerHTML = '';
+    activeStates.forEach(([state, count]) => {
+      const pct = Math.round((count / total) * 100);
+      const row = document.createElement('div');
+      row.className = 'summary-row';
+      row.innerHTML = `
+        <span class="summary-row-label">${stateLabels[state] || state}</span>
+        <div class="summary-bar-track">
+          <div class="summary-bar-fill" style="width:${pct}%;background:${stateColors[state] || '#8B7355'}"></div>
+        </div>
+        <span class="summary-row-pct">${pct}%</span>`;
+      barsEl.appendChild(row);
+    });
+  }
+
+  // ===== BEHAVIOR RESULTS SCREEN =====
+  function showBehaviorResults(assessment, frozenFrame) {
+    const counts = fusion.stateTimeCounts;
+    const total = Object.values(counts).reduce((a, b) => a + b, 0);
+    const stateColors = {
+      playful: '#5CB85C', excited: '#5CB85C', relaxed: '#4A9ED4',
+      attention: '#E0556A', anxious: '#E8A020', alert: '#E8A020',
+      fearful: '#C8391A', frustrated: '#C8391A'
+    };
+    const stateLabels = {
+      playful: '🎾 Playful', excited: '⚡ Excited', relaxed: '😌 Relaxed',
+      attention: '👀 Attention', anxious: '😰 Anxious', alert: '🔔 Alert',
+      fearful: '⚠️ Fearful', frustrated: '😤 Frustrated'
+    };
+
+    const accentColor = stateColors[assessment.state] || 'var(--teal-warm)';
+    const elapsedS = Math.floor((Date.now() - fusion.sessionStartTime) / 1000);
+    const mins = Math.floor(elapsedS / 60), secs = elapsedS % 60;
+    const sessionDur = `${mins}:${secs.toString().padStart(2,'0')}`;
+
+    const summaryRows = total > 0
+      ? Object.entries(counts).filter(([,c]) => c > 0).sort((a,b) => b[1]-a[1])
+          .map(([st, count]) => {
+            const pct = Math.round((count/total)*100);
+            return `<div class="summary-row">
+              <span class="summary-row-label">${stateLabels[st]||st}</span>
+              <div class="summary-bar-track"><div class="summary-bar-fill" style="width:${pct}%;background:${stateColors[st]||'#8B7355'}"></div></div>
+              <span class="summary-row-pct">${pct}%</span>
+            </div>`;
+          }).join('')
+      : '<p style="font-size:0.75rem;color:var(--text-muted);font-style:italic">Not enough data</p>';
+
+    const evidenceHtml = (assessment.evidence || []).slice(0,6).map(ev =>
+      `<span class="evidence-tag ${ev.type}" style="font-size:0.6rem">${ev.signal}</span>`
+    ).join('');
+
+    const card = document.getElementById('results-card');
+    card.innerHTML = `
+      <div class="results-accent" style="background:linear-gradient(90deg,${accentColor},${accentColor}aa)"></div>
+      <div class="results-hero">
+        <div class="results-icon-wrap" style="background:${accentColor}22;border-color:${accentColor}">${assessment.icon || '🐕'}</div>
+        <div class="results-verdict">Canid says: ${assessment.label}</div>
+        <div class="results-confidence-big" style="color:${accentColor};text-shadow:3px 3px 0 var(--ink)">${assessment.confidence}%</div>
+        <div class="results-confidence-label">Confidence · ${sessionDur} session</div>
+      </div>
+      <div class="results-need">"${assessment.need}"</div>
+      ${evidenceHtml ? `<div class="results-section"><div class="results-section-label">Evidence</div><div class="results-evidence-list">${evidenceHtml}</div></div>` : ''}
+      <div class="results-section">
+        <div class="results-section-label">Session Breakdown</div>
+        <div class="results-summary-bars">${summaryRows}</div>
+      </div>
+      <div class="results-actions">
+        <button class="results-btn-primary" id="results-scan-again">🔄 Scan Again</button>
+        <button class="results-btn-secondary" id="results-share">📋 Copy Summary</button>
+      </div>`;
+
+    const overlay = document.getElementById('results-overlay');
+    overlay.classList.add('visible');
+    CanidSFX.fanfare();
+
+    document.getElementById('results-scan-again').addEventListener('click', () => {
+      overlay.classList.remove('visible');
+      fusion.stateTimeCounts = { playful: 0, anxious: 0, alert: 0, fearful: 0, relaxed: 0, attention: 0, frustrated: 0, excited: 0 };
+      fusion.sessionStartTime = Date.now();
+      fusion.lastDisplayedState = null;
+      fusion.smoothedConfidence = 0;
+      fusion.stateBuffer = [];
+      document.getElementById('session-summary').style.display = 'none';
+      CanidSFX.click();
+      startAnalysis();
+    });
+
+    document.getElementById('results-share').addEventListener('click', () => {
+      const text = `🐕 Canid Analysis Result\n\n${assessment.label} — ${assessment.confidence}% confidence\n\n"${assessment.need}"\n\nSession: ${sessionDur} · via Canid Behavioral Translator`;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('results-share');
+        if (btn) { btn.textContent = '✓ Copied!'; setTimeout(() => { btn.textContent = '📋 Copy Summary'; }, 2000); }
+      });
+      CanidSFX.click();
+    });
+  }
+
+  // ===== COACH RESULTS SCREEN =====
+  function showCoachResults() {
+    const coach = commandCoach;
+    const cmdCount = coach.commandCount;
+    const avgWait = coach.lastCommandTime > 0 && coach.commandCount > 1
+      ? ((coach.lastCommandTime - (coach.feedbackLog[coach.feedbackLog.length-1]?.timestamp || coach.lastCommandTime)) / Math.max(1, coach.commandCount - 1) / 1000).toFixed(1)
+      : '—';
+    const volWarnings = coach.feedbackLog.filter(f => f.type === 'volume').length;
+    const repeatWarnings = coach.feedbackLog.filter(f => f.type === 'repeat').length;
+    const goodTimings = coach.feedbackLog.filter(f => f.type === 'timing').length;
+
+    // Grade the trainer
+    let grade, gradeColor, gradeMsg;
+    const score = (goodTimings * 2) - volWarnings - repeatWarnings;
+    if (cmdCount === 0) { grade = '—'; gradeColor = 'var(--cream-3)'; gradeMsg = 'No commands detected'; }
+    else if (score >= 4) { grade = '⭐ Excellent!'; gradeColor = '#5CB85C'; gradeMsg = 'Outstanding training technique'; }
+    else if (score >= 1) { grade = '👍 Good Trainer'; gradeColor = 'var(--teal-warm)'; gradeMsg = 'Solid delivery with minor areas to improve'; }
+    else if (score >= -2) { grade = '📚 Learning'; gradeColor = 'var(--mustard)'; gradeMsg = 'Good effort — focus on timing and tone'; }
+    else { grade = '🐢 Needs Patience'; gradeColor = 'var(--brick)'; gradeMsg = 'Try slowing down and keeping a calm, consistent tone'; }
+
+    const card = document.getElementById('results-card');
+    card.innerHTML = `
+      <div class="results-accent" style="background:var(--grad-mustard)"></div>
+      <div class="results-hero">
+        <div class="results-icon-wrap" style="background:#FFF5D4;border-color:var(--mustard)">🎓</div>
+        <div class="results-verdict">Training Session Report</div>
+        <div class="results-grade-badge" style="background:${gradeColor};color:#fff;border-color:var(--ink)">${grade}</div>
+        <div style="font-size:0.8rem;color:var(--text-soft);margin-top:4px">${gradeMsg}</div>
+      </div>
+      <div class="results-section">
+        <div class="results-section-label">Session Stats</div>
+        <div class="results-stat-grid">
+          <div class="results-stat-item">
+            <div class="results-stat-num">${cmdCount}</div>
+            <div class="results-stat-label">Commands</div>
+          </div>
+          <div class="results-stat-item">
+            <div class="results-stat-num">${goodTimings}</div>
+            <div class="results-stat-label">Good Timings</div>
+          </div>
+          <div class="results-stat-item">
+            <div class="results-stat-num">${volWarnings}</div>
+            <div class="results-stat-label">Volume ↑</div>
+          </div>
+          <div class="results-stat-item">
+            <div class="results-stat-num">${repeatWarnings}</div>
+            <div class="results-stat-label">Too Fast</div>
+          </div>
+        </div>
+      </div>
+      <div class="results-section">
+        <div class="results-section-label">Top Tip</div>
+        <div style="font-size:0.82rem;color:var(--text-soft);line-height:1.5;padding:8px 12px;background:var(--cream-2);border:var(--ink-border-2);border-radius:var(--r-sm);box-shadow:2px 2px 0 var(--ink)">
+          ${repeatWarnings > 2 ? '🐢 Wait longer between commands — your dog needs processing time.' :
+            volWarnings > 1 ? '🔉 Dogs respond to calmness, not volume. Try softer, confident tones.' :
+            goodTimings > 2 ? '🏆 Great timing awareness! Keep rewarding within 3 seconds.' :
+            '🐾 Try pairing verbal commands with a clear hand signal for best results.'}
+        </div>
+      </div>
+      <div class="results-actions">
+        <button class="results-btn-primary" id="results-scan-again" style="background:var(--grad-mustard)">🔄 New Session</button>
+        <button class="results-btn-secondary" id="results-share">📋 Copy Report</button>
+      </div>`;
+
+    document.getElementById('results-overlay').classList.add('visible');
+    CanidSFX.fanfare();
+
+    document.getElementById('results-scan-again').addEventListener('click', () => {
+      document.getElementById('results-overlay').classList.remove('visible');
+      commandCoach.reset();
+      CanidSFX.click();
+      startAnalysis();
+    });
+    document.getElementById('results-share').addEventListener('click', () => {
+      const text = `🎓 Canid Training Report\n\n${grade}\n${gradeMsg}\n\nCommands: ${cmdCount} · Good timings: ${goodTimings} · Volume escalations: ${volWarnings}\n\nvia Canid Behavioral Translator`;
+      navigator.clipboard.writeText(text).catch(()=>{});
+      CanidSFX.click();
+    });
+  }
+
+  // ===== STRESS RESULTS SCREEN =====
+  function showStressResults() {
+    const st = stressTimeline;
+    const peakScore = st.scoreHistory.length > 0 ? Math.max(...st.scoreHistory.map(p => p.score)) : st.stressScore;
+    const peakTier = peakScore <= 3 ? 1 : peakScore <= 6 ? 2 : peakScore <= 8 ? 3 : 4;
+    const tierLabels = ['', 'Calm', 'Mild Stress', 'Moderate Stress', 'High Stress'];
+    const tierColors = ['', '#5CB85C', '#E8A020', '#E07010', '#C8391A'];
+    const tierEmojis = ['', '😌', '🟡', '🟠', '🔴'];
+
+    const totalEvents = st.eventLog.length;
+    const alertClass = peakTier >= 3 ? 'high' : peakTier >= 2 ? 'medium' : 'ok';
+    const alertMsg = peakTier >= 4
+      ? '⚠️ Your dog showed significant stress signals. Consider identifying and removing the stressor immediately.'
+      : peakTier >= 3
+      ? '🟠 Moderate stress was detected. Give your dog space, reduce demands, and offer water.'
+      : peakTier >= 2
+      ? '🟡 Early stress signals noted. Watch for escalation and reduce activity intensity.'
+      : '✅ Your dog stayed calm throughout the session. Well done!';
+
+    const card = document.getElementById('results-card');
+    card.innerHTML = `
+      <div class="results-accent" style="background:linear-gradient(90deg,${tierColors[peakTier]},${tierColors[peakTier]}88)"></div>
+      <div class="results-hero">
+        <div class="results-icon-wrap" style="background:${tierColors[peakTier]}22;border-color:${tierColors[peakTier]}">📈</div>
+        <div class="results-verdict">Stress Monitor Report</div>
+        <div class="results-tier-badge" style="background:${tierColors[peakTier]}22;border-color:${tierColors[peakTier]}">
+          ${tierEmojis[peakTier]} Peak: ${tierLabels[peakTier]}
+        </div>
+        <div class="results-confidence-big" style="color:${tierColors[peakTier]};text-shadow:3px 3px 0 var(--ink)">${peakScore.toFixed(1)}</div>
+        <div class="results-confidence-label">Peak Score / 10</div>
+      </div>
+      <div class="results-section">
+        <div class="results-stress-alert ${alertClass}">${alertMsg}</div>
+      </div>
+      <div class="results-section">
+        <div class="results-section-label">Session Stats</div>
+        <div class="results-stat-grid">
+          <div class="results-stat-item">
+            <div class="results-stat-num">${totalEvents}</div>
+            <div class="results-stat-label">Signals Logged</div>
+          </div>
+          <div class="results-stat-item">
+            <div class="results-stat-num">${tierEmojis[peakTier]} T${peakTier}</div>
+            <div class="results-stat-label">Peak Tier</div>
+          </div>
+        </div>
+      </div>
+      ${st.eventLog.length > 0 ? `
+      <div class="results-section">
+        <div class="results-section-label">Signal Log</div>
+        <div style="display:flex;flex-wrap:wrap;gap:5px">
+          ${st.eventLog.slice(0,8).map(ev => `<span class="evidence-tag">${st.signalEmojis[ev.type]||'•'} ${ev.type.replace(/_/g,' ')}</span>`).join('')}
+        </div>
+      </div>` : ''}
+      <div class="results-actions">
+        <button class="results-btn-primary" id="results-scan-again" style="background:var(--grad-brick)">🔄 New Session</button>
+        <button class="results-btn-secondary" id="results-share">📋 Copy Report</button>
+      </div>`;
+
+    document.getElementById('results-overlay').classList.add('visible');
+    CanidSFX.fanfare();
+
+    document.getElementById('results-scan-again').addEventListener('click', () => {
+      document.getElementById('results-overlay').classList.remove('visible');
+      stressTimeline.reset();
+      CanidSFX.click();
+      startAnalysis();
+    });
+    document.getElementById('results-share').addEventListener('click', () => {
+      const text = `📈 Canid Stress Report\n\nPeak Tier: ${tierLabels[peakTier]} (${peakScore.toFixed(1)}/10)\nSignals logged: ${totalEvents}\n\n${alertMsg.replace(/[⚠️🟠🟡✅]/g,'')}\n\nvia Canid Behavioral Translator`;
+      navigator.clipboard.writeText(text).catch(()=>{});
+      CanidSFX.click();
+    });
+  }
+
   // ===== Settings =====
   function updateSensitivity() {
     const factor = (11 - settings.sensitivity) / 5;
@@ -4170,6 +4834,7 @@ window.UI = UI;
     settings.showOverlay  = document.getElementById('overlay-enabled').checked;
     settings.sensitivity  = parseInt(document.getElementById('sensitivity-slider').value);
     settings.cameraId     = document.getElementById('camera-select').value || null;
+    settings.autoStopThreshold = parseInt(document.getElementById('autostop-slider').value);
     try { localStorage.setItem('canid-settings', JSON.stringify(settings)); } catch(e) {}
   }
 
@@ -4183,6 +4848,10 @@ window.UI = UI;
         document.getElementById('overlay-enabled').checked = settings.showOverlay;
         document.getElementById('sensitivity-slider').value = settings.sensitivity;
         document.getElementById('sensitivity-value').textContent = settings.sensitivity;
+        if (settings.autoStopThreshold) {
+          document.getElementById('autostop-slider').value = settings.autoStopThreshold;
+          document.getElementById('autostop-value').textContent = settings.autoStopThreshold;
+        }
         // Apply dog age
         if (settings.dogAge) {
           commandCoach.setDogAge(settings.dogAge);
