@@ -657,101 +657,73 @@ footer {
         <div class="hero-starburst"></div>
 
         <!-- ══ CUPHEAD-STYLE DOG SVG ══ -->
-        <!-- Cute puppy — simple, friendly, sitting, tail wagging -->
-        <svg class="dog-svg" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <filter id="inkshadow" x="-10%" y="-10%" width="130%" height="130%">
-              <feDropShadow dx="4" dy="4" stdDeviation="0" flood-color="#1A0F00" flood-opacity="0.8"/>
-            </filter>
-          </defs>
+        <!-- Snowy/Milou style — Hergé ligne claire wire fox terrier -->
+        <svg class="dog-svg" viewBox="0 0 260 260" fill="none" xmlns="http://www.w3.org/2000/svg">
 
-          <!-- ── TAIL — behind body, wagging happily ── -->
+          <!-- ── TAIL — upright, wagging ── -->
           <g>
-            <path fill="#FFF8F0" stroke="#1A0F00" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+            <path fill="white" stroke="#1A0F00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <animate attributeName="d"
-                values="M68,155 C50,140 38,120 42,105 C45,94 55,92 60,100 C65,108 62,125 68,140;
-                        M68,155 C55,135 52,112 60,100 C66,90 76,92 76,102 C76,112 70,132 68,140;
-                        M68,155 C50,140 38,120 42,105 C45,94 55,92 60,100 C65,108 62,125 68,140"
-                dur="0.45s" repeatCount="indefinite"/>
+                values="M72,128 C64,115 58,98 62,88 Q65,80 70,86 C74,92 72,110 72,128;
+                        M72,128 C68,112 68,95 74,86 Q78,80 82,88 C84,96 78,114 72,128;
+                        M72,128 C64,115 58,98 62,88 Q65,80 70,86 C74,92 72,110 72,128"
+                dur="0.4s" repeatCount="indefinite"/>
             </path>
           </g>
 
-          <!-- ── BODY — plump bean shape, sitting ── -->
-          <ellipse cx="140" cy="190" rx="62" ry="55" fill="#FFF8F0" stroke="#1A0F00" stroke-width="4" filter="url(#inkshadow)"/>
-          <!-- Belly -->
-          <ellipse cx="145" cy="200" rx="35" ry="30" fill="#F5E6C8" stroke="#1A0F00" stroke-width="2"/>
+          <!-- ── BODY — compact terrier body, standing ── -->
+          <path d="M82,148 C78,132 82,120 96,118 L172,118 C186,120 190,132 186,148 L184,162 C183,170 178,174 170,175 L98,175 C90,174 85,170 84,162 Z"
+                fill="white" stroke="#1A0F00" stroke-width="2.5"/>
 
-          <!-- ── BACK PAWS — little round feet peeking out ── -->
-          <ellipse cx="95" cy="238" rx="16" ry="10" fill="#FFF8F0" stroke="#1A0F00" stroke-width="3.5"/>
-          <ellipse cx="185" cy="238" rx="16" ry="10" fill="#FFF8F0" stroke="#1A0F00" stroke-width="3.5"/>
+          <!-- ── LEGS — simple, clean Hergé style ── -->
+          <!-- Front left -->
+          <path d="M108,175 L106,210 Q106,216 112,216 Q118,216 118,210 L116,175" fill="white" stroke="#1A0F00" stroke-width="2.5" stroke-linejoin="round"/>
+          <!-- Front right -->
+          <path d="M148,175 L146,210 Q146,216 152,216 Q158,216 158,210 L156,175" fill="white" stroke="#1A0F00" stroke-width="2.5" stroke-linejoin="round"/>
+          <!-- Back left -->
+          <path d="M88,170 L84,210 Q84,216 90,216 Q96,216 96,210 L94,170" fill="white" stroke="#1A0F00" stroke-width="2.5" stroke-linejoin="round"/>
+          <!-- Back right -->
+          <path d="M172,170 L176,210 Q176,216 170,216 Q164,216 164,210 L168,170" fill="white" stroke="#1A0F00" stroke-width="2.5" stroke-linejoin="round"/>
 
-          <!-- ── FRONT PAWS — sitting in front, round and stubby ── -->
-          <ellipse cx="118" cy="234" rx="14" ry="12" fill="#FFF8F0" stroke="#1A0F00" stroke-width="3.5"/>
-          <ellipse cx="162" cy="234" rx="14" ry="12" fill="#FFF8F0" stroke="#1A0F00" stroke-width="3.5"/>
-          <!-- Toe lines -->
-          <path d="M112,236 L112,240" stroke="#1A0F00" stroke-width="1.5" stroke-linecap="round"/>
-          <path d="M118,237 L118,241" stroke="#1A0F00" stroke-width="1.5" stroke-linecap="round"/>
-          <path d="M124,236 L124,240" stroke="#1A0F00" stroke-width="1.5" stroke-linecap="round"/>
-          <path d="M156,236 L156,240" stroke="#1A0F00" stroke-width="1.5" stroke-linecap="round"/>
-          <path d="M162,237 L162,241" stroke="#1A0F00" stroke-width="1.5" stroke-linecap="round"/>
-          <path d="M168,236 L168,240" stroke="#1A0F00" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- ── HEAD — round, Snowy-style ── -->
+          <circle cx="190" cy="100" r="42" fill="white" stroke="#1A0F00" stroke-width="2.5"/>
 
-          <!-- ── HEAD — BIG round head (cute = big head, small body) ── -->
-          <circle cx="140" cy="115" r="65" fill="#FFF8F0" stroke="#1A0F00" stroke-width="4" filter="url(#inkshadow)"/>
+          <!-- ── TUFT — Snowy's signature head tuft ── -->
+          <path d="M182,60 C178,50 184,42 192,44 C198,46 200,54 196,60 C194,65 188,66 186,62"
+                fill="white" stroke="#1A0F00" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M174,66 C170,58 173,50 180,50 C185,50 186,56 184,62"
+                fill="white" stroke="#1A0F00" stroke-width="2" stroke-linejoin="round"/>
 
-          <!-- ── EARS — big floppy puppy ears ── -->
-          <!-- Left ear — hangs down -->
-          <path d="M85,90 C68,75 58,55 62,40 C66,28 78,25 85,35 C92,45 90,70 88,85"
-                fill="#E8C9A0" stroke="#1A0F00" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M82,82 C70,70 64,52 68,42 C72,34 80,33 84,40"
-                fill="none" stroke="#1A0F00" stroke-width="1.5" stroke-linecap="round" opacity="0.25"/>
-          <!-- Right ear -->
-          <path d="M195,90 C212,75 222,55 218,40 C214,28 202,25 195,35 C188,45 190,70 192,85"
-                fill="#E8C9A0" stroke="#1A0F00" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M198,82 C210,70 216,52 212,42 C208,34 200,33 196,40"
-                fill="none" stroke="#1A0F00" stroke-width="1.5" stroke-linecap="round" opacity="0.25"/>
+          <!-- ── EARS — small, folded forward, Snowy style ── -->
+          <!-- Left ear -->
+          <path d="M158,82 C148,68 150,55 158,52 C165,50 170,56 168,66 C166,74 162,80 160,84"
+                fill="white" stroke="#1A0F00" stroke-width="2.5" stroke-linecap="round"/>
+          <!-- Right ear (further side, slightly visible) -->
+          <path d="M216,78 C224,66 226,56 220,52 C215,49 210,54 212,62 C213,68 215,75 216,80"
+                fill="white" stroke="#1A0F00" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
 
-          <!-- ── MUZZLE — round puffy snout ── -->
-          <ellipse cx="140" cy="132" rx="25" ry="18" fill="#F5E6C8" stroke="#1A0F00" stroke-width="3"/>
+          <!-- ── MUZZLE — small protruding snout ── -->
+          <ellipse cx="220" cy="106" rx="16" ry="12" fill="white" stroke="#1A0F00" stroke-width="2.5"/>
 
-          <!-- ── NOSE — shiny black button nose ── -->
-          <ellipse cx="140" cy="125" rx="8" ry="6" fill="#1A0F00"/>
-          <ellipse cx="138" cy="123" rx="3" ry="2" fill="rgba(255,255,255,0.4)"/>
+          <!-- ── NOSE — round black, classic Hergé ── -->
+          <circle cx="232" cy="102" r="5" fill="#1A0F00"/>
+          <circle cx="230.5" cy="100.5" r="1.5" fill="white" opacity="0.35"/>
 
-          <!-- ── MOUTH — happy little smile ── -->
-          <path d="M130,133 Q140,144 150,133" stroke="#1A0F00" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-          <!-- Tongue peeking out -->
-          <ellipse cx="140" cy="140" rx="6" ry="8" fill="#E88B8B" stroke="#1A0F00" stroke-width="2"/>
+          <!-- ── MOUTH — simple happy line ── -->
+          <path d="M220,112 Q226,118 234,114" stroke="#1A0F00" stroke-width="2" stroke-linecap="round" fill="none"/>
 
-          <!-- ── EYES — big, round, sparkly puppy eyes ── -->
-          <!-- Left eye -->
-          <circle cx="118" cy="105" r="16" fill="white" stroke="#1A0F00" stroke-width="3"/>
-          <circle cx="120" cy="107" r="9" fill="#3B2314"/>
-          <circle cx="124" cy="103" r="4" fill="white"/>
-          <circle cx="117" cy="109" r="2.5" fill="white" opacity="0.6"/>
-          <!-- Right eye -->
-          <circle cx="162" cy="105" r="16" fill="white" stroke="#1A0F00" stroke-width="3"/>
-          <circle cx="164" cy="107" r="9" fill="#3B2314"/>
-          <circle cx="168" cy="103" r="4" fill="white"/>
-          <circle cx="161" cy="109" r="2.5" fill="white" opacity="0.6"/>
+          <!-- ── EYES — small, black dots with a glint. Classic ligne claire ── -->
+          <circle cx="184" cy="96" r="4" fill="#1A0F00"/>
+          <circle cx="185.5" cy="94.5" r="1.5" fill="white" opacity="0.8"/>
+          <circle cx="202" cy="94" r="4" fill="#1A0F00"/>
+          <circle cx="203.5" cy="92.5" r="1.5" fill="white" opacity="0.8"/>
 
-          <!-- Eyebrows — friendly, slightly raised -->
-          <path d="M104,90 Q118,84 130,89" stroke="#1A0F00" stroke-width="3" stroke-linecap="round" fill="none"/>
-          <path d="M150,89 Q162,84 176,90" stroke="#1A0F00" stroke-width="3" stroke-linecap="round" fill="none"/>
-
-          <!-- ── CHEEK BLUSH — rosy and cute ── -->
-          <ellipse cx="100" cy="120" rx="10" ry="6" fill="rgba(232,139,139,0.3)"/>
-          <ellipse cx="180" cy="120" rx="10" ry="6" fill="rgba(232,139,139,0.3)"/>
-
-          <!-- ── COLLAR — little red collar with tag ── -->
-          <path d="M100,155 Q140,168 180,155" stroke="#C8391A" stroke-width="5" stroke-linecap="round" fill="none"/>
-          <circle cx="140" cy="165" r="6" fill="#E8A020" stroke="#1A0F00" stroke-width="2"/>
-          <circle cx="140" cy="165" r="2.5" fill="#1A0F00"/>
-
-          <!-- ── SPARKLE — one small sparkle near the collar tag ── -->
-          <g opacity="0.7">
-            <animate attributeName="opacity" values="0.7;0.3;0.7" dur="2s" repeatCount="indefinite"/>
-            <path d="M152,158 L153,162 L157,162 L154,165 L155,169 L152,166 L149,169 L150,165 L147,162 L151,162 Z" fill="#E8A020" stroke="#1A0F00" stroke-width="1" stroke-linejoin="round"/>
+          <!-- ── MOTION LINES — near tail (wagging energy) ── -->
+          <g opacity="0.5">
+            <animate attributeName="opacity" values="0.5;0.15;0.5" dur="0.4s" repeatCount="indefinite"/>
+            <line x1="52" y1="92" x2="42" y2="86" stroke="#1A0F00" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="50" y1="100" x2="38" y2="98" stroke="#1A0F00" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="52" y1="108" x2="42" y2="112" stroke="#1A0F00" stroke-width="1.8" stroke-linecap="round"/>
           </g>
         </svg>
 
