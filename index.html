@@ -657,137 +657,101 @@ footer {
         <div class="hero-starburst"></div>
 
         <!-- ══ CUPHEAD-STYLE DOG SVG ══ -->
-        <!-- Full rubber-hose Fleischer dog, centered, animated tail wag -->
-        <svg class="dog-svg" viewBox="0 0 320 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Cute puppy — simple, friendly, sitting, tail wagging -->
+        <svg class="dog-svg" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <filter id="inkshadow" x="-10%" y="-10%" width="130%" height="130%">
-              <feDropShadow dx="5" dy="5" stdDeviation="0" flood-color="#1A0F00" flood-opacity="0.9"/>
+              <feDropShadow dx="4" dy="4" stdDeviation="0" flood-color="#1A0F00" flood-opacity="0.8"/>
             </filter>
           </defs>
 
-          <!-- ── BODY — round rubber-hose shape ── -->
-          <ellipse cx="155" cy="200" rx="68" ry="62" fill="#FFF8F0" stroke="#1A0F00" stroke-width="4.5" filter="url(#inkshadow)"/>
-          <!-- Belly patch -->
-          <ellipse cx="155" cy="210" rx="38" ry="32" fill="#F5E6C8" stroke="#1A0F00" stroke-width="2.5"/>
-
-          <!-- ── RUBBER HOSE LEGS ── -->
-          <!-- Front left leg -->
-          <path d="M120 248 C112 260 110 272 115 280 Q118 285 125 282 Q132 280 130 272 L128 258" fill="#FFF8F0" stroke="#1A0F00" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-          <!-- Front right leg -->
-          <path d="M170 252 C165 264 165 276 170 282 Q173 286 180 283 Q188 280 185 272 L182 260" fill="#FFF8F0" stroke="#1A0F00" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-          <!-- Back left -->
-          <path d="M100 232 C90 246 88 260 93 268 Q97 274 105 270 Q113 265 110 256 L107 244" fill="#FFF8F0" stroke="#1A0F00" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-          <!-- Back right -->
-          <path d="M200 240 C198 254 200 266 206 272 Q210 276 218 272 Q224 267 220 258 L214 248" fill="#FFF8F0" stroke="#1A0F00" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-
-          <!-- ── HEAD — very round, large ── -->
-          <circle cx="190" cy="130" r="72" fill="#FFF8F0" stroke="#1A0F00" stroke-width="4.5" filter="url(#inkshadow)"/>
-
-          <!-- ── EAR — floppy, hanging ── -->
-          <path d="M135 100 C118 76 120 44 132 36 C144 28 160 36 162 56 C164 70 158 88 150 98" fill="#F5E6C8" stroke="#1A0F00" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-          <!-- Ear inner detail -->
-          <path d="M139 96 C126 76 128 52 138 44 C146 38 156 44 157 58" fill="none" stroke="#1A0F00" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
-
-          <!-- ── SECOND EAR (back, visible) ── -->
-          <path d="M228 95 C240 72 242 48 235 40 C228 32 216 36 215 52 C214 64 220 82 226 95" fill="#F5E6C8" stroke="#1A0F00" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
-
-          <!-- ── MUZZLE / SNOUT ── -->
-          <ellipse cx="224" cy="148" rx="28" ry="22" fill="#F5E6C8" stroke="#1A0F00" stroke-width="3.5"/>
-          <!-- Nose — Cuphead style big round nose -->
-          <ellipse cx="238" cy="138" rx="9" ry="7" fill="#C8391A" stroke="#1A0F00" stroke-width="2.5"/>
-          <ellipse cx="236" cy="136" rx="3" ry="2.5" fill="rgba(255,255,255,0.6)"/>
-          <!-- Mouth / smile -->
-          <path d="M212 152 Q222 164 242 158" stroke="#1A0F00" stroke-width="3" stroke-linecap="round" fill="none"/>
-          <!-- Cheek blush (Fleischer charm) -->
-          <ellipse cx="207" cy="148" rx="8" ry="5" fill="rgba(200,57,26,0.18)"/>
-
-          <!-- ── LEFT EYE — huge Fleischer pie-cut style ── -->
-          <circle cx="175" cy="118" r="22" fill="white" stroke="#1A0F00" stroke-width="3.5"/>
-          <circle cx="175" cy="118" r="13" fill="#1A0F00"/>
-          <path d="M175 118 L175 105 A13 13 0 0 1 186 125 Z" fill="white"/>
-          <circle cx="182" cy="110" r="4" fill="white"/>
-          <circle cx="186" cy="116" r="2" fill="white"/>
-
-          <!-- ── RIGHT EYE — matching pie-cut ── -->
-          <circle cx="215" cy="116" r="18" fill="white" stroke="#1A0F00" stroke-width="3.5"/>
-          <circle cx="215" cy="116" r="11" fill="#1A0F00"/>
-          <path d="M215 116 L215 105 A11 11 0 0 1 224 123 Z" fill="white"/>
-          <circle cx="221" cy="109" r="3.5" fill="white"/>
-          <circle cx="224" cy="114" r="1.8" fill="white"/>
-
-          <!-- Eyebrows -->
-          <path d="M158 96 Q175 87 192 94" stroke="#1A0F00" stroke-width="4" stroke-linecap="round" fill="none"/>
-          <path d="M200 93 Q215 86 232 92" stroke="#1A0F00" stroke-width="3.5" stroke-linecap="round" fill="none"/>
-
-          <!-- ── RUBBER HOSE ARM — waving ── -->
-          <!-- Left arm -->
-          <path d="M100 170 C82 158 68 166 64 180 C60 192 70 200 80 196" fill="none" stroke="#1A0F00" stroke-width="4.5" stroke-linecap="round"/>
-          <!-- White glove on left arm -->
-          <circle cx="73" cy="202" r="16" fill="white" stroke="#1A0F00" stroke-width="3.5"/>
-          <!-- Glove finger lines -->
-          <path d="M63 196 L60 188" stroke="#1A0F00" stroke-width="2" stroke-linecap="round"/>
-          <path d="M67 192 L65 183" stroke="#1A0F00" stroke-width="2" stroke-linecap="round"/>
-          <path d="M73 190 L73 181" stroke="#1A0F00" stroke-width="2" stroke-linecap="round"/>
-          <path d="M79 192 L81 183" stroke="#1A0F00" stroke-width="2" stroke-linecap="round"/>
-
-          <!-- Right arm — points toward viewer -->
-          <path d="M212 178 C228 166 240 172 244 186 C248 198 240 206 232 202" fill="none" stroke="#1A0F00" stroke-width="4.5" stroke-linecap="round"/>
-          <!-- White glove right -->
-          <circle cx="246" cy="207" r="14" fill="white" stroke="#1A0F00" stroke-width="3.5"/>
-
-          <!-- ── TAIL — rubber hose, happy bendy wag ── -->
+          <!-- ── TAIL — behind body, wagging happily ── -->
           <g>
-            <!-- Tail curves and bends as it wags — not stiff rotation -->
-            <path fill="none" stroke="#1A0F00" stroke-width="5" stroke-linecap="round">
+            <path fill="#FFF8F0" stroke="#1A0F00" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
               <animate attributeName="d"
-                values="M90,228 C72,215 55,198 50,180 C46,165 54,152 64,155 C72,158 74,170 70,180;
-                        M90,228 C78,210 68,192 72,175 C76,160 88,150 96,156 C102,162 96,176 88,182;
-                        M90,228 C72,215 55,198 50,180 C46,165 54,152 64,155 C72,158 74,170 70,180"
-                dur="0.5s" repeatCount="indefinite"/>
+                values="M68,155 C50,140 38,120 42,105 C45,94 55,92 60,100 C65,108 62,125 68,140;
+                        M68,155 C55,135 52,112 60,100 C66,90 76,92 76,102 C76,112 70,132 68,140;
+                        M68,155 C50,140 38,120 42,105 C45,94 55,92 60,100 C65,108 62,125 68,140"
+                dur="0.45s" repeatCount="indefinite"/>
             </path>
-            <!-- Tail body fill -->
-            <path fill="#FFF8F0" stroke="none">
-              <animate attributeName="d"
-                values="M90,225 C72,212 55,196 50,178 C46,163 54,150 64,153 C72,156 74,168 70,178 L73,182 C76,172 75,160 66,156 C57,152 48,164 52,180 C56,198 74,214 90,231 Z;
-                        M90,225 C78,207 68,190 72,173 C76,158 88,148 96,154 C102,160 96,174 88,180 L91,184 C98,176 104,162 98,155 C90,148 78,158 74,174 C70,192 80,210 90,231 Z;
-                        M90,225 C72,212 55,196 50,178 C46,163 54,150 64,153 C72,156 74,168 70,178 L73,182 C76,172 75,160 66,156 C57,152 48,164 52,180 C56,198 74,214 90,231 Z"
-                dur="0.5s" repeatCount="indefinite"/>
-            </path>
-            <!-- Tail tip tuft — bounces with the wag -->
-            <circle r="11" fill="#F5E6C8" stroke="#1A0F00" stroke-width="3.5">
-              <animate attributeName="cx" values="50;72;50" dur="0.5s" repeatCount="indefinite"/>
-              <animate attributeName="cy" values="178;173;178" dur="0.5s" repeatCount="indefinite"/>
-            </circle>
-            <!-- Motion lines near tail -->
-            <g opacity="0.5">
-              <animate attributeName="opacity" values="0.5;0.15;0.5" dur="0.5s" repeatCount="indefinite"/>
-              <line x1="38" y1="170" x2="28" y2="164" stroke="#E8A020" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="42" y1="160" x2="34" y2="152" stroke="#E8A020" stroke-width="2" stroke-linecap="round"/>
-              <line x1="48" y1="152" x2="42" y2="142" stroke="#E8A020" stroke-width="1.5" stroke-linecap="round"/>
-            </g>
           </g>
 
-          <!-- ── SIGNAL LINES FROM NOSE (cartoon action lines) ── -->
-          <g>
-            <animate attributeName="opacity" values="1;0.2;1" dur="0.9s" repeatCount="indefinite"/>
-            <line x1="256" y1="124" x2="272" y2="118" stroke="#E8A020" stroke-width="3" stroke-linecap="round"/>
-            <line x1="258" y1="134" x2="275" y2="134" stroke="#E8A020" stroke-width="2.5" stroke-linecap="round"/>
-            <line x1="256" y1="144" x2="272" y2="150" stroke="#E8A020" stroke-width="2" stroke-linecap="round"/>
-          </g>
+          <!-- ── BODY — plump bean shape, sitting ── -->
+          <ellipse cx="140" cy="190" rx="62" ry="55" fill="#FFF8F0" stroke="#1A0F00" stroke-width="4" filter="url(#inkshadow)"/>
+          <!-- Belly -->
+          <ellipse cx="145" cy="200" rx="35" ry="30" fill="#F5E6C8" stroke="#1A0F00" stroke-width="2"/>
 
-          <!-- ── CARTOON SPARKLE STARS ── -->
+          <!-- ── BACK PAWS — little round feet peeking out ── -->
+          <ellipse cx="95" cy="238" rx="16" ry="10" fill="#FFF8F0" stroke="#1A0F00" stroke-width="3.5"/>
+          <ellipse cx="185" cy="238" rx="16" ry="10" fill="#FFF8F0" stroke="#1A0F00" stroke-width="3.5"/>
+
+          <!-- ── FRONT PAWS — sitting in front, round and stubby ── -->
+          <ellipse cx="118" cy="234" rx="14" ry="12" fill="#FFF8F0" stroke="#1A0F00" stroke-width="3.5"/>
+          <ellipse cx="162" cy="234" rx="14" ry="12" fill="#FFF8F0" stroke="#1A0F00" stroke-width="3.5"/>
+          <!-- Toe lines -->
+          <path d="M112,236 L112,240" stroke="#1A0F00" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M118,237 L118,241" stroke="#1A0F00" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M124,236 L124,240" stroke="#1A0F00" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M156,236 L156,240" stroke="#1A0F00" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M162,237 L162,241" stroke="#1A0F00" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M168,236 L168,240" stroke="#1A0F00" stroke-width="1.5" stroke-linecap="round"/>
+
+          <!-- ── HEAD — BIG round head (cute = big head, small body) ── -->
+          <circle cx="140" cy="115" r="65" fill="#FFF8F0" stroke="#1A0F00" stroke-width="4" filter="url(#inkshadow)"/>
+
+          <!-- ── EARS — big floppy puppy ears ── -->
+          <!-- Left ear — hangs down -->
+          <path d="M85,90 C68,75 58,55 62,40 C66,28 78,25 85,35 C92,45 90,70 88,85"
+                fill="#E8C9A0" stroke="#1A0F00" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M82,82 C70,70 64,52 68,42 C72,34 80,33 84,40"
+                fill="none" stroke="#1A0F00" stroke-width="1.5" stroke-linecap="round" opacity="0.25"/>
+          <!-- Right ear -->
+          <path d="M195,90 C212,75 222,55 218,40 C214,28 202,25 195,35 C188,45 190,70 192,85"
+                fill="#E8C9A0" stroke="#1A0F00" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M198,82 C210,70 216,52 212,42 C208,34 200,33 196,40"
+                fill="none" stroke="#1A0F00" stroke-width="1.5" stroke-linecap="round" opacity="0.25"/>
+
+          <!-- ── MUZZLE — round puffy snout ── -->
+          <ellipse cx="140" cy="132" rx="25" ry="18" fill="#F5E6C8" stroke="#1A0F00" stroke-width="3"/>
+
+          <!-- ── NOSE — shiny black button nose ── -->
+          <ellipse cx="140" cy="125" rx="8" ry="6" fill="#1A0F00"/>
+          <ellipse cx="138" cy="123" rx="3" ry="2" fill="rgba(255,255,255,0.4)"/>
+
+          <!-- ── MOUTH — happy little smile ── -->
+          <path d="M130,133 Q140,144 150,133" stroke="#1A0F00" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <!-- Tongue peeking out -->
+          <ellipse cx="140" cy="140" rx="6" ry="8" fill="#E88B8B" stroke="#1A0F00" stroke-width="2"/>
+
+          <!-- ── EYES — big, round, sparkly puppy eyes ── -->
+          <!-- Left eye -->
+          <circle cx="118" cy="105" r="16" fill="white" stroke="#1A0F00" stroke-width="3"/>
+          <circle cx="120" cy="107" r="9" fill="#3B2314"/>
+          <circle cx="124" cy="103" r="4" fill="white"/>
+          <circle cx="117" cy="109" r="2.5" fill="white" opacity="0.6"/>
+          <!-- Right eye -->
+          <circle cx="162" cy="105" r="16" fill="white" stroke="#1A0F00" stroke-width="3"/>
+          <circle cx="164" cy="107" r="9" fill="#3B2314"/>
+          <circle cx="168" cy="103" r="4" fill="white"/>
+          <circle cx="161" cy="109" r="2.5" fill="white" opacity="0.6"/>
+
+          <!-- Eyebrows — friendly, slightly raised -->
+          <path d="M104,90 Q118,84 130,89" stroke="#1A0F00" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M150,89 Q162,84 176,90" stroke="#1A0F00" stroke-width="3" stroke-linecap="round" fill="none"/>
+
+          <!-- ── CHEEK BLUSH — rosy and cute ── -->
+          <ellipse cx="100" cy="120" rx="10" ry="6" fill="rgba(232,139,139,0.3)"/>
+          <ellipse cx="180" cy="120" rx="10" ry="6" fill="rgba(232,139,139,0.3)"/>
+
+          <!-- ── COLLAR — little red collar with tag ── -->
+          <path d="M100,155 Q140,168 180,155" stroke="#C8391A" stroke-width="5" stroke-linecap="round" fill="none"/>
+          <circle cx="140" cy="165" r="6" fill="#E8A020" stroke="#1A0F00" stroke-width="2"/>
+          <circle cx="140" cy="165" r="2.5" fill="#1A0F00"/>
+
+          <!-- ── SPARKLE — one small sparkle near the collar tag ── -->
           <g opacity="0.7">
-            <animateTransform attributeName="transform" type="rotate" values="0 60 80;15 60 80;0 60 80" dur="2.5s" repeatCount="indefinite"/>
-            <path d="M60 72 L63 80 L71 80 L65 85 L68 93 L60 88 L52 93 L55 85 L49 80 L57 80 Z" fill="#E8A020" stroke="#1A0F00" stroke-width="1.5" stroke-linejoin="round"/>
-          </g>
-          <g opacity="0.6">
-            <animateTransform attributeName="transform" type="rotate" values="0 278 70;-12 278 70;0 278 70" dur="3.1s" repeatCount="indefinite"/>
-            <path d="M278 63 L280 69 L286 69 L282 73 L284 79 L278 75 L272 79 L274 73 L270 69 L276 69 Z" fill="#E8A020" stroke="#1A0F00" stroke-width="1.5" stroke-linejoin="round"/>
-          </g>
-          <!-- Small 4-point star -->
-          <g opacity="0.55">
-            <animate attributeName="opacity" values="0.55;0.9;0.55" dur="1.8s" repeatCount="indefinite"/>
-            <path d="M48 156 L50 160 L54 160 L51 163 L52 167 L48 164 L44 167 L45 163 L42 160 L46 160 Z" fill="#C8391A" stroke="#1A0F00" stroke-width="1.2" stroke-linejoin="round"/>
+            <animate attributeName="opacity" values="0.7;0.3;0.7" dur="2s" repeatCount="indefinite"/>
+            <path d="M152,158 L153,162 L157,162 L154,165 L155,169 L152,166 L149,169 L150,165 L147,162 L151,162 Z" fill="#E8A020" stroke="#1A0F00" stroke-width="1" stroke-linejoin="round"/>
           </g>
         </svg>
 
