@@ -4751,7 +4751,7 @@ window.CanidSFX = (function() {
 </script>
 
 <!-- ===== CANID GUIDED TOUR ===== -->
-<div id="tour-overlay" role="dialog" aria-modal="true" aria-label="Guided tour">
+<div id="tour-overlay" role="dialog" aria-modal="true" aria-label="Guided tour" style="display:none;">
   <div id="tour-backdrop"></div>
   <div id="tour-spotlight"></div>
   <div id="tour-tooltip">
@@ -4803,8 +4803,8 @@ window.CanidSFX = (function() {
       // Tour no longer auto-starts — user can trigger via ? button
       // if (!localStorage.getItem(STORAGE_KEY)) setTimeout(() => this.start(), 700);
     }
-    start() { this.step = 0; this.active = true; this.overlay.classList.add('active'); this.render(); }
-    end() { this.active = false; this.overlay.classList.remove('active'); localStorage.setItem(STORAGE_KEY, '1'); }
+    start() { this.step = 0; this.active = true; this.overlay.style.display = ''; this.overlay.classList.add('active'); this.render(); }
+    end() { this.active = false; this.overlay.classList.remove('active'); this.overlay.style.display = 'none'; localStorage.setItem(STORAGE_KEY, '1'); }
     next() { if (this.step >= STEPS.length-1) { this.end(); return; } this.step++; this.render(); }
     back() { if (this.step <= 0) return; this.step--; this.render(); }
     render() {
