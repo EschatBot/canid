@@ -4013,7 +4013,7 @@ window.CanidSFX = (function() {
     cnnClassifier.load().then(loaded => {
       console.log(loaded ? '[Canid v0.4] CNN loaded' : '[Canid v0.4] Using rule-based fallback');
     }).catch(e => console.warn('[Canid v0.4] CNN error:', e));
-    await canidFeedback.init();
+    try { await canidFeedback.init(); } catch(e) { console.warn('[Canid] Feedback init failed:', e); }
 
     // Wire coach callback
     commandCoach.onCoachFeedback = (feedbacks) => {
