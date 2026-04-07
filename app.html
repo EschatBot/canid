@@ -1145,8 +1145,8 @@ html, body { overscroll-behavior-y: contain; }
   position: fixed; inset: 0; z-index: 1000; pointer-events: none;
 }
 #tour-backdrop {
-  position: absolute; inset: 0; background: rgba(0,0,0,0.55);
-  pointer-events: all; backdrop-filter: blur(2px);
+  position: absolute; inset: 0; background: rgba(0,0,0,0.35);
+  pointer-events: all;
 }
 .tour-highlight {
   position: absolute; border-radius: 12px;
@@ -4800,7 +4800,8 @@ window.CanidSFX = (function() {
       this.btnBack.addEventListener('click', () => this.back());
       this.btnSkip.addEventListener('click', () => this.end());
       document.getElementById('start-prompt').addEventListener('click', () => this.end(), { once: true });
-      if (!localStorage.getItem(STORAGE_KEY)) setTimeout(() => this.start(), 700);
+      // Tour no longer auto-starts — user can trigger via ? button
+      // if (!localStorage.getItem(STORAGE_KEY)) setTimeout(() => this.start(), 700);
     }
     start() { this.step = 0; this.active = true; this.overlay.classList.add('active'); this.render(); }
     end() { this.active = false; this.overlay.classList.remove('active'); localStorage.setItem(STORAGE_KEY, '1'); }
