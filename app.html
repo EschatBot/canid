@@ -933,10 +933,10 @@ body::after { display: none; }
   -webkit-backdrop-filter: blur(8px);
   display: flex; align-items: center; justify-content: center;
   padding: 16px;
-  opacity: 0; visibility: hidden;
+  opacity: 0; visibility: hidden; pointer-events: none;
   transition: opacity 0.4s, visibility 0.4s;
 }
-#results-overlay.visible { opacity: 1; visibility: visible; }
+#results-overlay.visible { opacity: 1; visibility: visible; pointer-events: all; }
 #results-overlay.visible .results-card { transform: translateY(0) scale(1); opacity: 1; }
 
 .results-card {
@@ -1903,10 +1903,13 @@ if (typeof window !== 'undefined') { window.Canid = window.Canid || {}; window.C
       `;
       document.body.appendChild(el);
       return new Promise(resolve => {
+        const cleanup = () => { try { el.remove(); style.remove(); } catch(e){} resolve(); };
         setTimeout(() => {
           el.style.opacity = '0';
-          setTimeout(() => { el.remove(); style.remove(); resolve(); }, 580);
+          setTimeout(cleanup, 580);
         }, 1800);
+        // Safety: force remove splash after 4s no matter what
+        setTimeout(cleanup, 4000);
       });
     }
   };
@@ -4747,6 +4750,14 @@ window.CanidSFX = (function() {
   } else {
     init();
   }
+
+  // Safety: ensure no overlay blocks interaction after 5s
+  setTimeout(() => {
+    const splash = document.getElementById('canid-splash');
+    if (splash) splash.remove();
+    const tour = document.getElementById('tour-overlay');
+    if (tour && !tour.classList.contains('active')) tour.style.display = 'none';
+  }, 5000);
 })();
 </script>
 
